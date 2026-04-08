@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VistraDev — Création de Sites Web Professionnels au Maroc</title>
+    <meta name="description" content="VistraDev crée des sites web performants pour commerçants et entreprises au Maroc. Design premium, livraison rapide, prix imbattables. Devis gratuit.">
+    <meta name="keywords" content="création site web maroc, agence web maroc, site web professionnel, site vitrine maroc, e-commerce maroc, VistraDev">
+    <meta property="og:title" content="VistraDev — Votre Succès Digital">
+    <meta property="og:description" content="Sites web professionnels pour commerçants au Maroc. À partir de 1000 DH.">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Cursor glow effect -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Particle canvas -->
+    <canvas id="particles"></canvas>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="nav-logo">
+                <img src="assets/images/logo-white.jpeg" alt="VistraDev" class="logo-img">
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#tarifs" class="nav-link">Tarifs</a>
+                <a href="#processus" class="nav-link">Processus</a>
+                <a href="#pourquoi" class="nav-link">Pourquoi Nous</a>
+                <a href="#portfolio" class="nav-link">Portfolio</a>
+                <a href="#faq" class="nav-link">FAQ</a>
+                <a href="#contact" class="nav-btn">
+                    <i class="fab fa-whatsapp"></i> Devis Gratuit
+                </a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-bg-effects">
+            <div class="hero-orb hero-orb-1"></div>
+            <div class="hero-orb hero-orb-2"></div>
+            <div class="hero-orb hero-orb-3"></div>
+            <div class="hero-grid"></div>
+        </div>
+        <div class="container hero-content">
+            <div class="hero-badge" data-animate="fade-up">
+                <span class="badge-pulse"></span>
+                <span>Offre de lancement — Places limitées</span>
+            </div>
+            <h1 class="hero-title" data-animate="fade-up" data-delay="100">
+                Votre site web<br>
+                <span class="gradient-text">professionnel</span><br>
+                à partir de <span class="gradient-text">1 000 DH</span>
+            </h1>
+            <p class="hero-subtitle" data-animate="fade-up" data-delay="200">
+                Des sites qui convertissent vos visiteurs en clients.<br>
+                Design premium. Livraison rapide. Résultats garantis.
+            </p>
+            <div class="hero-ctas" data-animate="fade-up" data-delay="300">
+                <a href="https://wa.me/212661971520?text=Bonjour%20VistraDev%20!%20Je%20souhaite%20un%20devis%20gratuit%20pour%20la%20création%20de%20mon%20site%20web." class="btn btn-primary btn-glow" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Devis Gratuit en 24h
+                </a>
+                <a href="#tarifs" class="btn btn-outline">
+                    Voir nos packs <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="hero-stats" data-animate="fade-up" data-delay="400">
+                <div class="stat-item">
+                    <span class="stat-number" data-count="150">0</span><span class="stat-suffix">+</span>
+                    <span class="stat-label">Sites livrés</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="48">0</span><span class="stat-suffix">h</span>
+                    <span class="stat-label">Livraison express</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="100">0</span><span class="stat-suffix">%</span>
+                    <span class="stat-label">Satisfaction</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll-indicator">
+            <div class="scroll-mouse">
+                <div class="scroll-wheel"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Bar -->
+    <section class="trust-bar">
+        <div class="container">
+            <div class="trust-items">
+                <div class="trust-item">
+                    <i class="fas fa-bolt"></i>
+                    <span>Livraison rapide</span>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>100% Responsive</span>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-search"></i>
+                    <span>SEO optimisé</span>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-lock"></i>
+                    <span>SSL inclus</span>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-headset"></i>
+                    <span>Support WhatsApp 7/7</span>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-server"></i>
+                    <span>Hébergement inclus</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section services" id="services">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-tag">Nos Services</span>
+                <h2 class="section-title">Tout ce qu'il faut pour<br><span class="gradient-text">dominer en ligne</span></h2>
+                <p class="section-desc">De la simple page vitrine au site e-commerce complet, nous créons des solutions digitales sur mesure pour chaque commerçant.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card" data-animate="fade-up" data-delay="0">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Site Vitrine</h3>
+                    <p>Un site professionnel qui présente votre activité et attire de nouveaux clients. Design moderne et responsive.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Design personnalisé</li>
+                        <li><i class="fas fa-check"></i> Formulaire de contact</li>
+                        <li><i class="fas fa-check"></i> Google Maps intégré</li>
+                        <li><i class="fas fa-check"></i> WhatsApp click-to-chat</li>
+                    </ul>
+                    <span class="service-price">À partir de 1 000 DH</span>
+                </div>
+                <div class="service-card featured" data-animate="fade-up" data-delay="100">
+                    <div class="card-badge">Populaire</div>
+                    <div class="service-icon">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <h3>Site E-commerce</h3>
+                    <p>Vendez en ligne 24h/24. Paiement CMI, gestion de stock, tableau de bord et plus encore.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Catalogue produits</li>
+                        <li><i class="fas fa-check"></i> Paiement en ligne CMI</li>
+                        <li><i class="fas fa-check"></i> Gestion des commandes</li>
+                        <li><i class="fas fa-check"></i> Tableau de bord</li>
+                    </ul>
+                    <span class="service-price">À partir de 2 990 DH</span>
+                </div>
+                <div class="service-card" data-animate="fade-up" data-delay="200">
+                    <div class="service-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3>Site + Réseaux Sociaux</h3>
+                    <p>Un pack complet : votre site web professionnel + la gestion de vos réseaux sociaux pour une présence digitale 360°.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Site web complet</li>
+                        <li><i class="fas fa-check"></i> Pages Facebook & Instagram</li>
+                        <li><i class="fas fa-check"></i> 10 publications designées</li>
+                        <li><i class="fas fa-check"></i> Optimisation des profils</li>
+                    </ul>
+                    <span class="service-price">À partir de 3 490 DH</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="section pricing" id="tarifs">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-tag">Tarifs transparents</span>
+                <h2 class="section-title">Des packs pensés pour<br><span class="gradient-text">chaque budget</span></h2>
+                <p class="section-desc">Pas de frais cachés. Pas de surprises. Choisissez le pack qui correspond à vos besoins.</p>
+            </div>
+            <div class="pricing-grid">
+                <!-- Pack 1: Offre d'ouverture -->
+                <div class="pricing-card" data-animate="fade-up" data-delay="0">
+                    <div class="pricing-header">
+                        <div class="discount-badge">-50%</div>
+                        <h3 class="pricing-name">Offre d'Ouverture</h3>
+                        <p class="pricing-desc">Idéal pour démarrer</p>
+                        <div class="pricing-amount">
+                            <span class="old-price">2 000 DH</span>
+                            <span class="price">1 000</span>
+                            <span class="currency">DH</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check-circle"></i> Site One Page professionnel</li>
+                        <li><i class="fas fa-check-circle"></i> Design moderne & responsive</li>
+                        <li><i class="fas fa-check-circle"></i> WhatsApp intégré</li>
+                        <li><i class="fas fa-check-circle"></i> Formulaire de contact</li>
+                        <li><i class="fas fa-check-circle"></i> Google Maps</li>
+                        <li><i class="fas fa-check-circle"></i> Livraison en 48h</li>
+                        <li><i class="fas fa-check-circle"></i> 1 modification gratuite</li>
+                    </ul>
+                    <a href="https://wa.me/212661971520?text=Bonjour%20!%20Je%20suis%20intéressé(e)%20par%20l'Offre%20d'Ouverture%20à%201000%20DH." class="btn btn-outline btn-block" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Commander
+                    </a>
+                </div>
+
+                <!-- Pack 2: Starter -->
+                <div class="pricing-card" data-animate="fade-up" data-delay="100">
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">Pack Starter</h3>
+                        <p class="pricing-desc">Pour bien commencer</p>
+                        <div class="pricing-amount">
+                            <span class="price">1 490</span>
+                            <span class="currency">DH</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check-circle"></i> Site web 3 pages</li>
+                        <li><i class="fas fa-check-circle"></i> Design professionnel</li>
+                        <li><i class="fas fa-check-circle"></i> Version mobile optimisée</li>
+                        <li><i class="fas fa-check-circle"></i> WhatsApp intégré</li>
+                        <li><i class="fas fa-check-circle"></i> Nom de domaine offert</li>
+                        <li><i class="fas fa-check-circle"></i> Hébergement inclus</li>
+                        <li><i class="fas fa-check-circle"></i> Livraison rapide</li>
+                    </ul>
+                    <a href="https://wa.me/212661971520?text=Bonjour%20!%20Je%20suis%20intéressé(e)%20par%20le%20Pack%20Starter%20à%201490%20DH." class="btn btn-outline btn-block" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Commander
+                    </a>
+                </div>
+
+                <!-- Pack 3: Business (Recommended) -->
+                <div class="pricing-card pricing-featured" data-animate="fade-up" data-delay="200">
+                    <div class="pricing-badge">Recommandé</div>
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">Pack Business</h3>
+                        <p class="pricing-desc">Le choix des pros</p>
+                        <div class="pricing-amount">
+                            <span class="price">2 990</span>
+                            <span class="currency">DH</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check-circle"></i> Site web 5 pages</li>
+                        <li><i class="fas fa-check-circle"></i> Design premium</li>
+                        <li><i class="fas fa-check-circle"></i> SEO Google de base</li>
+                        <li><i class="fas fa-check-circle"></i> Google Maps intégré</li>
+                        <li><i class="fas fa-check-circle"></i> WhatsApp + Appel</li>
+                        <li><i class="fas fa-check-circle"></i> Hébergement 1 an offert</li>
+                        <li><i class="fas fa-check-circle"></i> Domaine offert</li>
+                        <li><i class="fas fa-check-circle"></i> Livraison rapide</li>
+                    </ul>
+                    <a href="https://wa.me/212661971520?text=Bonjour%20!%20Je%20suis%20intéressé(e)%20par%20le%20Pack%20Business%20à%202990%20DH." class="btn btn-primary btn-glow btn-block" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Commander
+                    </a>
+                </div>
+
+                <!-- Pack 4: Site + Réseaux Sociaux -->
+                <div class="pricing-card" data-animate="fade-up" data-delay="300">
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">Pack Site + Réseaux</h3>
+                        <p class="pricing-desc">Présence complète</p>
+                        <div class="pricing-amount">
+                            <span class="price">3 490</span>
+                            <span class="currency">DH</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check-circle"></i> Site web professionnel</li>
+                        <li><i class="fas fa-check-circle"></i> Design premium</li>
+                        <li><i class="fas fa-check-circle"></i> SEO Google de base</li>
+                        <li><i class="fas fa-check-circle"></i> Google Maps intégré</li>
+                        <li><i class="fas fa-check-circle"></i> WhatsApp + Appel</li>
+                        <li><i class="fas fa-check-circle"></i> Hébergement 1 an</li>
+                        <li><i class="fas fa-check-circle"></i> Création Facebook & Instagram</li>
+                        <li><i class="fas fa-check-circle"></i> 10 publications designées</li>
+                    </ul>
+                    <a href="https://wa.me/212661971520?text=Bonjour%20!%20Je%20suis%20intéressé(e)%20par%20le%20Pack%20Site%20%2B%20Réseaux%20à%203490%20DH." class="btn btn-outline btn-block" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Commander
+                    </a>
+                </div>
+
+                <!-- Pack 5: Premium Agence -->
+                <div class="pricing-card pricing-premium" data-animate="fade-up" data-delay="400">
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">Pack Premium Agence</h3>
+                        <p class="pricing-desc">Sur mesure, sans limites</p>
+                        <div class="pricing-amount">
+                            <span class="price">7 990</span>
+                            <span class="currency">DH</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check-circle"></i> Site web sur mesure</li>
+                        <li><i class="fas fa-check-circle"></i> Design UI/UX premium</li>
+                        <li><i class="fas fa-check-circle"></i> SEO avancé</li>
+                        <li><i class="fas fa-check-circle"></i> Optimisation vitesse</li>
+                        <li><i class="fas fa-check-circle"></i> Emails professionnels</li>
+                        <li><i class="fas fa-check-circle"></i> Google Analytics</li>
+                        <li><i class="fas fa-check-circle"></i> Hébergement premium</li>
+                        <li><i class="fas fa-check-circle"></i> Support prioritaire</li>
+                    </ul>
+                    <a href="https://wa.me/212661971520?text=Bonjour%20!%20Je%20suis%20intéressé(e)%20par%20le%20Pack%20Premium%20Agence%20à%207990%20DH." class="btn btn-outline btn-block" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Commander
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="section process" id="processus">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-tag">Comment ça marche</span>
+                <h2 class="section-title">Votre site en<br><span class="gradient-text">4 étapes simples</span></h2>
+            </div>
+            <div class="process-timeline">
+                <div class="process-line"></div>
+                <div class="process-step" data-animate="fade-up" data-delay="0">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <div class="step-icon"><i class="fas fa-comments"></i></div>
+                        <h3>Discussion</h3>
+                        <p>Vous nous contactez via WhatsApp. On discute de votre projet, vos besoins et vos objectifs. Devis gratuit en 24h.</p>
+                    </div>
+                </div>
+                <div class="process-step" data-animate="fade-up" data-delay="100">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <div class="step-icon"><i class="fas fa-paint-brush"></i></div>
+                        <h3>Design</h3>
+                        <p>Notre équipe crée un design unique adapté à votre activité. Vous validez chaque étape avant qu'on avance.</p>
+                    </div>
+                </div>
+                <div class="process-step" data-animate="fade-up" data-delay="200">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <div class="step-icon"><i class="fas fa-code"></i></div>
+                        <h3>Développement</h3>
+                        <p>On développe votre site avec les meilleures technologies. Responsive, rapide, optimisé pour Google.</p>
+                    </div>
+                </div>
+                <div class="process-step" data-animate="fade-up" data-delay="300">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <div class="step-icon"><i class="fas fa-rocket"></i></div>
+                        <h3>Lancement</h3>
+                        <p>Votre site est en ligne ! On vous forme à sa gestion et on reste disponibles pour le support 7j/7.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us Section -->
+    <section class="section why-us" id="pourquoi">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-tag">Pourquoi VistraDev</span>
+                <h2 class="section-title">Ce qui nous rend<br><span class="gradient-text">différents</span></h2>
+            </div>
+            <div class="comparison-grid">
+                <div class="comparison-card comparison-others" data-animate="fade-up" data-delay="0">
+                    <div class="comparison-header">
+                        <i class="fas fa-times-circle"></i>
+                        <h3>Les autres agences</h3>
+                    </div>
+                    <ul>
+                        <li><i class="fas fa-times"></i> Templates génériques</li>
+                        <li><i class="fas fa-times"></i> Délais non respectés</li>
+                        <li><i class="fas fa-times"></i> Frais cachés partout</li>
+                        <li><i class="fas fa-times"></i> Support inexistant après livraison</li>
+                        <li><i class="fas fa-times"></i> Sites lents et non optimisés</li>
+                        <li><i class="fas fa-times"></i> Pas de formation</li>
+                        <li><i class="fas fa-times"></i> Hébergement en supplément</li>
+                    </ul>
+                </div>
+                <div class="comparison-card comparison-us" data-animate="fade-up" data-delay="100">
+                    <div class="comparison-header">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>VistraDev</h3>
+                    </div>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Design 100% personnalisé</li>
+                        <li><i class="fas fa-check"></i> Livraison en 48h à 2 semaines</li>
+                        <li><i class="fas fa-check"></i> Prix tout compris, zéro surprise</li>
+                        <li><i class="fas fa-check"></i> Support WhatsApp 7j/7</li>
+                        <li><i class="fas fa-check"></i> Sites ultra-rapides & optimisés</li>
+                        <li><i class="fas fa-check"></i> Formation complète incluse</li>
+                        <li><i class="fas fa-check"></i> Hébergement + domaine offerts</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Advantages grid -->
+            <div class="advantages-grid">
+                <div class="advantage-card" data-animate="fade-up" data-delay="0">
+                    <div class="advantage-icon"><i class="fas fa-trophy"></i></div>
+                    <h4>Design Premium</h4>
+                    <p>Chaque site est une oeuvre unique. Pas de templates recyclés.</p>
+                </div>
+                <div class="advantage-card" data-animate="fade-up" data-delay="50">
+                    <div class="advantage-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    <h4>Ultra Rapide</h4>
+                    <p>Sites optimisés pour un chargement en moins de 2 secondes.</p>
+                </div>
+                <div class="advantage-card" data-animate="fade-up" data-delay="100">
+                    <div class="advantage-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h4>Mobile First</h4>
+                    <p>70% du trafic au Maroc est mobile. Nos sites sont parfaits sur téléphone.</p>
+                </div>
+                <div class="advantage-card" data-animate="fade-up" data-delay="150">
+                    <div class="advantage-icon"><i class="fas fa-search-dollar"></i></div>
+                    <h4>SEO Intégré</h4>
+                    <p>Trouvé sur Google dès le premier jour. Référencement naturel inclus.</p>
+                </div>
+                <div class="advantage-card" data-animate="fade-up" data-delay="200">
+                    <div class="advantage-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h4>Sécurisé</h4>
+                    <p>Certificat SSL, protection anti-spam et sauvegardes régulières.</p>
+                </div>
+                <div class="advantage-card" data-animate="fade-up" data-delay="250">
+                    <div class="advantage-icon"><i class="fas fa-handshake"></i></div>
+                    <h4>Accompagnement</h4>
+                    <p>On ne vous lâche pas après la livraison. Support continu 7j/7.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="section portfolio" id="portfolio">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-tag">Nos réalisations</span>
+                <h2 class="section-title">Des sites qui<br><span class="gradient-text">font la différence</span></h2>
+                <p class="section-desc">Aperçu de quelques projets réalisés pour nos clients.</p>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-card" data-animate="fade-up" data-delay="0">
+                    <div class="portfolio-preview" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <div class="portfolio-mockup">
+                            <i class="fas fa-utensils"></i>
+                            <span>Restaurant Gourmet</span>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <span class="portfolio-metric"><i class="fas fa-arrow-up"></i> +200% réservations</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h4>Restaurant & Café</h4>
+                        <p>Site vitrine avec menu, réservation WhatsApp et Google Maps</p>
+                    </div>
+                </div>
+                <div class="portfolio-card" data-animate="fade-up" data-delay="100">
+                    <div class="portfolio-preview" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <div class="portfolio-mockup">
+                            <i class="fas fa-spa"></i>
+                            <span>Beauty Salon</span>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <span class="portfolio-metric"><i class="fas fa-arrow-up"></i> +150% clients</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h4>Salon de Beauté</h4>
+                        <p>Design premium avec galerie photo et prise de rendez-vous</p>
+                    </div>
+                </div>
+                <div class="portfolio-card" data-animate="fade-up" data-delay="200">
+                    <div class="portfolio-preview" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        <div class="portfolio-mockup">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span>Fashion Store</span>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <span class="portfolio-metric"><i class="fas fa-arrow-up"></i> +300% ventes</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h4>Boutique en Ligne</h4>
+                        <p>E-commerce complet avec paiement CMI et gestion de stock</p>
+                    </div>
+                </div>
+                <div class="portfolio-card" data-animate="fade-up" data-delay="300">
+                    <div class="portfolio-preview" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                        <div class="portfolio-mockup">
+                            <i class="fas fa-tooth"></i>
+                            <span>Cabinet Dentaire</span>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <span class="portfolio-metric"><i class="fas fa-arrow-up"></i> +180% patients</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h4>Cabinet Médical</h4>
+                        <p>Site professionnel avec prise de rendez-vous et localisation</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-tag">Témoignages</span>
+                <h2 class="section-title">Ils nous font<br><span class="gradient-text">confiance</span></h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card" data-animate="fade-up" data-delay="0">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"VistraDev a transformé mon commerce. Mon site a été livré en 3 jours et mes clients me trouvent maintenant sur Google. Les ventes ont doublé en un mois !"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">A</div>
+                        <div>
+                            <strong>Ahmed B.</strong>
+                            <span>Restaurant, Casablanca</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card" data-animate="fade-up" data-delay="100">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Rapport qualité/prix imbattable. Le design est magnifique et l'équipe est super réactive sur WhatsApp. Je recommande à 100% !"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">S</div>
+                        <div>
+                            <strong>Sara M.</strong>
+                            <span>Salon de beauté, Rabat</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card" data-animate="fade-up" data-delay="200">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"J'ai comparé plusieurs agences et VistraDev est de loin le meilleur choix. Professionnel, rapide et le résultat dépasse mes attentes. Merci l'équipe !"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">K</div>
+                        <div>
+                            <strong>Khalid R.</strong>
+                            <span>Boutique mode, Marrakech</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Pack Section -->
+    <section class="section social-pack">
+        <div class="container">
+            <div class="social-pack-card" data-animate="fade-up">
+                <div class="social-pack-content">
+                    <span class="section-tag">Bonus</span>
+                    <h2>Pack Gestion<br><span class="gradient-text">Réseaux Sociaux</span></h2>
+                    <p>Boostez votre présence en ligne avec notre pack complet de gestion des réseaux sociaux.</p>
+                    <ul class="social-features">
+                        <li><i class="fas fa-check"></i> Gestion complète de vos réseaux</li>
+                        <li><i class="fas fa-check"></i> 12 vidéos promotionnelles/mois</li>
+                        <li><i class="fas fa-check"></i> 20 affiches professionnelles/mois</li>
+                        <li><i class="fas fa-check"></i> Référencement & optimisation</li>
+                        <li><i class="fas fa-check"></i> Accompagnement personnalisé</li>
+                    </ul>
+                    <div class="social-price">
+                        <span class="price-amount">1 999 DH</span>
+                        <span class="price-period">/mois</span>
+                    </div>
+                    <a href="https://wa.me/212661971520?text=Bonjour%20!%20Je%20suis%20intéressé(e)%20par%20le%20Pack%20Réseaux%20Sociaux%20à%201999%20DH." class="btn btn-primary btn-glow" target="_blank">
+                        <i class="fab fa-whatsapp"></i> En savoir plus
+                    </a>
+                </div>
+                <div class="social-pack-visual">
+                    <div class="social-icons-float">
+                        <div class="social-float-icon" style="--delay: 0s; --x: 20%; --y: 15%;"><i class="fab fa-facebook"></i></div>
+                        <div class="social-float-icon" style="--delay: 0.5s; --x: 70%; --y: 10%;"><i class="fab fa-instagram"></i></div>
+                        <div class="social-float-icon" style="--delay: 1s; --x: 45%; --y: 60%;"><i class="fab fa-tiktok"></i></div>
+                        <div class="social-float-icon" style="--delay: 1.5s; --x: 80%; --y: 50%;"><i class="fab fa-youtube"></i></div>
+                        <div class="social-float-icon" style="--delay: 2s; --x: 25%; --y: 75%;"><i class="fab fa-linkedin"></i></div>
+                        <div class="social-float-icon" style="--delay: 0.3s; --x: 60%; --y: 80%;"><i class="fab fa-google"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section faq" id="faq">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-tag">FAQ</span>
+                <h2 class="section-title">Questions<br><span class="gradient-text">fréquentes</span></h2>
+            </div>
+            <div class="faq-list" data-animate="fade-up">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Combien de temps pour avoir mon site ?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Pour un site One Page, comptez 48h. Pour un site de 3 à 5 pages, entre 3 et 7 jours. Pour un projet sur mesure, 2 à 4 semaines selon la complexité.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Est-ce que l'hébergement est inclus ?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Oui ! Tous nos packs incluent l'hébergement. Les packs Business et supérieurs incluent aussi le nom de domaine gratuit pendant 1 an.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Je peux modifier mon site après la livraison ?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Absolument ! On vous forme à la gestion de votre site. Et si vous avez besoin d'aide, notre support WhatsApp est disponible 7j/7.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Mon site sera visible sur Google ?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Oui. Tous nos sites sont optimisés pour le référencement naturel (SEO). Les packs Business et Premium incluent un SEO plus avancé pour mieux vous positionner.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Comment se passe le paiement ?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>On demande 50% à la commande et 50% à la livraison. Paiement par virement bancaire, CashPlus, ou Wafacash. Facilités de paiement disponibles.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Et si le résultat ne me plaît pas ?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>On travaille avec vous à chaque étape. Vous validez le design avant le développement. Et après livraison, vous bénéficiez de modifications gratuites pour que tout soit parfait.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Vous travaillez avec quelles villes au Maroc ?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>On travaille avec des clients de tout le Maroc : Casablanca, Rabat, Marrakech, Fès, Tanger, Agadir, Meknès, Oujda, Kénitra, et toutes les autres villes. Tout se fait en ligne !</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta-section" id="contact">
+        <div class="container">
+            <div class="cta-card" data-animate="fade-up">
+                <div class="cta-bg-effects">
+                    <div class="cta-orb cta-orb-1"></div>
+                    <div class="cta-orb cta-orb-2"></div>
+                </div>
+                <h2>Prêt à lancer votre<br><span class="gradient-text">projet en ligne ?</span></h2>
+                <p>Contactez-nous maintenant et recevez votre devis gratuit en moins de 24h.</p>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/212661971520?text=Bonjour%20VistraDev%20!%20Je%20souhaite%20un%20devis%20gratuit%20pour%20la%20création%20de%20mon%20site%20web." class="btn btn-primary btn-glow btn-lg" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Discuter sur WhatsApp
+                    </a>
+                    <a href="tel:+212661971520" class="btn btn-outline btn-lg">
+                        <i class="fas fa-phone"></i> 0661 97 15 20
+                    </a>
+                </div>
+                <div class="cta-trust">
+                    <span><i class="fas fa-check"></i> Devis gratuit</span>
+                    <span><i class="fas fa-check"></i> Sans engagement</span>
+                    <span><i class="fas fa-check"></i> Réponse en 24h</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="assets/images/logo-white.jpeg" alt="VistraDev" class="footer-logo">
+                    <p>Votre partenaire digital au Maroc. Sites web professionnels, design premium, résultats garantis.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">Site Vitrine</a></li>
+                        <li><a href="#services">Site E-commerce</a></li>
+                        <li><a href="#services">Site + Réseaux Sociaux</a></li>
+                        <li><a href="#tarifs">Pack Premium Agence</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-col">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="#tarifs">Tarifs</a></li>
+                        <li><a href="#processus">Processus</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="https://wa.me/212661971520" target="_blank"><i class="fab fa-whatsapp"></i> 0661 97 15 20</a></li>
+                        <li><a href="tel:+212661971520"><i class="fas fa-phone"></i> 0661 97 15 20</a></li>
+                        <li><a href="#"><i class="fas fa-envelope"></i> contact@vistradev.ma</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Maroc</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 VistraDev. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/212661971520?text=Bonjour%20VistraDev%20!%20Je%20souhaite%20des%20informations%20sur%20vos%20services." class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span class="whatsapp-tooltip">Besoin d'aide ?</span>
+    </a>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
