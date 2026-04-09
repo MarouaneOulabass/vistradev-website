@@ -1,940 +1,605 @@
 <!DOCTYPE html>
-<html lang="fr" dir="ltr">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VistraDev — Création de Sites Web Professionnels au Maroc</title>
-    <meta name="description" content="VistraDev crée des sites web performants pour commerçants et entreprises au Maroc. Design premium, livraison rapide, prix imbattables. Devis gratuit.">
-    <meta name="keywords" content="création site web maroc, agence web maroc, site web professionnel, site vitrine maroc, e-commerce maroc, VistraDev">
-    <meta property="og:title" content="VistraDev — Votre Succès Digital">
-    <meta property="og:description" content="Sites web professionnels pour commerçants au Maroc. À partir de 1000 DH.">
-    <meta property="og:type" content="website">
+    <title>VistraDev — Sites Web Professionnels au Maroc · À partir de 1 000 DH</title>
+    <meta name="description" content="VistraDev crée des sites web qui génèrent des clients pour les commerçants au Maroc. Design premium, livraison 48h, à partir de 1000 DH.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..900;1,14..32,300..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <!-- Promo Banner -->
-    <div class="promo-banner" id="promoBanner">
-        <span class="promo-pulse"></span>
-        <span>🔥 Offre de lancement — <strong>1 000 DH</strong> seulement pour votre premier site web</span>
-        <div class="promo-countdown">
-            <div class="promo-count-item"><span id="pHours">00</span><small>h</small></div>
-            <div class="promo-count-item"><span id="pMins">00</span><small>m</small></div>
-            <div class="promo-count-item"><span id="pSecs">00</span><small>s</small></div>
-        </div>
-        <a href="https://wa.me/212661971520?text=Bonjour%20!%20Je%20veux%20profiter%20de%20l'offre%201000%20DH." target="_blank" class="promo-cta">Profiter maintenant →</a>
-        <button class="promo-close" id="promoClose" aria-label="Fermer">✕</button>
-    </div>
 
-    <!-- Cursor glow effect -->
-    <div class="cursor-glow" id="cursorGlow"></div>
-
-    <!-- Particle canvas -->
-    <canvas id="particles"></canvas>
-
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="container nav-container">
-            <a href="#" class="nav-logo">
-                <img src="assets/images/logo-white.jpeg" alt="VistraDev" class="logo-img">
+<!-- Nav -->
+<nav id="nav">
+    <div class="nav-inner">
+        <a href="#" class="nav-logo">
+            <img src="assets/images/logo-white.jpeg" alt="VistraDev">
+        </a>
+        <div class="nav-links" id="navLinks">
+            <a href="#services">Services</a>
+            <a href="#tarifs">Tarifs</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#avis">Avis</a>
+            <a href="#faq">FAQ</a>
+            <a href="https://wa.me/212661971520?text=Bonjour%20VistraDev%20!%20Je%20voudrais%20un%20devis%20gratuit." target="_blank" class="nav-cta">
+                <i class="fab fa-whatsapp"></i> Devis gratuit
             </a>
-            <div class="nav-links" id="navLinks">
-                <a href="#services" class="nav-link">Services</a>
-                <a href="#tarifs" class="nav-link">Tarifs</a>
-                <a href="#processus" class="nav-link">Processus</a>
-                <a href="#pourquoi" class="nav-link">Pourquoi Nous</a>
-                <a href="#portfolio" class="nav-link">Portfolio</a>
-                <a href="#faq" class="nav-link">FAQ</a>
-                <a href="#contact" class="nav-btn">
-                    <i class="fab fa-whatsapp"></i> Devis Gratuit
-                </a>
+        </div>
+        <button class="nav-burger" id="navBurger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section id="hero">
+    <div class="hero-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="dot-grid"></div>
+    </div>
+    <div class="container hero-body">
+        <div class="hero-kicker" data-reveal>
+            <span class="kicker-dot"></span>
+            <span>🇲🇦 Agence web #1 pour les commerçants marocains</span>
+        </div>
+        <h1 class="hero-h1" data-reveal data-delay="80">
+            Chaque jour sans site,<br>
+            c'est un client chez <span class="typed-line"><span id="typed"></span><span class="cursor-blink">|</span></span>
+        </h1>
+        <p class="hero-sub" data-reveal data-delay="160">
+            70% des Marocains cherchent sur Google avant d'acheter. VistraDev crée des sites qui <strong>capturent ces clients</strong> — livrés en 48h, à partir de <strong>1 000 DH</strong>.
+        </p>
+        <div class="hero-ctas" data-reveal data-delay="240">
+            <a href="https://wa.me/212661971520?text=Bonjour%20VistraDev%20!%20Je%20voudrais%20un%20devis%20gratuit." target="_blank" class="btn-primary">
+                <i class="fab fa-whatsapp"></i> Devis gratuit en 24h
+            </a>
+            <a href="#portfolio" class="btn-ghost">Voir nos réalisations <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="hero-proof" data-reveal data-delay="320">
+            <div class="proof-faces">
+                <img src="https://i.pravatar.cc/40?img=11" alt="">
+                <img src="https://i.pravatar.cc/40?img=32" alt="">
+                <img src="https://i.pravatar.cc/40?img=47" alt="">
+                <img src="https://i.pravatar.cc/40?img=58" alt="">
+                <img src="https://i.pravatar.cc/40?img=23" alt="">
             </div>
-            <button class="nav-toggle" id="navToggle" aria-label="Menu">
-                <span></span><span></span><span></span>
-            </button>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
-        <div class="hero-bg-effects">
-            <div class="hero-orb hero-orb-1"></div>
-            <div class="hero-orb hero-orb-2"></div>
-            <div class="hero-orb hero-orb-3"></div>
-            <div class="hero-grid"></div>
-        </div>
-
-        <div class="container hero-split">
-            <!-- LEFT -->
-            <div class="hero-left" data-animate="fade-up">
-                <div class="hero-badge">
-                    <span class="badge-pulse"></span>
-                    <span>🇲🇦 Agence Web #1 pour les commerçants au Maroc</span>
-                </div>
-                <h1 class="hero-title">
-                    Chaque jour sans site web,<br>
-                    c'est un client chez<br>
-                    <span class="gradient-text typed-wrap"><span id="typedText"></span><span class="typed-cursor">|</span></span>
-                </h1>
-                <p class="hero-subtitle">
-                    70% des Marocains cherchent sur Google avant d'acheter.<br>
-                    VistraDev crée des sites qui <strong>capturent ces clients</strong> — livrés en 48h, à partir de 1 000 DH.
-                </p>
-                <div class="hero-ctas">
-                    <a href="https://wa.me/212661971520?text=Bonjour%20VistraDev%20!%20Je%20souhaite%20un%20devis%20gratuit%20pour%20la%20création%20de%20mon%20site%20web." class="btn btn-primary btn-glow magnetic" target="_blank">
-                        <i class="fab fa-whatsapp"></i> Devis Gratuit en 24h
-                    </a>
-                    <a href="#portfolio" class="btn btn-outline magnetic">
-                        Voir nos réalisations <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-                <div class="hero-social-proof">
-                    <div class="proof-avatars">
-                        <img src="https://i.pravatar.cc/36?img=11" alt="">
-                        <img src="https://i.pravatar.cc/36?img=32" alt="">
-                        <img src="https://i.pravatar.cc/36?img=47" alt="">
-                        <img src="https://i.pravatar.cc/36?img=58" alt="">
-                        <img src="https://i.pravatar.cc/36?img=23" alt="">
-                    </div>
-                    <div class="proof-text">
-                        <div class="proof-stars">★★★★★</div>
-                        <span>+127 commerçants nous font confiance au Maroc</span>
-                    </div>
-                </div>
+            <div class="proof-copy">
+                <span class="proof-stars">★★★★★</span>
+                <span>+127 commerçants nous font confiance au Maroc</span>
             </div>
-
-            <!-- RIGHT — Stacked screens -->
-            <div class="hero-right">
-                <div class="hero-screens-stack">
-                    <!-- Screen 1 — Restaurant (back, tilted) -->
-                    <div class="hero-screen screen-back tilt-card">
-                        <div class="screen-bar">
-                            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
-                            <span class="screen-url">leriad-saveurs.ma</span>
-                        </div>
-                        <div class="screen-content" style="background:linear-gradient(160deg,#1a0f05,#c8702a);overflow:hidden;">
-                            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=500&q=70" alt="Restaurant" style="width:100%;height:100%;object-fit:cover;opacity:0.75;">
-                        </div>
-                    </div>
-                    <!-- Screen 2 — Boutique (middle) -->
-                    <div class="hero-screen screen-mid tilt-card">
-                        <div class="screen-bar">
-                            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
-                            <span class="screen-url">atlasmode.ma</span>
-                        </div>
-                        <div class="screen-content" style="background:#0a0a0a;overflow:hidden;">
-                            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=70" alt="Mode" style="width:100%;height:100%;object-fit:cover;opacity:0.65;">
-                        </div>
-                        <div class="screen-metric"><i class="fas fa-arrow-up"></i> +300% ventes</div>
-                    </div>
-                    <!-- Screen 3 — Clinique (front) -->
-                    <div class="hero-screen screen-front tilt-card">
-                        <div class="screen-bar">
-                            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
-                            <span class="screen-url">dentacare.ma</span>
-                        </div>
-                        <div class="screen-content" style="background:linear-gradient(135deg,#0d1b2e,#0066cc);overflow:hidden;">
-                            <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=500&q=70" alt="Clinique" style="width:100%;height:100%;object-fit:cover;opacity:0.55;">
-                        </div>
-                        <div class="screen-metric"><i class="fas fa-arrow-up"></i> +180% patients</div>
-                    </div>
-                    <!-- Floating badges -->
-                    <div class="screen-badge sb-1"><i class="fas fa-bolt" style="color:#fbbf24"></i> Livraison 48h</div>
-                    <div class="screen-badge sb-2"><i class="fas fa-star" style="color:#fbbf24"></i> 5.0 / 127 avis</div>
-                    <div class="screen-badge sb-3"><i class="fas fa-check" style="color:#22c55e"></i> SSL + Hébergement</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="hero-scroll-indicator">
-            <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
-        </div>
-    </section>
-
-    <!-- Marquee industries -->
-    <div class="marquee-bar">
-        <div class="marquee-track">
-            <span><i class="fas fa-utensils"></i> Restaurants</span>
-            <span><i class="fas fa-spa"></i> Salons de beauté</span>
-            <span><i class="fas fa-shopping-bag"></i> Boutiques mode</span>
-            <span><i class="fas fa-tooth"></i> Cliniques</span>
-            <span><i class="fas fa-dumbbell"></i> Salles de sport</span>
-            <span><i class="fas fa-home"></i> Immobilier</span>
-            <span><i class="fas fa-car"></i> Auto & Garage</span>
-            <span><i class="fas fa-graduation-cap"></i> Éducation</span>
-            <span><i class="fas fa-hotel"></i> Hôtels & Riads</span>
-            <span><i class="fas fa-stethoscope"></i> Médecins</span>
-            <!-- repeat for seamless loop -->
-            <span><i class="fas fa-utensils"></i> Restaurants</span>
-            <span><i class="fas fa-spa"></i> Salons de beauté</span>
-            <span><i class="fas fa-shopping-bag"></i> Boutiques mode</span>
-            <span><i class="fas fa-tooth"></i> Cliniques</span>
-            <span><i class="fas fa-dumbbell"></i> Salles de sport</span>
-            <span><i class="fas fa-home"></i> Immobilier</span>
-            <span><i class="fas fa-car"></i> Auto & Garage</span>
-            <span><i class="fas fa-graduation-cap"></i> Éducation</span>
-            <span><i class="fas fa-hotel"></i> Hôtels & Riads</span>
-            <span><i class="fas fa-stethoscope"></i> Médecins</span>
         </div>
     </div>
 
-    <!-- Trust Bar -->
-    <section class="trust-bar">
-        <div class="container">
-            <div class="trust-items">
-                <div class="trust-item">
-                    <i class="fas fa-bolt"></i>
-                    <span>Livraison rapide</span>
-                </div>
-                <div class="trust-item">
-                    <i class="fas fa-mobile-alt"></i>
-                    <span>100% Responsive</span>
-                </div>
-                <div class="trust-item">
-                    <i class="fas fa-search"></i>
-                    <span>SEO optimisé</span>
-                </div>
-                <div class="trust-item">
-                    <i class="fas fa-lock"></i>
-                    <span>SSL inclus</span>
-                </div>
-                <div class="trust-item">
-                    <i class="fas fa-headset"></i>
-                    <span>Support WhatsApp 7/7</span>
-                </div>
-                <div class="trust-item">
-                    <i class="fas fa-server"></i>
-                    <span>Hébergement inclus</span>
-                </div>
+    <!-- Browser mockup -->
+    <div class="hero-mockup-outer" data-reveal data-delay="400">
+        <div class="browser-frame">
+            <div class="browser-bar">
+                <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
+                <span class="browser-url">riad-saveurs.ma</span>
+                <span class="browser-secure"><i class="fas fa-lock"></i></span>
+            </div>
+            <div class="browser-screen">
+                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&q=80" alt="Site web créé par VistraDev — Le Riad Saveurs">
+                <div class="browser-overlay"></div>
+            </div>
+            <!-- Floating metrics -->
+            <div class="metric-badge metric-1" data-reveal data-delay="600">
+                <i class="fas fa-arrow-trend-up" style="color:#22c55e"></i>
+                <span>+200% réservations</span>
+            </div>
+            <div class="metric-badge metric-2" data-reveal data-delay="700">
+                <i class="fas fa-bolt" style="color:#fbbf24"></i>
+                <span>Livré en 48h</span>
+            </div>
+            <div class="metric-badge metric-3" data-reveal data-delay="800">
+                <i class="fas fa-star" style="color:#fbbf24"></i>
+                <span>5.0 · 127 avis</span>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Impact Section -->
-    <section class="impact-section">
-        <div class="impact-bg">
-            <img src="https://images.unsplash.com/photo-1539635278303-d4002c07eae3?w=1400&q=60" alt="Maroc">
-        </div>
-        <div class="impact-overlay"></div>
-        <div class="container impact-content">
-            <div class="impact-tag" data-animate="fade-up">En chiffres</div>
-            <h2 class="impact-title" data-animate="fade-up" data-delay="100">
-                Des résultats réels,<br>pour de <span class="gradient-text">vrais commerçants</span>
-            </h2>
-            <div class="impact-grid">
-                <div class="impact-stat" data-animate="fade-up" data-delay="0">
-                    <span class="impact-num" data-count="150">0</span><span class="impact-suf">+</span>
-                    <span class="impact-label">Sites livrés au Maroc</span>
-                    <span class="impact-sub">Restaurants, cliniques, boutiques…</span>
-                </div>
-                <div class="impact-stat" data-animate="fade-up" data-delay="100">
-                    <span class="impact-num" data-count="3">0</span><span class="impact-suf">x</span>
-                    <span class="impact-label">Clients en plus en moyenne</span>
-                    <span class="impact-sub">Après mise en ligne du site</span>
-                </div>
-                <div class="impact-stat" data-animate="fade-up" data-delay="200">
-                    <span class="impact-num" data-count="48">0</span><span class="impact-suf">h</span>
-                    <span class="impact-label">Délai de livraison express</span>
-                    <span class="impact-sub">Pour les sites One Page</span>
-                </div>
-                <div class="impact-stat" data-animate="fade-up" data-delay="300">
-                    <span class="impact-num" data-count="100">0</span><span class="impact-suf">%</span>
-                    <span class="impact-label">Satisfaction client</span>
-                    <span class="impact-sub">Satisfait ou remboursé 30j</span>
-                </div>
+<!-- Marquee -->
+<div class="marquee-bar">
+    <div class="marquee-inner">
+        <span><i class="fas fa-utensils"></i>Restaurants</span>
+        <span class="m-sep">·</span>
+        <span><i class="fas fa-spa"></i>Salons</span>
+        <span class="m-sep">·</span>
+        <span><i class="fas fa-shopping-bag"></i>Boutiques</span>
+        <span class="m-sep">·</span>
+        <span><i class="fas fa-tooth"></i>Cliniques</span>
+        <span class="m-sep">·</span>
+        <span><i class="fas fa-dumbbell"></i>Salles de sport</span>
+        <span class="m-sep">·</span>
+        <span><i class="fas fa-hotel"></i>Riads & Hôtels</span>
+        <span class="m-sep">·</span>
+        <span><i class="fas fa-car"></i>Garages</span>
+        <span class="m-sep">·</span>
+        <span><i class="fas fa-graduation-cap"></i>Écoles</span>
+        <span class="m-sep">·</span>
+        <span><i class="fas fa-stethoscope"></i>Médecins</span>
+        <span class="m-sep">·</span>
+        <span><i class="fas fa-home"></i>Immobilier</span>
+        <span class="m-sep">·</span>
+        <!-- repeat -->
+        <span><i class="fas fa-utensils"></i>Restaurants</span>
+        <span class="m-sep">·</span>
+        <span><i class="fas fa-spa"></i>Salons</span>
+        <span class="m-sep">·</span>
+        <span><i class="fas fa-shopping-bag"></i>Boutiques</span>
+        <span class="m-sep">·</span>
+        <span><i class="fas fa-tooth"></i>Cliniques</span>
+        <span class="m-sep">·</span>
+        <span><i class="fas fa-dumbbell"></i>Salles de sport</span>
+        <span class="m-sep">·</span>
+        <span><i class="fas fa-hotel"></i>Riads & Hôtels</span>
+        <span class="m-sep">·</span>
+        <span><i class="fas fa-car"></i>Garages</span>
+        <span class="m-sep">·</span>
+        <span><i class="fas fa-graduation-cap"></i>Écoles</span>
+        <span class="m-sep">·</span>
+        <span><i class="fas fa-stethoscope"></i>Médecins</span>
+        <span class="m-sep">·</span>
+        <span><i class="fas fa-home"></i>Immobilier</span>
+    </div>
+</div>
+
+<!-- Stats -->
+<section class="stats-section">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-cell" data-reveal>
+                <span class="stat-n" data-count="150">0</span><span class="stat-s">+</span>
+                <span class="stat-l">Sites livrés au Maroc</span>
+            </div>
+            <div class="stat-cell" data-reveal data-delay="80">
+                <span class="stat-n" data-count="3">0</span><span class="stat-s">×</span>
+                <span class="stat-l">Clients en plus en moyenne</span>
+            </div>
+            <div class="stat-cell" data-reveal data-delay="160">
+                <span class="stat-n" data-count="48">0</span><span class="stat-s">h</span>
+                <span class="stat-l">Délai de livraison express</span>
+            </div>
+            <div class="stat-cell" data-reveal data-delay="240">
+                <span class="stat-n" data-count="100">0</span><span class="stat-s">%</span>
+                <span class="stat-l">Satisfaction garantie</span>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Services Section -->
-    <section class="section services" id="services">
-        <div class="container">
-            <div class="section-header" data-animate="fade-up">
-                <span class="section-tag">Nos Services</span>
-                <h2 class="section-title">Tout ce qu'il faut pour<br><span class="gradient-text">dominer en ligne</span></h2>
-                <p class="section-desc">De la simple page vitrine au site e-commerce complet, nous créons des solutions digitales sur mesure pour chaque commerçant.</p>
+<!-- Services -->
+<section id="services" class="section">
+    <div class="container">
+        <div class="section-label" data-reveal>Nos services</div>
+        <h2 class="section-h2" data-reveal data-delay="80">Tout ce qu'il faut pour<br>dominer en ligne</h2>
+        <div class="features-grid">
+            <div class="feature-cell" data-reveal data-delay="0">
+                <div class="feat-icon"><i class="fas fa-laptop-code"></i></div>
+                <h3>Site Vitrine</h3>
+                <p>Un site professionnel qui présente votre activité et attire des clients. Design sur-mesure, SEO, WhatsApp, Google Maps.</p>
+                <span class="feat-price">À partir de 1 000 DH</span>
             </div>
-            <div class="services-grid">
-                <div class="service-card" data-animate="fade-up" data-delay="0">
-                    <div class="service-icon">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <h3>Site Vitrine</h3>
-                    <p>Un site professionnel qui présente votre activité et attire de nouveaux clients. Design moderne et responsive.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Design personnalisé</li>
-                        <li><i class="fas fa-check"></i> Formulaire de contact</li>
-                        <li><i class="fas fa-check"></i> Google Maps intégré</li>
-                        <li><i class="fas fa-check"></i> WhatsApp click-to-chat</li>
-                    </ul>
-                    <span class="service-price">À partir de 1 000 DH</span>
-                </div>
-                <div class="service-card featured" data-animate="fade-up" data-delay="100">
-                    <div class="card-badge">Populaire</div>
-                    <div class="service-icon">
-                        <i class="fas fa-store"></i>
-                    </div>
-                    <h3>Site E-commerce</h3>
-                    <p>Vendez en ligne 24h/24. Paiement CMI, gestion de stock, tableau de bord et plus encore.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Catalogue produits</li>
-                        <li><i class="fas fa-check"></i> Paiement en ligne CMI</li>
-                        <li><i class="fas fa-check"></i> Gestion des commandes</li>
-                        <li><i class="fas fa-check"></i> Tableau de bord</li>
-                    </ul>
-                    <span class="service-price">À partir de 2 990 DH</span>
-                </div>
-                <div class="service-card" data-animate="fade-up" data-delay="200">
-                    <div class="service-icon">
-                        <i class="fas fa-bullhorn"></i>
-                    </div>
-                    <h3>Site + Réseaux Sociaux</h3>
-                    <p>Un pack complet : votre site web professionnel + la gestion de vos réseaux sociaux pour une présence digitale 360°.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Site web complet</li>
-                        <li><i class="fas fa-check"></i> Pages Facebook & Instagram</li>
-                        <li><i class="fas fa-check"></i> 10 publications designées</li>
-                        <li><i class="fas fa-check"></i> Optimisation des profils</li>
-                    </ul>
-                    <span class="service-price">À partir de 3 490 DH</span>
-                </div>
+            <div class="feature-cell" data-reveal data-delay="60">
+                <div class="feat-icon"><i class="fas fa-store"></i></div>
+                <h3>Site E-commerce</h3>
+                <p>Vendez en ligne 24h/24. Catalogue produits, paiement CMI, gestion des commandes, tableau de bord.</p>
+                <span class="feat-price">À partir de 2 990 DH</span>
+            </div>
+            <div class="feature-cell" data-reveal data-delay="120">
+                <div class="feat-icon"><i class="fas fa-mobile-alt"></i></div>
+                <h3>100% Mobile</h3>
+                <p>Vos clients sont sur téléphone. Chaque site VistraDev est parfait sur tous les écrans, sans exception.</p>
+                <span class="feat-price">Inclus dans tous les packs</span>
+            </div>
+            <div class="feature-cell" data-reveal data-delay="180">
+                <div class="feat-icon"><i class="fas fa-search"></i></div>
+                <h3>SEO Google</h3>
+                <p>Trouvé sur Google dès le premier jour. Référencement naturel intégré pour que vos clients vous trouvent facilement.</p>
+                <span class="feat-price">Inclus dans tous les packs</span>
+            </div>
+            <div class="feature-cell" data-reveal data-delay="240">
+                <div class="feat-icon"><i class="fab fa-whatsapp"></i></div>
+                <h3>WhatsApp Business</h3>
+                <p>Bouton WhatsApp direct sur votre site. Vos visiteurs vous contactent en un clic. Conversion maximale.</p>
+                <span class="feat-price">Inclus dans tous les packs</span>
+            </div>
+            <div class="feature-cell" data-reveal data-delay="300">
+                <div class="feat-icon"><i class="fas fa-headset"></i></div>
+                <h3>Support 7j/7</h3>
+                <p>Une question après livraison ? On répond sur WhatsApp. Support continu disponible tous les jours de la semaine.</p>
+                <span class="feat-price">Inclus à vie</span>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Pricing Section -->
-    <section class="section pricing" id="tarifs">
-        <div class="container">
-            <div class="section-header" data-animate="fade-up">
-                <span class="section-tag">Tarifs transparents</span>
-                <h2 class="section-title">Des packs pensés pour<br><span class="gradient-text">chaque budget</span></h2>
-                <p class="section-desc">Pas de frais cachés. Pas de surprises. Choisissez le pack qui correspond à vos besoins.</p>
-            </div>
-            <div class="pricing-grid pricing-grid-3">
-
-                <!-- Pack 1: Offre d'ouverture -->
-                <div class="pricing-card" data-animate="fade-up" data-delay="0">
-                    <div class="pricing-img">
-                        <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&q=80" alt="Site vitrine">
-                        <div class="pricing-img-overlay"><div class="discount-badge">-50%</div></div>
+<!-- Pricing -->
+<section id="tarifs" class="section section-alt">
+    <div class="container">
+        <div class="section-label" data-reveal>Tarifs transparents</div>
+        <h2 class="section-h2" data-reveal data-delay="80">Des packs pensés pour<br>chaque budget</h2>
+        <p class="section-sub" data-reveal data-delay="160">Pas de frais cachés. Pas de surprises. Choisissez le pack qui correspond à vos besoins.</p>
+        <div class="pricing-row">
+            <!-- Pack 1 -->
+            <div class="pack-card" data-reveal data-delay="0">
+                <div class="pack-img">
+                    <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&q=75" alt="Site vitrine">
+                    <div class="pack-badge-sale">−50%</div>
+                </div>
+                <div class="pack-body">
+                    <div class="pack-name">Offre d'Ouverture</div>
+                    <div class="pack-desc">Idéal pour démarrer rapidement</div>
+                    <div class="pack-price">
+                        <span class="pack-old">2 000 DH</span>
+                        <span class="pack-amount">1 000 <small>DH</small></span>
                     </div>
-                    <div class="pricing-header">
-                        <h3 class="pricing-name">Offre d'Ouverture</h3>
-                        <p class="pricing-desc">Idéal pour démarrer rapidement</p>
-                        <div class="pricing-amount">
-                            <span class="old-price">2 000 DH</span>
-                            <span class="price">1 000</span>
-                            <span class="currency">DH</span>
-                        </div>
-                    </div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check-circle"></i> Site One Page professionnel</li>
-                        <li><i class="fas fa-check-circle"></i> Design moderne & responsive</li>
-                        <li><i class="fas fa-check-circle"></i> WhatsApp + formulaire de contact</li>
-                        <li><i class="fas fa-check-circle"></i> Google Maps intégré</li>
-                        <li><i class="fas fa-check-circle"></i> SSL + hébergement inclus</li>
-                        <li><i class="fas fa-check-circle"></i> <strong>Livraison en 48h</strong></li>
+                    <ul class="pack-features">
+                        <li><i class="fas fa-check"></i>Site One Page professionnel</li>
+                        <li><i class="fas fa-check"></i>Design moderne & responsive</li>
+                        <li><i class="fas fa-check"></i>WhatsApp + formulaire de contact</li>
+                        <li><i class="fas fa-check"></i>Google Maps intégré</li>
+                        <li><i class="fas fa-check"></i>SSL + hébergement inclus</li>
+                        <li><i class="fas fa-check"></i><strong>Livraison en 48h</strong></li>
                     </ul>
-                    <a href="https://wa.me/212661971520?text=Bonjour%20!%20Je%20suis%20intéressé(e)%20par%20l'Offre%20d'Ouverture%20à%201000%20DH." class="btn btn-outline btn-block" target="_blank">
+                    <a href="https://wa.me/212661971520?text=Bonjour%20!%20Je%20veux%20l'Offre%20d'Ouverture%20à%201000%20DH." target="_blank" class="pack-cta">
                         <i class="fab fa-whatsapp"></i> Commander
                     </a>
                 </div>
+            </div>
 
-                <!-- Pack 2: Business (Recommended) -->
-                <div class="pricing-card pricing-featured" data-animate="fade-up" data-delay="100">
-                    <div class="pricing-badge">⭐ Le plus populaire</div>
-                    <div class="pricing-img">
-                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=600&q=80" alt="Pack Business">
+            <!-- Pack 2 — Recommended -->
+            <div class="pack-card pack-featured" data-reveal data-delay="100">
+                <div class="pack-recommended">⭐ Le plus populaire</div>
+                <div class="pack-img">
+                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=600&q=75" alt="Pack Business">
+                </div>
+                <div class="pack-body">
+                    <div class="pack-name">Pack Business</div>
+                    <div class="pack-desc">Le choix des commerçants sérieux</div>
+                    <div class="pack-price">
+                        <span class="pack-amount">2 990 <small>DH</small></span>
                     </div>
-                    <div class="pricing-header">
-                        <h3 class="pricing-name">Pack Business</h3>
-                        <p class="pricing-desc">Le choix des commerçants sérieux</p>
-                        <div class="pricing-amount">
-                            <span class="price">2 990</span>
-                            <span class="currency">DH</span>
-                        </div>
-                    </div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check-circle"></i> Site web 5 pages complet</li>
-                        <li><i class="fas fa-check-circle"></i> Design premium sur-mesure</li>
-                        <li><i class="fas fa-check-circle"></i> SEO Google optimisé</li>
-                        <li><i class="fas fa-check-circle"></i> Google Maps + WhatsApp + Appel</li>
-                        <li><i class="fas fa-check-circle"></i> <strong>Hébergement 1 an + domaine offerts</strong></li>
-                        <li><i class="fas fa-check-circle"></i> Support WhatsApp 7j/7</li>
+                    <ul class="pack-features">
+                        <li><i class="fas fa-check"></i>Site web 5 pages complet</li>
+                        <li><i class="fas fa-check"></i>Design premium sur-mesure</li>
+                        <li><i class="fas fa-check"></i>SEO Google optimisé</li>
+                        <li><i class="fas fa-check"></i>Google Maps + WhatsApp + Appel</li>
+                        <li><i class="fas fa-check"></i><strong>Hébergement 1 an + domaine offerts</strong></li>
+                        <li><i class="fas fa-check"></i>Support WhatsApp 7j/7</li>
                     </ul>
-                    <a href="https://wa.me/212661971520?text=Bonjour%20!%20Je%20suis%20intéressé(e)%20par%20le%20Pack%20Business%20à%202990%20DH." class="btn btn-primary btn-glow btn-block" target="_blank">
+                    <a href="https://wa.me/212661971520?text=Bonjour%20!%20Je%20veux%20le%20Pack%20Business%20à%202990%20DH." target="_blank" class="pack-cta pack-cta-primary">
                         <i class="fab fa-whatsapp"></i> Commander maintenant
                     </a>
                 </div>
+            </div>
 
-                <!-- Pack 3: Premium Agence -->
-                <div class="pricing-card pricing-premium" data-animate="fade-up" data-delay="200">
-                    <div class="pricing-img">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80" alt="Pack Premium">
-                        <div class="pricing-img-overlay"><span class="premium-label">Premium</span></div>
+            <!-- Pack 3 -->
+            <div class="pack-card" data-reveal data-delay="200">
+                <div class="pack-img">
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=75" alt="Pack Premium">
+                    <div class="pack-badge-gold">Premium</div>
+                </div>
+                <div class="pack-body">
+                    <div class="pack-name">Pack Premium Agence</div>
+                    <div class="pack-desc">Sur mesure, sans limites</div>
+                    <div class="pack-price">
+                        <span class="pack-amount">7 990 <small>DH</small></span>
                     </div>
-                    <div class="pricing-header">
-                        <h3 class="pricing-name">Pack Premium Agence</h3>
-                        <p class="pricing-desc">Sur mesure, sans limites</p>
-                        <div class="pricing-amount">
-                            <span class="price">7 990</span>
-                            <span class="currency">DH</span>
-                        </div>
-                    </div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check-circle"></i> Site web sur mesure complet</li>
-                        <li><i class="fas fa-check-circle"></i> Design UI/UX haut de gamme</li>
-                        <li><i class="fas fa-check-circle"></i> SEO avancé + Google Analytics</li>
-                        <li><i class="fas fa-check-circle"></i> Emails professionnels inclus</li>
-                        <li><i class="fas fa-check-circle"></i> <strong>Hébergement premium + domaine</strong></li>
-                        <li><i class="fas fa-check-circle"></i> Support prioritaire dédié</li>
+                    <ul class="pack-features">
+                        <li><i class="fas fa-check"></i>Site web sur mesure complet</li>
+                        <li><i class="fas fa-check"></i>Design UI/UX haut de gamme</li>
+                        <li><i class="fas fa-check"></i>SEO avancé + Google Analytics</li>
+                        <li><i class="fas fa-check"></i>Emails professionnels inclus</li>
+                        <li><i class="fas fa-check"></i><strong>Hébergement premium + domaine</strong></li>
+                        <li><i class="fas fa-check"></i>Support prioritaire dédié</li>
                     </ul>
-                    <a href="https://wa.me/212661971520?text=Bonjour%20!%20Je%20suis%20intéressé(e)%20par%20le%20Pack%20Premium%20Agence%20à%207990%20DH." class="btn btn-outline btn-block" target="_blank">
+                    <a href="https://wa.me/212661971520?text=Bonjour%20!%20Je%20veux%20le%20Pack%20Premium%20à%207990%20DH." target="_blank" class="pack-cta">
                         <i class="fab fa-whatsapp"></i> Commander
                     </a>
                 </div>
-
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Process Section -->
-    <section class="section process" id="processus">
-        <div class="container">
-            <div class="section-header" data-animate="fade-up">
-                <span class="section-tag">Comment ça marche</span>
-                <h2 class="section-title">Votre site en<br><span class="gradient-text">4 étapes simples</span></h2>
+<!-- Process -->
+<section id="processus" class="section">
+    <div class="container">
+        <div class="section-label" data-reveal>Comment ça marche</div>
+        <h2 class="section-h2" data-reveal data-delay="80">Votre site en 4 étapes simples</h2>
+        <div class="process-grid">
+            <div class="process-step" data-reveal data-delay="0">
+                <div class="ps-num">01</div>
+                <div class="ps-icon"><i class="fas fa-comments"></i></div>
+                <h3>Discussion</h3>
+                <p>Contactez-nous sur WhatsApp. On discute de votre projet et vous recevez un devis gratuit en moins de 24h.</p>
             </div>
-            <div class="process-timeline">
-                <div class="process-line"></div>
-                <div class="process-step" data-animate="fade-up" data-delay="0">
-                    <div class="step-number">01</div>
-                    <div class="step-content">
-                        <div class="step-icon"><i class="fas fa-comments"></i></div>
-                        <h3>Discussion</h3>
-                        <p>Vous nous contactez via WhatsApp. On discute de votre projet, vos besoins et vos objectifs. Devis gratuit en 24h.</p>
-                    </div>
-                </div>
-                <div class="process-step" data-animate="fade-up" data-delay="100">
-                    <div class="step-number">02</div>
-                    <div class="step-content">
-                        <div class="step-icon"><i class="fas fa-paint-brush"></i></div>
-                        <h3>Design</h3>
-                        <p>Notre équipe crée un design unique adapté à votre activité. Vous validez chaque étape avant qu'on avance.</p>
-                    </div>
-                </div>
-                <div class="process-step" data-animate="fade-up" data-delay="200">
-                    <div class="step-number">03</div>
-                    <div class="step-content">
-                        <div class="step-icon"><i class="fas fa-code"></i></div>
-                        <h3>Développement</h3>
-                        <p>On développe votre site avec les meilleures technologies. Responsive, rapide, optimisé pour Google.</p>
-                    </div>
-                </div>
-                <div class="process-step" data-animate="fade-up" data-delay="300">
-                    <div class="step-number">04</div>
-                    <div class="step-content">
-                        <div class="step-icon"><i class="fas fa-rocket"></i></div>
-                        <h3>Lancement</h3>
-                        <p>Votre site est en ligne ! On vous forme à sa gestion et on reste disponibles pour le support 7j/7.</p>
-                    </div>
-                </div>
+            <div class="process-step" data-reveal data-delay="80">
+                <div class="ps-num">02</div>
+                <div class="ps-icon"><i class="fas fa-paint-brush"></i></div>
+                <h3>Design</h3>
+                <p>Notre équipe crée un design unique pour votre activité. Vous validez chaque étape avant qu'on avance.</p>
+            </div>
+            <div class="process-step" data-reveal data-delay="160">
+                <div class="ps-num">03</div>
+                <div class="ps-icon"><i class="fas fa-code"></i></div>
+                <h3>Développement</h3>
+                <p>On développe votre site : rapide, responsive, optimisé pour Google. Livraison dans les délais garantis.</p>
+            </div>
+            <div class="process-step" data-reveal data-delay="240">
+                <div class="ps-num">04</div>
+                <div class="ps-icon"><i class="fas fa-rocket"></i></div>
+                <h3>Lancement</h3>
+                <p>Votre site est en ligne ! On vous forme, on reste disponibles 7j/7 pour toute question ou modification.</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Why Us Section -->
-    <section class="section why-us" id="pourquoi">
-        <div class="container">
-            <div class="section-header" data-animate="fade-up">
-                <span class="section-tag">Pourquoi VistraDev</span>
-                <h2 class="section-title">Ce qui nous rend<br><span class="gradient-text">différents</span></h2>
-            </div>
-            <div class="comparison-grid">
-                <div class="comparison-card comparison-others" data-animate="fade-up" data-delay="0">
-                    <div class="comparison-header">
-                        <i class="fas fa-times-circle"></i>
-                        <h3>Les autres agences</h3>
+<!-- Portfolio -->
+<section id="portfolio" class="section section-alt">
+    <div class="container">
+        <div class="section-label" data-reveal>Nos réalisations</div>
+        <h2 class="section-h2" data-reveal data-delay="80">Des sites qui font la différence</h2>
+        <p class="section-sub" data-reveal data-delay="160">Cliquez sur un projet pour le visiter en entier.</p>
+        <div class="portfolio-grid">
+            <a href="demos/restaurant/index.html" target="_blank" class="port-card" data-reveal data-delay="0">
+                <div class="port-img">
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=700&q=75" alt="Le Riad Saveurs">
+                    <div class="port-hover">
+                        <span><i class="fas fa-external-link-alt"></i> Voir le site</span>
                     </div>
-                    <ul>
-                        <li><i class="fas fa-times"></i> Templates génériques</li>
-                        <li><i class="fas fa-times"></i> Délais non respectés</li>
-                        <li><i class="fas fa-times"></i> Frais cachés partout</li>
-                        <li><i class="fas fa-times"></i> Support inexistant après livraison</li>
-                        <li><i class="fas fa-times"></i> Sites lents et non optimisés</li>
-                        <li><i class="fas fa-times"></i> Pas de formation</li>
-                        <li><i class="fas fa-times"></i> Hébergement en supplément</li>
-                    </ul>
                 </div>
-                <div class="comparison-card comparison-us" data-animate="fade-up" data-delay="100">
-                    <div class="comparison-header">
-                        <i class="fas fa-check-circle"></i>
-                        <h3>VistraDev</h3>
+                <div class="port-info">
+                    <div class="port-meta">Restaurant · Marrakech</div>
+                    <div class="port-title-row">
+                        <span class="port-title">Le Riad Saveurs</span>
+                        <span class="port-stat">+200% réservations</span>
                     </div>
-                    <ul>
-                        <li><i class="fas fa-check"></i> Design 100% personnalisé</li>
-                        <li><i class="fas fa-check"></i> Livraison en 48h à 2 semaines</li>
-                        <li><i class="fas fa-check"></i> Prix tout compris, zéro surprise</li>
-                        <li><i class="fas fa-check"></i> Support WhatsApp 7j/7</li>
-                        <li><i class="fas fa-check"></i> Sites ultra-rapides & optimisés</li>
-                        <li><i class="fas fa-check"></i> Formation complète incluse</li>
-                        <li><i class="fas fa-check"></i> Hébergement + domaine offerts</li>
-                    </ul>
                 </div>
+            </a>
+            <a href="demos/salon/index.html" target="_blank" class="port-card" data-reveal data-delay="80">
+                <div class="port-img">
+                    <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=700&q=75" alt="Élégance Beauty">
+                    <div class="port-hover">
+                        <span><i class="fas fa-external-link-alt"></i> Voir le site</span>
+                    </div>
+                </div>
+                <div class="port-info">
+                    <div class="port-meta">Salon de beauté · Casablanca</div>
+                    <div class="port-title-row">
+                        <span class="port-title">Élégance Beauty</span>
+                        <span class="port-stat">+150% clientes</span>
+                    </div>
+                </div>
+            </a>
+            <a href="demos/boutique/index.html" target="_blank" class="port-card" data-reveal data-delay="160">
+                <div class="port-img">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=75" alt="Atlas Mode">
+                    <div class="port-hover">
+                        <span><i class="fas fa-external-link-alt"></i> Voir le site</span>
+                    </div>
+                </div>
+                <div class="port-info">
+                    <div class="port-meta">Boutique mode · Fès</div>
+                    <div class="port-title-row">
+                        <span class="port-title">Atlas Mode</span>
+                        <span class="port-stat">+300% ventes</span>
+                    </div>
+                </div>
+            </a>
+            <a href="demos/clinique/index.html" target="_blank" class="port-card" data-reveal data-delay="240">
+                <div class="port-img">
+                    <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=700&q=75" alt="DentaCare">
+                    <div class="port-hover">
+                        <span><i class="fas fa-external-link-alt"></i> Voir le site</span>
+                    </div>
+                </div>
+                <div class="port-info">
+                    <div class="port-meta">Clinique dentaire · Rabat</div>
+                    <div class="port-title-row">
+                        <span class="port-title">DentaCare</span>
+                        <span class="port-stat">+180% patients</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Carousel -->
+<section id="avis" class="section">
+    <div class="container">
+        <div class="section-label" data-reveal>Témoignages</div>
+        <h2 class="section-h2" data-reveal data-delay="80">Ils nous font confiance</h2>
+        <div class="carousel-outer" data-reveal data-delay="160">
+            <div class="carousel-track" id="carouselTrack">
+                <div class="carousel-slide"><div class="tcard">
+                    <div class="tcard-top"><span class="tcard-stars">★★★★★</span><img src="https://i.pravatar.cc/52?img=11" alt="Ahmed" class="tcard-avatar"></div>
+                    <p class="tcard-quote">"VistraDev a transformé mon restaurant. Livré en 3 jours, et mes clients me trouvent maintenant directement sur Google. <strong>Les réservations ont doublé en un mois.</strong>"</p>
+                    <div class="tcard-footer">
+                        <div><strong>Ahmed Benali</strong><span>Restaurant, Casablanca</span></div>
+                        <div class="tcard-metric">+200%<small>réservations</small></div>
+                    </div>
+                </div></div>
+                <div class="carousel-slide"><div class="tcard">
+                    <div class="tcard-top"><span class="tcard-stars">★★★★★</span><img src="https://i.pravatar.cc/52?img=32" alt="Sara" class="tcard-avatar"></div>
+                    <p class="tcard-quote">"Rapport qualité/prix imbattable. Le design est magnifique et l'équipe répond sur WhatsApp en moins de 10 minutes. <strong>Je recommande les yeux fermés.</strong>"</p>
+                    <div class="tcard-footer">
+                        <div><strong>Sara Moussaoui</strong><span>Salon beauté, Rabat</span></div>
+                        <div class="tcard-metric">+150%<small>clientes</small></div>
+                    </div>
+                </div></div>
+                <div class="carousel-slide"><div class="tcard">
+                    <div class="tcard-top"><span class="tcard-stars">★★★★★</span><img src="https://i.pravatar.cc/52?img=58" alt="Khalid" class="tcard-avatar"></div>
+                    <p class="tcard-quote">"J'avais peur de dépenser pour un site. Aujourd'hui je regrette de ne pas l'avoir fait plus tôt. <strong>Ma boutique vend maintenant dans tout le Maroc.</strong>"</p>
+                    <div class="tcard-footer">
+                        <div><strong>Khalid Raji</strong><span>Boutique mode, Marrakech</span></div>
+                        <div class="tcard-metric">+300%<small>ventes</small></div>
+                    </div>
+                </div></div>
+                <div class="carousel-slide"><div class="tcard">
+                    <div class="tcard-top"><span class="tcard-stars">★★★★★</span><img src="https://i.pravatar.cc/52?img=47" alt="Dr Alami" class="tcard-avatar"></div>
+                    <p class="tcard-quote">"En tant que médecin, j'avais besoin d'un site sérieux. VistraDev a exactement compris ça. <strong>40% de mes nouveaux patients viennent maintenant de Google.</strong>"</p>
+                    <div class="tcard-footer">
+                        <div><strong>Dr. Nadia Alami</strong><span>Clinique, Rabat</span></div>
+                        <div class="tcard-metric">+180%<small>patients</small></div>
+                    </div>
+                </div></div>
+                <div class="carousel-slide"><div class="tcard">
+                    <div class="tcard-top"><span class="tcard-stars">★★★★★</span><img src="https://i.pravatar.cc/52?img=23" alt="Youssef" class="tcard-avatar"></div>
+                    <p class="tcard-quote">"Livraison en 2 jours chrono. Le site est beau, rapide et responsive. <strong>Mes concurrents me demandent qui a fait mon site</strong> — je leur dis VistraDev !"</p>
+                    <div class="tcard-footer">
+                        <div><strong>Youssef El Fassi</strong><span>Salle de sport, Fès</span></div>
+                        <div class="tcard-metric">+120%<small>abonnés</small></div>
+                    </div>
+                </div></div>
             </div>
-            <!-- Advantages grid -->
-            <div class="advantages-grid">
-                <div class="advantage-card" data-animate="fade-up" data-delay="0">
-                    <div class="advantage-icon"><i class="fas fa-trophy"></i></div>
-                    <h4>Design Premium</h4>
-                    <p>Chaque site est une oeuvre unique. Pas de templates recyclés.</p>
-                </div>
-                <div class="advantage-card" data-animate="fade-up" data-delay="50">
-                    <div class="advantage-icon"><i class="fas fa-tachometer-alt"></i></div>
-                    <h4>Ultra Rapide</h4>
-                    <p>Sites optimisés pour un chargement en moins de 2 secondes.</p>
-                </div>
-                <div class="advantage-card" data-animate="fade-up" data-delay="100">
-                    <div class="advantage-icon"><i class="fas fa-mobile-alt"></i></div>
-                    <h4>Mobile First</h4>
-                    <p>70% du trafic au Maroc est mobile. Nos sites sont parfaits sur téléphone.</p>
-                </div>
-                <div class="advantage-card" data-animate="fade-up" data-delay="150">
-                    <div class="advantage-icon"><i class="fas fa-search-dollar"></i></div>
-                    <h4>SEO Intégré</h4>
-                    <p>Trouvé sur Google dès le premier jour. Référencement naturel inclus.</p>
-                </div>
-                <div class="advantage-card" data-animate="fade-up" data-delay="200">
-                    <div class="advantage-icon"><i class="fas fa-shield-alt"></i></div>
-                    <h4>Sécurisé</h4>
-                    <p>Certificat SSL, protection anti-spam et sauvegardes régulières.</p>
-                </div>
-                <div class="advantage-card" data-animate="fade-up" data-delay="250">
-                    <div class="advantage-icon"><i class="fas fa-handshake"></i></div>
-                    <h4>Accompagnement</h4>
-                    <p>On ne vous lâche pas après la livraison. Support continu 7j/7.</p>
-                </div>
+            <div class="carousel-nav">
+                <button class="cnav-btn" id="cPrev"><i class="fas fa-chevron-left"></i></button>
+                <div id="cDots" class="cdots"></div>
+                <button class="cnav-btn" id="cNext"><i class="fas fa-chevron-right"></i></button>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Portfolio Section -->
-    <section class="section portfolio" id="portfolio">
-        <div class="container">
-            <div class="section-header" data-animate="fade-up">
-                <span class="section-tag">Nos réalisations</span>
-                <h2 class="section-title">Des sites qui<br><span class="gradient-text">font la différence</span></h2>
-                <p class="section-desc">Aperçu de quelques projets réalisés pour nos clients.</p>
+<!-- Guarantee -->
+<section class="guarantee-band">
+    <div class="container">
+        <div class="gband-inner" data-reveal>
+            <div class="gband-icon"><i class="fas fa-shield-alt"></i></div>
+            <div class="gband-text">
+                <h3>Satisfait ou remboursé — <span class="accent-text">30 jours</span></h3>
+                <p>Pas satisfait dans les 30 jours suivant la livraison ? On vous rembourse intégralement. Sans discussion.</p>
             </div>
-            <div class="portfolio-grid">
-                <!-- Restaurant -->
-                <a class="portfolio-card" href="demos/restaurant/index.html" target="_blank" data-animate="fade-up" data-delay="0">
-                    <div class="portfolio-preview" style="background: linear-gradient(135deg, #1a0f05 0%, #c8702a 100%); overflow:hidden;">
-                        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80" alt="Le Riad Saveurs"
-                             style="width:100%;height:100%;object-fit:cover;opacity:0.7;transition:transform 0.5s ease;" class="portfolio-bg-img">
-                        <div class="portfolio-mockup" style="position:absolute;z-index:1;">
-                            <i class="fas fa-utensils"></i>
-                            <span>Le Riad Saveurs</span>
-                        </div>
-                        <div class="portfolio-overlay">
-                            <span class="portfolio-metric"><i class="fas fa-external-link-alt"></i> Voir le site</span>
-                        </div>
-                    </div>
-                    <div class="portfolio-info">
-                        <div style="display:flex;align-items:center;justify-content:space-between;">
-                            <h4>Restaurant Marocain</h4>
-                            <span style="font-size:0.75rem;color:var(--primary-light);font-weight:600;">+200% réservations</span>
-                        </div>
-                        <p>Menu interactif, réservation WhatsApp, galerie et Google Maps</p>
-                    </div>
-                </a>
-                <!-- Salon -->
-                <a class="portfolio-card" href="demos/salon/index.html" target="_blank" data-animate="fade-up" data-delay="100">
-                    <div class="portfolio-preview" style="background: linear-gradient(135deg, #1a0e0c 0%, #c9847a 100%); overflow:hidden;">
-                        <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&q=80" alt="Élégance Beauty"
-                             style="width:100%;height:100%;object-fit:cover;opacity:0.65;transition:transform 0.5s ease;" class="portfolio-bg-img">
-                        <div class="portfolio-mockup" style="position:absolute;z-index:1;">
-                            <i class="fas fa-spa"></i>
-                            <span>Élégance Beauty</span>
-                        </div>
-                        <div class="portfolio-overlay">
-                            <span class="portfolio-metric"><i class="fas fa-external-link-alt"></i> Voir le site</span>
-                        </div>
-                    </div>
-                    <div class="portfolio-info">
-                        <div style="display:flex;align-items:center;justify-content:space-between;">
-                            <h4>Salon de Beauté</h4>
-                            <span style="font-size:0.75rem;color:var(--primary-light);font-weight:600;">+150% clientes</span>
-                        </div>
-                        <p>Réservations en ligne, équipe, services et galerie de réalisations</p>
-                    </div>
-                </a>
-                <!-- Boutique -->
-                <a class="portfolio-card" href="demos/boutique/index.html" target="_blank" data-animate="fade-up" data-delay="200">
-                    <div class="portfolio-preview" style="background: #0a0a0a; overflow:hidden;">
-                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Atlas Mode"
-                             style="width:100%;height:100%;object-fit:cover;opacity:0.6;transition:transform 0.5s ease;" class="portfolio-bg-img">
-                        <div class="portfolio-mockup" style="position:absolute;z-index:1;">
-                            <i class="fas fa-shopping-bag"></i>
-                            <span>Atlas Mode</span>
-                        </div>
-                        <div class="portfolio-overlay">
-                            <span class="portfolio-metric"><i class="fas fa-external-link-alt"></i> Voir le site</span>
-                        </div>
-                    </div>
-                    <div class="portfolio-info">
-                        <div style="display:flex;align-items:center;justify-content:space-between;">
-                            <h4>Boutique de Mode</h4>
-                            <span style="font-size:0.75rem;color:var(--primary-light);font-weight:600;">+300% ventes</span>
-                        </div>
-                        <p>Catalogue produits, promotions, countdown et commande WhatsApp</p>
-                    </div>
-                </a>
-                <!-- Clinique -->
-                <a class="portfolio-card" href="demos/clinique/index.html" target="_blank" data-animate="fade-up" data-delay="300">
-                    <div class="portfolio-preview" style="background: linear-gradient(135deg, #0d1b2e 0%, #0066cc 100%); overflow:hidden;">
-                        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&q=80" alt="DentaCare"
-                             style="width:100%;height:100%;object-fit:cover;opacity:0.5;transition:transform 0.5s ease;" class="portfolio-bg-img">
-                        <div class="portfolio-mockup" style="position:absolute;z-index:1;">
-                            <i class="fas fa-tooth"></i>
-                            <span>DentaCare</span>
-                        </div>
-                        <div class="portfolio-overlay">
-                            <span class="portfolio-metric"><i class="fas fa-external-link-alt"></i> Voir le site</span>
-                        </div>
-                    </div>
-                    <div class="portfolio-info">
-                        <div style="display:flex;align-items:center;justify-content:space-between;">
-                            <h4>Clinique Dentaire</h4>
-                            <span style="font-size:0.75rem;color:var(--primary-light);font-weight:600;">+180% patients</span>
-                        </div>
-                        <p>Prise de RDV, équipe médicale, soins et témoignages patients</p>
-                    </div>
-                </a>
+            <div class="gband-items">
+                <div class="gband-item"><i class="fas fa-check"></i>Livraison dans les délais ou offert</div>
+                <div class="gband-item"><i class="fas fa-check"></i>Modifications gratuites incluses</div>
+                <div class="gband-item"><i class="fas fa-check"></i>Support 7j/7 à vie</div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Testimonials Carousel -->
-    <section class="section testimonials" id="avis">
-        <div class="container">
-            <div class="section-header" data-animate="fade-up">
-                <span class="section-tag">Témoignages</span>
-                <h2 class="section-title">Ils nous font<br><span class="gradient-text">confiance</span></h2>
-                <p class="section-desc">Plus de 127 commerçants marocains ont déjà transformé leur business avec VistraDev.</p>
+<!-- FAQ -->
+<section id="faq" class="section">
+    <div class="container faq-wrap">
+        <div class="faq-left" data-reveal>
+            <div class="section-label">FAQ</div>
+            <h2 class="section-h2">Questions<br>fréquentes</h2>
+            <p class="section-sub">Une autre question ? Écrivez-nous sur WhatsApp.</p>
+            <a href="https://wa.me/212661971520" target="_blank" class="btn-ghost" style="margin-top:24px;display:inline-flex;">
+                <i class="fab fa-whatsapp"></i> Nous écrire
+            </a>
+        </div>
+        <div class="faq-list" data-reveal data-delay="80">
+            <div class="faq-item">
+                <button class="faq-q">Combien de temps pour avoir mon site ?<i class="fas fa-plus"></i></button>
+                <div class="faq-a"><p>Pour un site One Page, comptez 48h. Pour un site de 3 à 5 pages, entre 3 et 7 jours. Pour un projet sur mesure, 2 à 4 semaines selon la complexité.</p></div>
             </div>
-            <div class="carousel-wrap" data-animate="fade-up">
-                <div class="carousel-track" id="carouselTrack">
-                    <!-- Card 1 -->
-                    <div class="carousel-slide">
-                        <div class="testi-card-new">
-                            <div class="testi-top">
-                                <div class="testi-stars-row">★★★★★</div>
-                                <img src="https://i.pravatar.cc/56?img=11" alt="Ahmed B." class="testi-avatar-img">
-                            </div>
-                            <p class="testi-quote">"VistraDev a transformé mon restaurant. Livré en 3 jours, et mes clients me trouvent maintenant directement sur Google. <strong>Les réservations ont doublé en un mois.</strong>"</p>
-                            <div class="testi-author-row">
-                                <div>
-                                    <strong>Ahmed Benali</strong>
-                                    <span>Restaurant, Casablanca</span>
-                                </div>
-                                <div class="testi-result">+200%<span>réservations</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Card 2 -->
-                    <div class="carousel-slide">
-                        <div class="testi-card-new">
-                            <div class="testi-top">
-                                <div class="testi-stars-row">★★★★★</div>
-                                <img src="https://i.pravatar.cc/56?img=32" alt="Sara M." class="testi-avatar-img">
-                            </div>
-                            <p class="testi-quote">"Rapport qualité/prix imbattable. Le design est magnifique et l'équipe répond sur WhatsApp en moins de 10 minutes. <strong>Je recommande les yeux fermés.</strong>"</p>
-                            <div class="testi-author-row">
-                                <div>
-                                    <strong>Sara Moussaoui</strong>
-                                    <span>Salon de beauté, Rabat</span>
-                                </div>
-                                <div class="testi-result">+150%<span>clientes</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Card 3 -->
-                    <div class="carousel-slide">
-                        <div class="testi-card-new">
-                            <div class="testi-top">
-                                <div class="testi-stars-row">★★★★★</div>
-                                <img src="https://i.pravatar.cc/56?img=58" alt="Khalid R." class="testi-avatar-img">
-                            </div>
-                            <p class="testi-quote">"J'avais peur de dépenser pour un site. Aujourd'hui je regrette de ne pas l'avoir fait plus tôt. <strong>Ma boutique vend maintenant dans tout le Maroc</strong> grâce au site."</p>
-                            <div class="testi-author-row">
-                                <div>
-                                    <strong>Khalid Raji</strong>
-                                    <span>Boutique mode, Marrakech</span>
-                                </div>
-                                <div class="testi-result">+300%<span>ventes</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Card 4 -->
-                    <div class="carousel-slide">
-                        <div class="testi-card-new">
-                            <div class="testi-top">
-                                <div class="testi-stars-row">★★★★★</div>
-                                <img src="https://i.pravatar.cc/56?img=47" alt="Dr Alami" class="testi-avatar-img">
-                            </div>
-                            <p class="testi-quote">"En tant que médecin, j'avais besoin d'un site sérieux et rassurant. VistraDev a exactement compris ça. <strong>Aujourd'hui 40% de mes nouveaux patients viennent de Google.</strong>"</p>
-                            <div class="testi-author-row">
-                                <div>
-                                    <strong>Dr. Nadia Alami</strong>
-                                    <span>Clinique dentaire, Rabat</span>
-                                </div>
-                                <div class="testi-result">+180%<span>patients</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Card 5 -->
-                    <div class="carousel-slide">
-                        <div class="testi-card-new">
-                            <div class="testi-top">
-                                <div class="testi-stars-row">★★★★★</div>
-                                <img src="https://i.pravatar.cc/56?img=23" alt="Youssef E." class="testi-avatar-img">
-                            </div>
-                            <p class="testi-quote">"Livraison en 2 jours chrono, exactement comme promis. Le site est beau, rapide et responsive. <strong>Mes concurrents me demandent qui a fait mon site</strong> — je leur dis VistraDev !"</p>
-                            <div class="testi-author-row">
-                                <div>
-                                    <strong>Youssef El Fassi</strong>
-                                    <span>Salle de sport, Fès</span>
-                                </div>
-                                <div class="testi-result">+120%<span>abonnés</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Controls -->
-                <div class="carousel-controls">
-                    <button class="carousel-btn prev" id="carouselPrev" aria-label="Précédent"><i class="fas fa-chevron-left"></i></button>
-                    <div class="carousel-dots" id="carouselDots"></div>
-                    <button class="carousel-btn next" id="carouselNext" aria-label="Suivant"><i class="fas fa-chevron-right"></i></button>
-                </div>
+            <div class="faq-item">
+                <button class="faq-q">L'hébergement est-il inclus ?<i class="fas fa-plus"></i></button>
+                <div class="faq-a"><p>Oui ! Tous nos packs incluent l'hébergement. Les packs Business et Premium incluent aussi le nom de domaine offert pendant 1 an.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q">Mon site sera-t-il visible sur Google ?<i class="fas fa-plus"></i></button>
+                <div class="faq-a"><p>Oui. Tous nos sites sont optimisés pour le référencement naturel (SEO). Les packs Business et Premium incluent un SEO plus avancé.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q">Je peux modifier mon site après livraison ?<i class="fas fa-plus"></i></button>
+                <div class="faq-a"><p>Absolument ! On vous forme à la gestion de votre site. Et si vous avez besoin d'aide, notre support WhatsApp est disponible 7j/7.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q">Comment se passe le paiement ?<i class="fas fa-plus"></i></button>
+                <div class="faq-a"><p>50% à la commande, 50% à la livraison. Paiement par virement, CashPlus ou Wafacash. Facilités de paiement disponibles sur demande.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q">Vous travaillez dans quelles villes ?<i class="fas fa-plus"></i></button>
+                <div class="faq-a"><p>Dans tout le Maroc ! Casablanca, Rabat, Marrakech, Fès, Tanger, Agadir… Tout se fait en ligne, donc la ville n'a aucune importance.</p></div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Guarantee Section -->
-    <section class="guarantee-section">
-        <div class="container">
-            <div class="guarantee-card" data-animate="fade-up">
-                <div class="guarantee-icon"><i class="fas fa-shield-alt"></i></div>
-                <div class="guarantee-text">
-                    <h3>Satisfait ou remboursé — <span class="gradient-text">30 jours</span></h3>
-                    <p>Pas satisfait du résultat dans les 30 jours suivant la livraison ? On vous rembourse intégralement. Sans discussion. C'est notre promesse.</p>
-                </div>
-                <div class="guarantee-badges">
-                    <div class="g-badge"><i class="fas fa-check"></i> Livraison dans les délais ou offert</div>
-                    <div class="g-badge"><i class="fas fa-check"></i> Modifications gratuites incluses</div>
-                    <div class="g-badge"><i class="fas fa-check"></i> Support 7j/7 à vie</div>
-                </div>
+<!-- CTA Final -->
+<section id="contact" class="cta-section">
+    <div class="cta-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+    </div>
+    <div class="container cta-body" data-reveal>
+        <div class="section-label">Commençons</div>
+        <h2 class="cta-h2">Prêt à lancer votre<br>projet en ligne ?</h2>
+        <p>Contactez-nous maintenant et recevez votre devis gratuit en moins de 24h.</p>
+        <div class="cta-btns">
+            <a href="https://wa.me/212661971520?text=Bonjour%20VistraDev%20!%20Je%20souhaite%20un%20devis%20gratuit." target="_blank" class="btn-primary btn-lg">
+                <i class="fab fa-whatsapp"></i> Discuter sur WhatsApp
+            </a>
+            <a href="tel:+212661971520" class="btn-ghost btn-lg">
+                <i class="fas fa-phone"></i> 0661 97 15 20
+            </a>
+        </div>
+        <div class="cta-trust">
+            <span><i class="fas fa-check"></i> Devis gratuit</span>
+            <span><i class="fas fa-check"></i> Sans engagement</span>
+            <span><i class="fas fa-check"></i> Réponse en 24h</span>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container footer-inner">
+        <div class="footer-brand">
+            <img src="assets/images/logo-white.jpeg" alt="VistraDev" class="footer-logo">
+            <p>Agence web au Maroc. Sites professionnels pour commerçants. Design premium, livraison rapide.</p>
+            <div class="footer-socials">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
             </div>
         </div>
-    </section>
-
-    <!-- Social Media Pack Section -->
-    <section class="section social-pack">
-        <div class="container">
-            <div class="social-pack-card" data-animate="fade-up">
-                <div class="social-pack-content">
-                    <span class="section-tag">Bonus</span>
-                    <h2>Pack Gestion<br><span class="gradient-text">Réseaux Sociaux</span></h2>
-                    <p>Boostez votre présence en ligne avec notre pack complet de gestion des réseaux sociaux.</p>
-                    <ul class="social-features">
-                        <li><i class="fas fa-check"></i> Gestion complète de vos réseaux</li>
-                        <li><i class="fas fa-check"></i> 12 vidéos promotionnelles/mois</li>
-                        <li><i class="fas fa-check"></i> 20 affiches professionnelles/mois</li>
-                        <li><i class="fas fa-check"></i> Référencement & optimisation</li>
-                        <li><i class="fas fa-check"></i> Accompagnement personnalisé</li>
-                    </ul>
-                    <div class="social-price">
-                        <span class="price-amount">1 999 DH</span>
-                        <span class="price-period">/mois</span>
-                    </div>
-                    <a href="https://wa.me/212661971520?text=Bonjour%20!%20Je%20suis%20intéressé(e)%20par%20le%20Pack%20Réseaux%20Sociaux%20à%201999%20DH." class="btn btn-primary btn-glow" target="_blank">
-                        <i class="fab fa-whatsapp"></i> En savoir plus
-                    </a>
-                </div>
-                <div class="social-pack-visual">
-                    <div class="social-icons-float">
-                        <div class="social-float-icon" style="--delay: 0s; --x: 20%; --y: 15%;"><i class="fab fa-facebook"></i></div>
-                        <div class="social-float-icon" style="--delay: 0.5s; --x: 70%; --y: 10%;"><i class="fab fa-instagram"></i></div>
-                        <div class="social-float-icon" style="--delay: 1s; --x: 45%; --y: 60%;"><i class="fab fa-tiktok"></i></div>
-                        <div class="social-float-icon" style="--delay: 1.5s; --x: 80%; --y: 50%;"><i class="fab fa-youtube"></i></div>
-                        <div class="social-float-icon" style="--delay: 2s; --x: 25%; --y: 75%;"><i class="fab fa-linkedin"></i></div>
-                        <div class="social-float-icon" style="--delay: 0.3s; --x: 60%; --y: 80%;"><i class="fab fa-google"></i></div>
-                    </div>
-                </div>
-            </div>
+        <div class="footer-col">
+            <h4>Services</h4>
+            <a href="#services">Site Vitrine</a>
+            <a href="#services">Site E-commerce</a>
+            <a href="#services">Pack Premium</a>
+            <a href="#services">Réseaux Sociaux</a>
         </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="section faq" id="faq">
-        <div class="container">
-            <div class="section-header" data-animate="fade-up">
-                <span class="section-tag">FAQ</span>
-                <h2 class="section-title">Questions<br><span class="gradient-text">fréquentes</span></h2>
-            </div>
-            <div class="faq-list" data-animate="fade-up">
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Combien de temps pour avoir mon site ?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Pour un site One Page, comptez 48h. Pour un site de 3 à 5 pages, entre 3 et 7 jours. Pour un projet sur mesure, 2 à 4 semaines selon la complexité.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Est-ce que l'hébergement est inclus ?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Oui ! Tous nos packs incluent l'hébergement. Les packs Business et supérieurs incluent aussi le nom de domaine gratuit pendant 1 an.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Je peux modifier mon site après la livraison ?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Absolument ! On vous forme à la gestion de votre site. Et si vous avez besoin d'aide, notre support WhatsApp est disponible 7j/7.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Mon site sera visible sur Google ?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Oui. Tous nos sites sont optimisés pour le référencement naturel (SEO). Les packs Business et Premium incluent un SEO plus avancé pour mieux vous positionner.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Comment se passe le paiement ?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="faq-answer">
-                        <p>On demande 50% à la commande et 50% à la livraison. Paiement par virement bancaire, CashPlus, ou Wafacash. Facilités de paiement disponibles.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Et si le résultat ne me plaît pas ?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="faq-answer">
-                        <p>On travaille avec vous à chaque étape. Vous validez le design avant le développement. Et après livraison, vous bénéficiez de modifications gratuites pour que tout soit parfait.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Vous travaillez avec quelles villes au Maroc ?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="faq-answer">
-                        <p>On travaille avec des clients de tout le Maroc : Casablanca, Rabat, Marrakech, Fès, Tanger, Agadir, Meknès, Oujda, Kénitra, et toutes les autres villes. Tout se fait en ligne !</p>
-                    </div>
-                </div>
-            </div>
+        <div class="footer-col">
+            <h4>Navigation</h4>
+            <a href="#tarifs">Tarifs</a>
+            <a href="#processus">Processus</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#faq">FAQ</a>
         </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="section cta-section" id="contact">
-        <div class="container">
-            <div class="cta-card" data-animate="fade-up">
-                <div class="cta-bg-effects">
-                    <div class="cta-orb cta-orb-1"></div>
-                    <div class="cta-orb cta-orb-2"></div>
-                </div>
-                <h2>Prêt à lancer votre<br><span class="gradient-text">projet en ligne ?</span></h2>
-                <p>Contactez-nous maintenant et recevez votre devis gratuit en moins de 24h.</p>
-                <div class="cta-buttons">
-                    <a href="https://wa.me/212661971520?text=Bonjour%20VistraDev%20!%20Je%20souhaite%20un%20devis%20gratuit%20pour%20la%20création%20de%20mon%20site%20web." class="btn btn-primary btn-glow btn-lg" target="_blank">
-                        <i class="fab fa-whatsapp"></i> Discuter sur WhatsApp
-                    </a>
-                    <a href="tel:+212661971520" class="btn btn-outline btn-lg">
-                        <i class="fas fa-phone"></i> 0661 97 15 20
-                    </a>
-                </div>
-                <div class="cta-trust">
-                    <span><i class="fas fa-check"></i> Devis gratuit</span>
-                    <span><i class="fas fa-check"></i> Sans engagement</span>
-                    <span><i class="fas fa-check"></i> Réponse en 24h</span>
-                </div>
-            </div>
+        <div class="footer-col">
+            <h4>Contact</h4>
+            <a href="https://wa.me/212661971520" target="_blank"><i class="fab fa-whatsapp"></i> 0661 97 15 20</a>
+            <a href="tel:+212661971520"><i class="fas fa-phone"></i> 0661 97 15 20</a>
+            <a href="#"><i class="fas fa-envelope"></i> contact@vistradev.ma</a>
+            <a href="#"><i class="fas fa-map-marker-alt"></i> Maroc</a>
         </div>
-    </section>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">© 2026 VistraDev · Tous droits réservés</div>
+    </div>
+</footer>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <img src="assets/images/logo-white.jpeg" alt="VistraDev" class="footer-logo">
-                    <p>Votre partenaire digital au Maroc. Sites web professionnels, design premium, résultats garantis.</p>
-                    <div class="footer-social">
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="footer-links-col">
-                    <h4>Services</h4>
-                    <ul>
-                        <li><a href="#services">Site Vitrine</a></li>
-                        <li><a href="#services">Site E-commerce</a></li>
-                        <li><a href="#services">Site + Réseaux Sociaux</a></li>
-                        <li><a href="#tarifs">Pack Premium Agence</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links-col">
-                    <h4>Navigation</h4>
-                    <ul>
-                        <li><a href="#tarifs">Tarifs</a></li>
-                        <li><a href="#processus">Processus</a></li>
-                        <li><a href="#portfolio">Portfolio</a></li>
-                        <li><a href="#faq">FAQ</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links-col">
-                    <h4>Contact</h4>
-                    <ul>
-                        <li><a href="https://wa.me/212661971520" target="_blank"><i class="fab fa-whatsapp"></i> 0661 97 15 20</a></li>
-                        <li><a href="tel:+212661971520"><i class="fas fa-phone"></i> 0661 97 15 20</a></li>
-                        <li><a href="#"><i class="fas fa-envelope"></i> contact@vistradev.ma</a></li>
-                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Maroc</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 VistraDev. Tous droits réservés.</p>
-            </div>
-        </div>
-    </footer>
+<!-- WhatsApp float -->
+<a href="https://wa.me/212661971520?text=Bonjour%20VistraDev%20!" class="wa-btn" target="_blank" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+    <span class="wa-tip">Besoin d'aide ?</span>
+</a>
 
-    <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/212661971520?text=Bonjour%20VistraDev%20!%20Je%20souhaite%20des%20informations%20sur%20vos%20services." class="whatsapp-float" target="_blank" aria-label="WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-        <span class="whatsapp-tooltip">Besoin d'aide ?</span>
-    </a>
-
-    <script src="js/main.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
