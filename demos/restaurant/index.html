@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Riad Saveurs — Restaurant Marocain Authentique</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #c8702a;
+            --primary-dark: #a05520;
+            --gold: #d4a843;
+            --dark: #1a0f05;
+            --dark2: #2d1a08;
+            --cream: #fdf6ed;
+            --text: #3d2200;
+            --text-light: #7a5c3a;
+            --border: rgba(212, 168, 67, 0.2);
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+
+        /* Nav */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 100;
+            padding: 18px 0;
+            background: rgba(26, 15, 5, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--gold); letter-spacing: 0.02em; }
+        .logo span { color: white; font-weight: 400; font-style: italic; }
+        .nav-menu { display: flex; gap: 28px; list-style: none; }
+        .nav-menu a { color: rgba(255,255,255,0.75); font-size: 0.88rem; text-decoration: none; transition: color 0.3s; }
+        .nav-menu a:hover { color: var(--gold); }
+        .nav-cta { padding: 9px 22px; background: var(--primary); color: white; border-radius: 6px; font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: background 0.3s; }
+        .nav-cta:hover { background: var(--primary-dark); }
+
+        /* Hero */
+        .hero {
+            height: 100vh; position: relative; display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(to bottom, rgba(26,15,5,0.7) 0%, rgba(26,15,5,0.4) 50%, rgba(26,15,5,0.8) 100%),
+                        url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1400&q=80') center/cover no-repeat;
+        }
+        .hero-content { text-align: center; color: white; max-width: 700px; padding: 0 24px; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border: 1px solid var(--gold); border-radius: 30px; color: var(--gold); font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 24px; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 700; line-height: 1.1; margin-bottom: 20px; }
+        .hero h1 em { color: var(--gold); font-style: italic; }
+        .hero p { font-size: 1.05rem; color: rgba(255,255,255,0.8); margin-bottom: 36px; line-height: 1.7; }
+        .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+        .btn-primary { padding: 14px 32px; background: var(--primary); color: white; border-radius: 6px; font-weight: 600; text-decoration: none; transition: all 0.3s; }
+        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
+        .btn-outline { padding: 14px 32px; border: 1px solid rgba(255,255,255,0.4); color: white; border-radius: 6px; font-weight: 500; text-decoration: none; transition: all 0.3s; }
+        .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+        .hero-scroll { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.5); font-size: 0.75rem; text-align: center; animation: bounce 2s infinite; }
+        .hero-scroll i { display: block; margin-bottom: 4px; font-size: 1rem; }
+        @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(6px)} }
+
+        /* About */
+        .section { padding: 90px 0; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .about-img-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .about-img-grid img { width: 100%; border-radius: 12px; object-fit: cover; }
+        .about-img-grid img:first-child { grid-row: span 2; height: 100%; }
+        .about-img-grid img:nth-child(2) { height: 160px; }
+        .about-img-grid img:nth-child(3) { height: 160px; }
+        .tag { display: inline-block; padding: 5px 14px; background: rgba(200, 112, 42, 0.1); border-radius: 30px; color: var(--primary); font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; }
+        .about-text h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 600; line-height: 1.3; margin-bottom: 16px; }
+        .about-text p { color: var(--text-light); line-height: 1.8; margin-bottom: 14px; font-size: 0.95rem; }
+        .about-stats { display: flex; gap: 32px; margin-top: 28px; }
+        .stat { text-align: center; }
+        .stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--primary); }
+        .stat-lbl { font-size: 0.8rem; color: var(--text-light); }
+
+        /* Menu */
+        .menu-section { background: var(--dark); color: white; }
+        .menu-section .tag { background: rgba(212,168,67,0.1); color: var(--gold); }
+        .menu-section h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: white; margin-bottom: 10px; }
+        .menu-subtitle { color: rgba(255,255,255,0.6); margin-bottom: 48px; font-style: italic; }
+        .menu-tabs { display: flex; gap: 8px; margin-bottom: 36px; flex-wrap: wrap; }
+        .tab { padding: 9px 22px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.6); font-size: 0.85rem; cursor: pointer; transition: all 0.3s; background: none; font-family: inherit; }
+        .tab.active, .tab:hover { background: var(--primary); border-color: var(--primary); color: white; }
+        .menu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .menu-item { display: flex; gap: 16px; padding: 20px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; transition: all 0.3s; }
+        .menu-item:hover { background: rgba(255,255,255,0.07); border-color: rgba(212,168,67,0.2); }
+        .menu-item-img { width: 80px; height: 80px; border-radius: 10px; object-fit: cover; flex-shrink: 0; }
+        .menu-item-info { flex: 1; }
+        .menu-item-info h4 { font-family: 'Playfair Display', serif; font-size: 1rem; margin-bottom: 4px; }
+        .menu-item-info p { font-size: 0.82rem; color: rgba(255,255,255,0.5); line-height: 1.5; }
+        .menu-price { font-weight: 700; color: var(--gold); font-size: 0.95rem; margin-top: 6px; display: block; }
+
+        /* Gallery */
+        .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: 200px 200px; gap: 12px; }
+        .gallery-item { overflow: hidden; border-radius: 12px; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .gallery-item:hover img { transform: scale(1.07); }
+        .gallery-item:nth-child(1) { grid-column: span 2; }
+        .gallery-item:nth-child(4) { grid-row: span 2; }
+
+        /* Reservation */
+        .reservation-section { background: var(--dark2); color: white; }
+        .reservation-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .reservation-info h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 16px; }
+        .reservation-info p { color: rgba(255,255,255,0.65); margin-bottom: 28px; line-height: 1.7; }
+        .contact-items { display: flex; flex-direction: column; gap: 16px; }
+        .contact-item { display: flex; align-items: center; gap: 14px; }
+        .contact-item i { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: rgba(212,168,67,0.1); border-radius: 10px; color: var(--gold); font-size: 1rem; }
+        .contact-item-text strong { display: block; font-size: 0.9rem; }
+        .contact-item-text span { font-size: 0.83rem; color: rgba(255,255,255,0.55); }
+        .form-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 32px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .form-group { margin-bottom: 16px; }
+        .form-group label { display: block; font-size: 0.82rem; color: rgba(255,255,255,0.6); margin-bottom: 6px; }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%; padding: 11px 14px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px; color: white; font-family: inherit; font-size: 0.9rem; transition: border-color 0.3s;
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--gold); }
+        .form-group select option { background: var(--dark2); }
+        .submit-btn { width: 100%; padding: 14px; background: var(--primary); color: white; border: none; border-radius: 8px; font-size: 0.95rem; font-weight: 600; cursor: pointer; font-family: inherit; transition: background 0.3s; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .submit-btn:hover { background: var(--primary-dark); }
+
+        /* Footer */
+        footer { background: var(--dark); color: rgba(255,255,255,0.5); padding: 32px 0; text-align: center; border-top: 1px solid var(--border); }
+        footer .logo { font-size: 1.3rem; margin-bottom: 8px; display: block; }
+        footer p { font-size: 0.82rem; }
+
+        /* WhatsApp */
+        .wa-float { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.6rem; z-index: 999; box-shadow: 0 4px 16px rgba(37,211,102,0.4); text-decoration: none; transition: transform 0.3s; }
+        .wa-float:hover { transform: scale(1.1); }
+
+        /* Credit badge */
+        .credit { position: fixed; bottom: 90px; right: 16px; padding: 6px 12px; background: rgba(10,10,26,0.8); border: 1px solid rgba(124,58,237,0.3); border-radius: 20px; font-size: 0.72rem; color: #a78bfa; z-index: 998; text-decoration: none; backdrop-filter: blur(8px); }
+
+        @media(max-width: 768px) {
+            .about-grid, .menu-grid, .reservation-grid { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: auto; }
+            .gallery-item:nth-child(1) { grid-column: span 1; }
+            .gallery-item:nth-child(4) { grid-row: span 1; }
+            .nav-menu { display: none; }
+            .form-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <div class="logo">Le Riad <span>Saveurs</span></div>
+        <ul class="nav-menu">
+            <li><a href="#about">Notre histoire</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#gallery">Galerie</a></li>
+            <li><a href="#reservation">Contact</a></li>
+        </ul>
+        <a href="https://wa.me/212600000001" class="nav-cta"><i class="fab fa-whatsapp"></i> Réserver</a>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-badge"><i class="fas fa-star"></i> Ouvert depuis 2010 · Marrakech</div>
+        <h1>La cuisine marocaine<br><em>dans toute sa splendeur</em></h1>
+        <p>Découvrez des saveurs authentiques, des épices soigneusement sélectionnées et une ambiance chaleureuse au cœur de la médina.</p>
+        <div class="hero-btns">
+            <a href="#menu" class="btn-primary"><i class="fas fa-utensils"></i> Voir le menu</a>
+            <a href="#reservation" class="btn-outline"><i class="fas fa-calendar"></i> Réserver une table</a>
+        </div>
+    </div>
+    <div class="hero-scroll"><i class="fas fa-chevron-down"></i>Découvrir</div>
+</section>
+
+<!-- About -->
+<section class="section" id="about">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-img-grid">
+                <img src="https://images.unsplash.com/photo-1590301157890-4810ed352733?w=600&q=80" alt="Intérieur du restaurant">
+                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&q=80" alt="Plat marocain">
+                <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&q=80" alt="Restaurant">
+            </div>
+            <div class="about-text">
+                <span class="tag">Notre histoire</span>
+                <h2>Une tradition familiale depuis 3 générations</h2>
+                <p>Fondé en 2010 par la famille Benali, Le Riad Saveurs perpétue les recettes transmises de génération en génération. Chaque plat est une invitation au voyage.</p>
+                <p>Nous utilisons uniquement des ingrédients frais du marché local, des épices authentiques du souk et des techniques culinaires traditionnelles pour vous offrir une expérience inoubliable.</p>
+                <div class="about-stats">
+                    <div class="stat"><div class="stat-num">14</div><div class="stat-lbl">Ans d'expérience</div></div>
+                    <div class="stat"><div class="stat-num">5k+</div><div class="stat-lbl">Clients satisfaits</div></div>
+                    <div class="stat"><div class="stat-num">35+</div><div class="stat-lbl">Plats au menu</div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Menu -->
+<section class="section menu-section" id="menu">
+    <div class="container">
+        <span class="tag">Notre carte</span>
+        <h2>Nos spécialités</h2>
+        <p class="menu-subtitle">Des plats préparés avec passion, servis avec amour</p>
+        <div class="menu-tabs">
+            <button class="tab active">Entrées</button>
+            <button class="tab">Plats principaux</button>
+            <button class="tab">Tajines</button>
+            <button class="tab">Desserts</button>
+        </div>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1541014741259-de529411b96a?w=200&q=80" alt="Harira" class="menu-item-img">
+                <div class="menu-item-info">
+                    <h4>Harira Maison</h4>
+                    <p>Soupe traditionnelle aux lentilles, tomates, herbes fraîches et épices</p>
+                    <span class="menu-price">25 DH</span>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1476124369491-e7addf5db371?w=200&q=80" alt="Salade" class="menu-item-img">
+                <div class="menu-item-info">
+                    <h4>Salade Marocaine</h4>
+                    <p>Tomates, concombres, poivrons, olives, coriandre et cumin</p>
+                    <span class="menu-price">35 DH</span>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=200&q=80" alt="Briouats" class="menu-item-img">
+                <div class="menu-item-info">
+                    <h4>Briouats au fromage</h4>
+                    <p>Feuilletés croustillants farçis de fromage fondant et herbes</p>
+                    <span class="menu-price">45 DH</span>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=200&q=80" alt="Zaalouk" class="menu-item-img">
+                <div class="menu-item-info">
+                    <h4>Zaalouk</h4>
+                    <p>Caviar d'aubergines grillées, ail, cumin et coriandre fraîche</p>
+                    <span class="menu-price">30 DH</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Gallery -->
+<section class="section" id="gallery">
+    <div class="container">
+        <div style="text-align:center;margin-bottom:40px;">
+            <span class="tag">Galerie</span>
+            <h2 style="font-family:'Playfair Display',serif;font-size:2.2rem;margin-top:8px;">Notre ambiance</h2>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80" alt="Restaurant"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1547592180-85f173990554?w=500&q=80" alt="Cuisine"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=500&q=80" alt="Plat"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=500&q=80" alt="Dîner"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=500&q=80" alt="Nourriture"></div>
+        </div>
+    </div>
+</section>
+
+<!-- Reservation -->
+<section class="section reservation-section" id="reservation">
+    <div class="container">
+        <div class="reservation-grid">
+            <div class="reservation-info">
+                <span class="tag" style="background:rgba(212,168,67,0.1);color:var(--gold)">Réservation</span>
+                <h2>Réservez votre table</h2>
+                <p>Pour une expérience inoubliable, réservez à l'avance. Nous sommes ouverts 7 jours sur 7.</p>
+                <div class="contact-items">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div class="contact-item-text"><strong>0600 00 00 01</strong><span>Réservations téléphoniques</span></div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <div class="contact-item-text"><strong>WhatsApp</strong><span>Réponse rapide 7j/7</span></div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="contact-item-text"><strong>12, Derb Sidi Bouloukat</strong><span>Médina, Marrakech</span></div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div class="contact-item-text"><strong>12h – 23h</strong><span>Ouvert tous les jours</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-card">
+                <h3 style="font-family:'Playfair Display',serif;margin-bottom:20px;font-size:1.4rem;">Réserver une table</h3>
+                <div class="form-row">
+                    <div class="form-group"><label>Prénom</label><input type="text" placeholder="Mohamed"></div>
+                    <div class="form-group"><label>Téléphone</label><input type="tel" placeholder="06XX XX XX XX"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label>Date</label><input type="date"></div>
+                    <div class="form-group"><label>Heure</label><input type="time" value="20:00"></div>
+                </div>
+                <div class="form-group">
+                    <label>Nombre de personnes</label>
+                    <select><option>2 personnes</option><option>3 personnes</option><option>4 personnes</option><option>5+ personnes</option></select>
+                </div>
+                <button class="submit-btn"><i class="fab fa-whatsapp"></i> Confirmer via WhatsApp</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <span class="logo">Le Riad <span>Saveurs</span></span>
+        <p>© 2026 Le Riad Saveurs · Marrakech · Site créé par <strong style="color:#a78bfa">VistraDev</strong></p>
+    </div>
+</footer>
+
+<a href="https://wa.me/212600000001" class="wa-float"><i class="fab fa-whatsapp"></i></a>
+<a href="../../index.html#portfolio" class="credit">⬅ Site démo VistraDev</a>
+
+<script>
+document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+    });
+});
+</script>
+</body>
+</html>

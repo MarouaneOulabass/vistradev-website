@@ -1006,6 +1006,14 @@ body:hover .cursor-glow { opacity: 1; }
     border: 1px solid var(--border-glass);
     transition: all 0.4s ease;
     background: var(--bg-card);
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    cursor: pointer;
+}
+
+.portfolio-card:hover .portfolio-bg-img {
+    transform: scale(1.08);
 }
 
 .portfolio-card:hover {

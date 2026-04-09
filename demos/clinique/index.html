@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DentaCare — Clinique Dentaire Moderne · Rabat</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0066cc;
+            --primary-light: #3385d6;
+            --primary-pale: #e8f2ff;
+            --teal: #00a896;
+            --dark: #0d1b2e;
+            --text: #1a2840;
+            --text-light: #6b7c99;
+            --border: #e2e8f4;
+            --white: #ffffff;
+            --bg-light: #f7faff;
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--white); color: var(--text); overflow-x: hidden; }
+
+        /* Nav */
+        nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 16px 0; }
+        .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 28px; display: flex; align-items: center; justify-content: space-between; }
+        .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .logo-icon { width: 40px; height: 40px; background: var(--primary); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1rem; }
+        .logo-text { font-size: 1.2rem; font-weight: 700; color: var(--dark); }
+        .logo-text span { color: var(--primary); }
+        .nav-menu { display: flex; gap: 28px; list-style: none; }
+        .nav-menu a { font-size: 0.88rem; color: var(--text-light); text-decoration: none; font-weight: 500; transition: color 0.3s; }
+        .nav-menu a:hover { color: var(--primary); }
+        .nav-right { display: flex; align-items: center; gap: 12px; }
+        .nav-phone { display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600; color: var(--text); text-decoration: none; }
+        .nav-phone i { color: var(--primary); }
+        .nav-rdv { padding: 9px 22px; background: var(--primary); color: white; border-radius: 8px; font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: all 0.3s; }
+        .nav-rdv:hover { background: var(--primary-light); transform: translateY(-1px); }
+
+        /* Hero */
+        .hero { background: linear-gradient(135deg, var(--dark) 0%, #0d2a4a 100%); min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; padding-top: 80px; }
+        .hero-pattern { position: absolute; inset: 0; background-image: radial-gradient(rgba(0, 102, 204, 0.12) 1px, transparent 1px); background-size: 32px 32px; }
+        .hero-orb { position: absolute; border-radius: 50%; filter: blur(80px); }
+        .hero-orb-1 { width: 400px; height: 400px; background: rgba(0, 102, 204, 0.2); right: -5%; top: 10%; }
+        .hero-orb-2 { width: 300px; height: 300px; background: rgba(0, 168, 150, 0.15); left: 10%; bottom: -5%; }
+        .hero-content { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 40px 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .hero-text {}
+        .hero-chip { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; background: rgba(0,168,150,0.15); border: 1px solid rgba(0,168,150,0.3); border-radius: 30px; color: #4dd4cc; font-size: 0.78rem; font-weight: 600; margin-bottom: 24px; }
+        .hero h1 { font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 800; line-height: 1.15; margin-bottom: 20px; color: white; }
+        .hero h1 span { color: #4db8ff; }
+        .hero-desc { font-size: 0.95rem; color: rgba(255,255,255,0.65); line-height: 1.8; margin-bottom: 36px; }
+        .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+        .btn-blue { padding: 14px 28px; background: var(--primary); color: white; border-radius: 10px; font-weight: 600; font-size: 0.9rem; text-decoration: none; transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px; }
+        .btn-blue:hover { background: var(--primary-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,102,204,0.3); }
+        .btn-ghost-white { padding: 14px 28px; border: 1px solid rgba(255,255,255,0.2); color: white; border-radius: 10px; font-weight: 500; font-size: 0.9rem; text-decoration: none; transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px; }
+        .btn-ghost-white:hover { border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.05); }
+        .hero-trust { display: flex; gap: 24px; margin-top: 40px; flex-wrap: wrap; }
+        .trust-stat { }
+        .trust-num { font-size: 1.6rem; font-weight: 800; color: white; }
+        .trust-label { font-size: 0.78rem; color: rgba(255,255,255,0.5); }
+        .hero-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 28px; backdrop-filter: blur(10px); }
+        .hero-card-title { font-size: 0.85rem; font-weight: 700; color: white; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
+        .hero-card-title i { color: #4dd4cc; }
+        .quick-book { }
+        .form-field { margin-bottom: 14px; }
+        .form-field label { display: block; font-size: 0.78rem; color: rgba(255,255,255,0.6); margin-bottom: 5px; }
+        .form-field input, .form-field select {
+            width: 100%; padding: 11px 14px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 8px; color: white; font-family: inherit; font-size: 0.88rem; transition: border-color 0.3s;
+        }
+        .form-field input:focus, .form-field select:focus { outline: none; border-color: #4db8ff; }
+        .form-field select option { background: #0d2a4a; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .submit-blue { width: 100%; padding: 13px; background: var(--primary); color: white; border: none; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; font-family: inherit; transition: background 0.3s; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .submit-blue:hover { background: var(--primary-light); }
+
+        /* Services */
+        .section { padding: 90px 0; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 28px; }
+        .section-header { text-align: center; margin-bottom: 56px; }
+        .chip { display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px; background: var(--primary-pale); color: var(--primary); border-radius: 30px; font-size: 0.75rem; font-weight: 600; margin-bottom: 12px; }
+        .section-title { font-size: 2.2rem; font-weight: 800; line-height: 1.2; }
+        .section-sub { color: var(--text-light); font-size: 0.92rem; margin-top: 8px; }
+
+        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .srv-card { padding: 28px; border: 1px solid var(--border); border-radius: 16px; transition: all 0.4s; cursor: pointer; }
+        .srv-card:hover { border-color: var(--primary); box-shadow: 0 12px 32px rgba(0,102,204,0.1); transform: translateY(-4px); }
+        .srv-icon { width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; background: var(--primary-pale); border-radius: 12px; font-size: 1.2rem; color: var(--primary); margin-bottom: 16px; }
+        .srv-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+        .srv-card p { font-size: 0.84rem; color: var(--text-light); line-height: 1.6; margin-bottom: 14px; }
+        .srv-price { font-size: 0.88rem; font-weight: 700; color: var(--primary); }
+        .srv-link { display: inline-flex; align-items: center; gap: 6px; font-size: 0.8rem; color: var(--primary); font-weight: 600; text-decoration: none; }
+
+        /* Why us */
+        .why-section { background: var(--bg-light); }
+        .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .why-img-wrap { position: relative; }
+        .why-img-main { width: 100%; border-radius: 20px; object-fit: cover; height: 480px; }
+        .why-badge { position: absolute; bottom: -20px; right: -20px; background: white; border-radius: 16px; padding: 20px 24px; box-shadow: 0 12px 32px rgba(0,0,0,0.1); text-align: center; }
+        .why-badge-num { font-size: 2rem; font-weight: 800; color: var(--primary); line-height: 1; }
+        .why-badge-txt { font-size: 0.78rem; color: var(--text-light); }
+        .why-text h2 { font-size: 2.2rem; font-weight: 800; line-height: 1.2; margin-bottom: 16px; }
+        .why-text p { color: var(--text-light); font-size: 0.92rem; line-height: 1.8; margin-bottom: 28px; }
+        .why-points { display: flex; flex-direction: column; gap: 14px; }
+        .why-point { display: flex; align-items: flex-start; gap: 14px; }
+        .why-point-icon { width: 44px; height: 44px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: var(--primary-pale); border-radius: 10px; color: var(--primary); font-size: 1rem; }
+        .why-point-text strong { display: block; font-size: 0.9rem; margin-bottom: 2px; }
+        .why-point-text span { font-size: 0.82rem; color: var(--text-light); }
+
+        /* Team Doctors */
+        .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .doctor-card { background: white; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; transition: all 0.4s; }
+        .doctor-card:hover { box-shadow: 0 16px 40px rgba(0,102,204,0.1); transform: translateY(-4px); }
+        .doctor-img { width: 100%; height: 260px; object-fit: cover; object-position: top; }
+        .doctor-info { padding: 20px; }
+        .doctor-name { font-size: 1rem; font-weight: 700; margin-bottom: 2px; }
+        .doctor-spec { font-size: 0.8rem; color: var(--primary); font-weight: 600; margin-bottom: 10px; }
+        .doctor-bio { font-size: 0.82rem; color: var(--text-light); line-height: 1.5; margin-bottom: 14px; }
+        .doctor-rdv { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; background: var(--primary-pale); color: var(--primary); border-radius: 8px; font-size: 0.8rem; font-weight: 600; text-decoration: none; transition: all 0.3s; }
+        .doctor-rdv:hover { background: var(--primary); color: white; }
+
+        /* Testimonials */
+        .testimonials-section { background: var(--dark); color: white; }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .testi-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 24px; }
+        .testi-stars { color: #fbbf24; font-size: 0.8rem; margin-bottom: 12px; }
+        .testi-text { font-size: 0.88rem; color: rgba(255,255,255,0.7); line-height: 1.7; margin-bottom: 18px; font-style: italic; }
+        .testi-author { display: flex; align-items: center; gap: 10px; }
+        .testi-avatar { width: 40px; height: 40px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; }
+        .testi-name { font-size: 0.88rem; font-weight: 600; }
+        .testi-info { font-size: 0.75rem; color: rgba(255,255,255,0.45); }
+
+        /* Footer */
+        footer { background: var(--dark); border-top: 1px solid rgba(255,255,255,0.06); padding: 48px 0 24px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+        .footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+        .footer-logo .logo-icon { background: var(--primary); }
+        .footer-logo .logo-text { color: white; }
+        .footer-desc { font-size: 0.85rem; color: rgba(255,255,255,0.45); line-height: 1.7; }
+        .footer-col h4 { font-size: 0.8rem; font-weight: 700; color: white; letter-spacing: 0.05em; margin-bottom: 16px; }
+        .footer-col li { margin-bottom: 10px; }
+        .footer-col a { font-size: 0.84rem; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.3s; display: flex; align-items: center; gap: 6px; }
+        .footer-col a:hover { color: rgba(255,255,255,0.8); }
+        .footer-bottom { padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center; }
+        .footer-bottom p { font-size: 0.8rem; color: rgba(255,255,255,0.35); }
+
+        /* WhatsApp */
+        .wa-float { position: fixed; bottom: 24px; right: 24px; width: 54px; height: 54px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; z-index: 999; box-shadow: 0 4px 16px rgba(37,211,102,0.4); text-decoration: none; transition: transform 0.3s; }
+        .wa-float:hover { transform: scale(1.1); }
+        .credit { position: fixed; bottom: 88px; right: 16px; padding: 6px 12px; background: rgba(10,10,26,0.85); border: 1px solid rgba(124,58,237,0.3); border-radius: 20px; font-size: 0.72rem; color: #a78bfa; z-index: 998; text-decoration: none; backdrop-filter: blur(8px); }
+
+        @media(max-width: 1024px) {
+            .hero-content { grid-template-columns: 1fr; }
+            .hero-card { display: none; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .team-grid { grid-template-columns: repeat(2, 1fr); }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media(max-width: 768px) {
+            .nav-menu { display: none; }
+            .why-grid { grid-template-columns: 1fr; }
+            .services-grid { grid-template-columns: 1fr; }
+            .team-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+    <div class="nav-inner">
+        <a href="#" class="logo">
+            <div class="logo-icon"><i class="fas fa-tooth"></i></div>
+            <span class="logo-text">Denta<span>Care</span></span>
+        </a>
+        <ul class="nav-menu">
+            <li><a href="#services">Soins</a></li>
+            <li><a href="#why">Notre clinique</a></li>
+            <li><a href="#team">Docteurs</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="nav-right">
+            <a href="tel:+212600000004" class="nav-phone"><i class="fas fa-phone"></i> 0600 00 00 04</a>
+            <a href="#booking" class="nav-rdv">Prendre RDV</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="booking">
+    <div class="hero-pattern"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-content">
+        <div class="hero-text">
+            <div class="hero-chip"><i class="fas fa-certificate"></i> Certifiée ISO · Rabat</div>
+            <h1>Votre sourire,<br>notre <span>priorité</span></h1>
+            <p class="hero-desc">Une clinique dentaire moderne équipée des dernières technologies pour des soins de qualité supérieure dans un cadre confortable et rassurant.</p>
+            <div class="hero-btns">
+                <a href="https://wa.me/212600000004" class="btn-blue"><i class="fab fa-whatsapp"></i> Prendre rendez-vous</a>
+                <a href="#services" class="btn-ghost-white"><i class="fas fa-list"></i> Nos soins</a>
+            </div>
+            <div class="hero-trust">
+                <div class="trust-stat"><div class="trust-num">2 000+</div><div class="trust-label">Patients traités</div></div>
+                <div class="trust-stat"><div class="trust-num">12</div><div class="trust-label">Ans d'expérience</div></div>
+                <div class="trust-stat"><div class="trust-num">4.9/5</div><div class="trust-label">Note patients</div></div>
+            </div>
+        </div>
+        <div class="hero-card">
+            <div class="hero-card-title"><i class="fas fa-calendar-check"></i> Prendre rendez-vous</div>
+            <div class="quick-book">
+                <div class="form-row">
+                    <div class="form-field"><label>Prénom</label><input type="text" placeholder="Mohamed"></div>
+                    <div class="form-field"><label>Téléphone</label><input type="tel" placeholder="06XX XX XX XX"></div>
+                </div>
+                <div class="form-field">
+                    <label>Type de soin</label>
+                    <select>
+                        <option>Détartrage</option>
+                        <option>Blanchiment</option>
+                        <option>Implant dentaire</option>
+                        <option>Orthodontie</option>
+                        <option>Extraction</option>
+                        <option>Consultation</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <div class="form-field"><label>Date souhaitée</label><input type="date"></div>
+                    <div class="form-field"><label>Créneau</label>
+                        <select><option>Matin (8h-12h)</option><option>Après-midi (14h-18h)</option></select>
+                    </div>
+                </div>
+                <button class="submit-blue"><i class="fas fa-calendar-check"></i> Confirmer le rendez-vous</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services -->
+<section class="section" id="services" style="background:var(--bg-light)">
+    <div class="container">
+        <div class="section-header">
+            <span class="chip"><i class="fas fa-star"></i> Nos soins</span>
+            <h2 class="section-title">Des soins pour toute la famille</h2>
+            <p class="section-sub">Des technologies de pointe pour un traitement optimal et confortable</p>
+        </div>
+        <div class="services-grid">
+            <div class="srv-card">
+                <div class="srv-icon"><i class="fas fa-tooth"></i></div>
+                <h3>Détartrage & Blanchiment</h3>
+                <p>Nettoyage professionnel et blanchiment au laser pour un sourire éclatant de blancheur.</p>
+                <div class="srv-price">À partir de 300 DH</div>
+            </div>
+            <div class="srv-card">
+                <div class="srv-icon"><i class="fas fa-crown"></i></div>
+                <h3>Implants Dentaires</h3>
+                <p>Remplacement permanent et naturel de vos dents manquantes avec des implants de haute qualité.</p>
+                <div class="srv-price">À partir de 4 500 DH</div>
+            </div>
+            <div class="srv-card">
+                <div class="srv-icon"><i class="fas fa-align-center"></i></div>
+                <h3>Orthodontie</h3>
+                <p>Gouttières invisibles et appareils dentaires pour un alignement parfait discret et efficace.</p>
+                <div class="srv-price">À partir de 6 000 DH</div>
+            </div>
+            <div class="srv-card">
+                <div class="srv-icon"><i class="fas fa-teeth"></i></div>
+                <h3>Couronnes & Bridges</h3>
+                <p>Restauration dentaire esthétique avec porcelaine et zircone pour un rendu parfaitement naturel.</p>
+                <div class="srv-price">À partir de 1 200 DH</div>
+            </div>
+            <div class="srv-card">
+                <div class="srv-icon"><i class="fas fa-child"></i></div>
+                <h3>Pédodontie</h3>
+                <p>Soins dentaires adaptés aux enfants dans un environnement ludique et rassurant.</p>
+                <div class="srv-price">À partir de 200 DH</div>
+            </div>
+            <div class="srv-card">
+                <div class="srv-icon"><i class="fas fa-smile"></i></div>
+                <h3>Urgences Dentaires</h3>
+                <p>Prise en charge rapide de vos urgences dentaires, 7j/7 de 8h à 20h.</p>
+                <div class="srv-price">Consultation : 150 DH</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Why Us -->
+<section class="section why-section" id="why">
+    <div class="container">
+        <div class="why-grid">
+            <div class="why-img-wrap">
+                <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=700&q=80" alt="Clinique" class="why-img-main">
+                <div class="why-badge">
+                    <div class="why-badge-num">ISO</div>
+                    <div class="why-badge-txt">Certifiée</div>
+                </div>
+            </div>
+            <div class="why-text">
+                <span class="chip"><i class="fas fa-hospital"></i> Notre clinique</span>
+                <h2>Soins de qualité dans un cadre de confiance</h2>
+                <p>DentaCare est équipée des dernières technologies pour vous offrir des soins précis, rapides et indolores. Votre confort est au cœur de chaque traitement.</p>
+                <div class="why-points">
+                    <div class="why-point">
+                        <div class="why-point-icon"><i class="fas fa-microscope"></i></div>
+                        <div class="why-point-text"><strong>Équipements de pointe</strong><span>Scanner 3D, laser dentaire, radio numérique instantanée</span></div>
+                    </div>
+                    <div class="why-point">
+                        <div class="why-point-icon"><i class="fas fa-shield-alt"></i></div>
+                        <div class="why-point-text"><strong>Stérilisation certifiée</strong><span>Protocoles d'hygiène stricts selon les normes internationales</span></div>
+                    </div>
+                    <div class="why-point">
+                        <div class="why-point-icon"><i class="fas fa-clock"></i></div>
+                        <div class="why-point-text"><strong>Sans longue attente</strong><span>Rendez-vous en 24h, salle d'attente confortable</span></div>
+                    </div>
+                    <div class="why-point">
+                        <div class="why-point-icon"><i class="fas fa-credit-card"></i></div>
+                        <div class="why-point-text"><strong>Facilités de paiement</strong><span>Paiement en 3 à 6 fois, CMB, Wafacash acceptés</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Team -->
+<section class="section" id="team">
+    <div class="container">
+        <div class="section-header">
+            <span class="chip"><i class="fas fa-user-md"></i> Notre équipe</span>
+            <h2 class="section-title">Des spécialistes à votre service</h2>
+        </div>
+        <div class="team-grid">
+            <div class="doctor-card">
+                <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&h=260&fit=crop&q=80" alt="Dr Benali" class="doctor-img">
+                <div class="doctor-info">
+                    <div class="doctor-name">Dr. Youssef Benali</div>
+                    <div class="doctor-spec">Chirurgien Dentiste · Implantologie</div>
+                    <p class="doctor-bio">15 ans d'expérience en implantologie et chirurgie orale. Formé à Paris et Madrid.</p>
+                    <a href="https://wa.me/212600000004" class="doctor-rdv"><i class="fab fa-whatsapp"></i> Prendre RDV</a>
+                </div>
+            </div>
+            <div class="doctor-card">
+                <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&h=260&fit=crop&q=80" alt="Dr Alami" class="doctor-img">
+                <div class="doctor-info">
+                    <div class="doctor-name">Dr. Sanaa Alami</div>
+                    <div class="doctor-spec">Orthodontiste · Alignement</div>
+                    <p class="doctor-bio">Spécialiste des gouttières invisibles et de l'orthodontie invisible pour adultes et adolescents.</p>
+                    <a href="https://wa.me/212600000004" class="doctor-rdv"><i class="fab fa-whatsapp"></i> Prendre RDV</a>
+                </div>
+            </div>
+            <div class="doctor-card">
+                <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&h=260&fit=crop&q=80" alt="Dr Tazi" class="doctor-img">
+                <div class="doctor-info">
+                    <div class="doctor-name">Dr. Hassan Tazi</div>
+                    <div class="doctor-spec">Parodontologue · Pédodontiste</div>
+                    <p class="doctor-bio">Expert en soins des gencives et traitement dentaire spécialisé pour enfants.</p>
+                    <a href="https://wa.me/212600000004" class="doctor-rdv"><i class="fab fa-whatsapp"></i> Prendre RDV</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="section testimonials-section" id="contact">
+    <div class="container">
+        <div class="section-header">
+            <span class="chip" style="background:rgba(77,184,255,0.1);color:#4db8ff">Témoignages</span>
+            <h2 class="section-title" style="color:white">Ce que disent nos patients</h2>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testi-card">
+                <div class="testi-stars">★★★★★</div>
+                <p class="testi-text">"Dr Benali est exceptionnel. Mon implant est parfait et je n'ai presque rien senti. La clinique est ultra-moderne et l'équipe très douce."</p>
+                <div class="testi-author"><div class="testi-avatar">A</div><div><div class="testi-name">Amine R.</div><div class="testi-info">Implant dentaire · Rabat</div></div></div>
+            </div>
+            <div class="testi-card">
+                <div class="testi-stars">★★★★★</div>
+                <p class="testi-text">"Mes dents sont alignées en 8 mois avec les gouttières invisibles. Dr Alami est très professionnelle et attentive. Résultat bluffant !"</p>
+                <div class="testi-author"><div class="testi-avatar">L</div><div><div class="testi-name">Leila M.</div><div class="testi-info">Orthodontie · Salé</div></div></div>
+            </div>
+            <div class="testi-card">
+                <div class="testi-stars">★★★★★</div>
+                <p class="testi-text">"Mon fils avait peur du dentiste mais Dr Tazi l'a mis totalement à l'aise. Il repart en souriant ! Je recommande à tous les parents."</p>
+                <div class="testi-author"><div class="testi-avatar">F</div><div><div class="testi-name">Fatima Z.</div><div class="testi-info">Pédodontie · Rabat</div></div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <div class="footer-logo">
+                    <div class="logo-icon"><i class="fas fa-tooth"></i></div>
+                    <span class="logo-text">Denta<span>Care</span></span>
+                </div>
+                <p class="footer-desc">Clinique dentaire moderne à Rabat. Soins de qualité, équipements de pointe, équipe certifiée.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Soins</h4>
+                <ul>
+                    <li><a href="#">Blanchiment</a></li>
+                    <li><a href="#">Implants</a></li>
+                    <li><a href="#">Orthodontie</a></li>
+                    <li><a href="#">Couronnes</a></li>
+                    <li><a href="#">Urgences</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Clinique</h4>
+                <ul>
+                    <li><a href="#">Notre équipe</a></li>
+                    <li><a href="#">Équipements</a></li>
+                    <li><a href="#">Tarifs</a></li>
+                    <li><a href="#">Assurances</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="tel:+212600000004"><i class="fas fa-phone"></i> 0600 00 00 04</a></li>
+                    <li><a href="https://wa.me/212600000004"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> Agdal, Rabat</a></li>
+                    <li><a href="#"><i class="fas fa-clock"></i> Lun–Sam 8h–20h</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 DentaCare · Rabat</p>
+            <p>Site créé par <strong style="color:#a78bfa">VistraDev</strong></p>
+        </div>
+    </div>
+</footer>
+
+<a href="https://wa.me/212600000004" class="wa-float"><i class="fab fa-whatsapp"></i></a>
+<a href="../../index.html#portfolio" class="credit">⬅ Site démo VistraDev</a>
+</body>
+</html>
