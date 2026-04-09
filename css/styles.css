@@ -1576,13 +1576,228 @@ body:hover .cursor-glow { opacity: 1; }
 }
 
 /* ============================================
+   Marquee Bar
+   ============================================ */
+.marquee-bar {
+    background: rgba(124, 58, 237, 0.06);
+    border-top: 1px solid var(--border-glass);
+    border-bottom: 1px solid var(--border-glass);
+    padding: 14px 0;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.marquee-track {
+    display: flex;
+    gap: 40px;
+    width: max-content;
+    animation: marqueeScroll 30s linear infinite;
+    white-space: nowrap;
+}
+
+.marquee-track span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    letter-spacing: 0.02em;
+}
+
+.marquee-track span i {
+    color: var(--primary-light);
+    font-size: 0.75rem;
+}
+
+@keyframes marqueeScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* ============================================
+   Hero Visual Mockup
+   ============================================ */
+.hero-visual {
+    position: relative;
+    z-index: 1;
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-mockup-wrap {
+    position: relative;
+    width: 700px;
+    max-width: 90vw;
+}
+
+.hero-mockup-laptop {
+    background: #1e1e2e;
+    border-radius: 12px 12px 4px 4px;
+    padding: 10px 10px 0;
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 40px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.03);
+    position: relative;
+}
+
+.hero-mockup-laptop::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 24px;
+    background: #2a2a3e;
+    border-radius: 8px 8px 0 0;
+    margin-bottom: 6px;
+    position: relative;
+}
+
+.hero-mockup-laptop::after {
+    content: '';
+    position: absolute;
+    top: 9px;
+    left: 14px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ff5f57;
+    box-shadow: 14px 0 0 #febc2e, 28px 0 0 #28c840;
+}
+
+.laptop-screen {
+    overflow: hidden;
+    border-radius: 4px;
+    height: 340px;
+}
+
+.laptop-screen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+}
+
+.hero-mockup-phone {
+    position: absolute;
+    bottom: -30px;
+    right: -30px;
+    width: 110px;
+    background: #1e1e2e;
+    border-radius: 16px;
+    padding: 8px;
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.phone-screen {
+    overflow: hidden;
+    border-radius: 10px;
+    height: 180px;
+}
+
+.phone-screen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+}
+
+.hero-mockup-badge {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: rgba(10,10,26,0.9);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-full);
+    font-size: 0.8rem;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+    white-space: nowrap;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    animation: badgeFloat 3s ease-in-out infinite;
+}
+
+.badge-top {
+    top: -16px;
+    left: -20px;
+    animation-delay: 0s;
+}
+
+.badge-bottom {
+    bottom: 40px;
+    left: -20px;
+    animation-delay: 1.5s;
+}
+
+@keyframes badgeFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+
+/* ============================================
+   Pricing with image
+   ============================================ */
+.pricing-grid-3 {
+    grid-template-columns: repeat(3, 1fr) !important;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.pricing-img {
+    margin: -32px -24px 20px;
+    height: 160px;
+    overflow: hidden;
+    border-radius: var(--radius) var(--radius) 0 0;
+    position: relative;
+}
+
+.pricing-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    display: block;
+}
+
+.pricing-card:hover .pricing-img img {
+    transform: scale(1.06);
+}
+
+.pricing-img-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.premium-label {
+    padding: 6px 16px;
+    background: linear-gradient(135deg, #d4af37, #c9a96e);
+    color: #1a1a00;
+    border-radius: 30px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+/* ============================================
    Responsive Design
    ============================================ */
 @media (max-width: 1024px) {
     .services-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
     .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+    .pricing-grid-3 { grid-template-columns: 1fr !important; max-width: 400px; }
     .pricing-featured { transform: scale(1); }
     .pricing-featured:hover { transform: translateY(-8px); }
+    .hero-visual { display: none; }
     .comparison-grid { grid-template-columns: 1fr; }
     .advantages-grid { grid-template-columns: repeat(2, 1fr); }
     .portfolio-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
@@ -1593,6 +1808,8 @@ body:hover .cursor-glow { opacity: 1; }
 }
 
 @media (max-width: 768px) {
+    .pricing-grid-3 { grid-template-columns: 1fr !important; max-width: 380px; margin: 0 auto; }
+
     .nav-links {
         position: fixed;
         top: 0;

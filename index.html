@@ -92,12 +92,63 @@
                 </div>
             </div>
         </div>
+        <!-- Hero visual mockup -->
+        <div class="hero-visual" data-animate="fade-up" data-delay="500">
+            <div class="hero-mockup-wrap">
+                <div class="hero-mockup-laptop">
+                    <div class="laptop-screen">
+                        <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=700&q=80" alt="Site web créé par VistraDev">
+                    </div>
+                </div>
+                <div class="hero-mockup-phone">
+                    <div class="phone-screen">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=300&q=80" alt="Version mobile">
+                    </div>
+                </div>
+                <div class="hero-mockup-badge badge-top">
+                    <i class="fas fa-bolt" style="color:#fbbf24"></i>
+                    <span>Livraison 48h</span>
+                </div>
+                <div class="hero-mockup-badge badge-bottom">
+                    <i class="fas fa-star" style="color:#fbbf24"></i>
+                    <span>5.0 · 127 avis</span>
+                </div>
+            </div>
+        </div>
+
         <div class="hero-scroll-indicator">
             <div class="scroll-mouse">
                 <div class="scroll-wheel"></div>
             </div>
         </div>
     </section>
+
+    <!-- Marquee industries -->
+    <div class="marquee-bar">
+        <div class="marquee-track">
+            <span><i class="fas fa-utensils"></i> Restaurants</span>
+            <span><i class="fas fa-spa"></i> Salons de beauté</span>
+            <span><i class="fas fa-shopping-bag"></i> Boutiques mode</span>
+            <span><i class="fas fa-tooth"></i> Cliniques</span>
+            <span><i class="fas fa-dumbbell"></i> Salles de sport</span>
+            <span><i class="fas fa-home"></i> Immobilier</span>
+            <span><i class="fas fa-car"></i> Auto & Garage</span>
+            <span><i class="fas fa-graduation-cap"></i> Éducation</span>
+            <span><i class="fas fa-hotel"></i> Hôtels & Riads</span>
+            <span><i class="fas fa-stethoscope"></i> Médecins</span>
+            <!-- repeat for seamless loop -->
+            <span><i class="fas fa-utensils"></i> Restaurants</span>
+            <span><i class="fas fa-spa"></i> Salons de beauté</span>
+            <span><i class="fas fa-shopping-bag"></i> Boutiques mode</span>
+            <span><i class="fas fa-tooth"></i> Cliniques</span>
+            <span><i class="fas fa-dumbbell"></i> Salles de sport</span>
+            <span><i class="fas fa-home"></i> Immobilier</span>
+            <span><i class="fas fa-car"></i> Auto & Garage</span>
+            <span><i class="fas fa-graduation-cap"></i> Éducation</span>
+            <span><i class="fas fa-hotel"></i> Hôtels & Riads</span>
+            <span><i class="fas fa-stethoscope"></i> Médecins</span>
+        </div>
+    </div>
 
     <!-- Trust Bar -->
     <section class="trust-bar">
@@ -195,13 +246,17 @@
                 <h2 class="section-title">Des packs pensés pour<br><span class="gradient-text">chaque budget</span></h2>
                 <p class="section-desc">Pas de frais cachés. Pas de surprises. Choisissez le pack qui correspond à vos besoins.</p>
             </div>
-            <div class="pricing-grid">
+            <div class="pricing-grid pricing-grid-3">
+
                 <!-- Pack 1: Offre d'ouverture -->
                 <div class="pricing-card" data-animate="fade-up" data-delay="0">
+                    <div class="pricing-img">
+                        <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&q=80" alt="Site vitrine">
+                        <div class="pricing-img-overlay"><div class="discount-badge">-50%</div></div>
+                    </div>
                     <div class="pricing-header">
-                        <div class="discount-badge">-50%</div>
                         <h3 class="pricing-name">Offre d'Ouverture</h3>
-                        <p class="pricing-desc">Idéal pour démarrer</p>
+                        <p class="pricing-desc">Idéal pour démarrer rapidement</p>
                         <div class="pricing-amount">
                             <span class="old-price">2 000 DH</span>
                             <span class="price">1 000</span>
@@ -211,94 +266,49 @@
                     <ul class="pricing-features">
                         <li><i class="fas fa-check-circle"></i> Site One Page professionnel</li>
                         <li><i class="fas fa-check-circle"></i> Design moderne & responsive</li>
-                        <li><i class="fas fa-check-circle"></i> WhatsApp intégré</li>
-                        <li><i class="fas fa-check-circle"></i> Formulaire de contact</li>
-                        <li><i class="fas fa-check-circle"></i> Google Maps</li>
-                        <li><i class="fas fa-check-circle"></i> Livraison en 48h</li>
-                        <li><i class="fas fa-check-circle"></i> 1 modification gratuite</li>
+                        <li><i class="fas fa-check-circle"></i> WhatsApp + formulaire de contact</li>
+                        <li><i class="fas fa-check-circle"></i> Google Maps intégré</li>
+                        <li><i class="fas fa-check-circle"></i> SSL + hébergement inclus</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Livraison en 48h</strong></li>
                     </ul>
                     <a href="https://wa.me/212661971520?text=Bonjour%20!%20Je%20suis%20intéressé(e)%20par%20l'Offre%20d'Ouverture%20à%201000%20DH." class="btn btn-outline btn-block" target="_blank">
                         <i class="fab fa-whatsapp"></i> Commander
                     </a>
                 </div>
 
-                <!-- Pack 2: Starter -->
-                <div class="pricing-card" data-animate="fade-up" data-delay="100">
-                    <div class="pricing-header">
-                        <h3 class="pricing-name">Pack Starter</h3>
-                        <p class="pricing-desc">Pour bien commencer</p>
-                        <div class="pricing-amount">
-                            <span class="price">1 490</span>
-                            <span class="currency">DH</span>
-                        </div>
+                <!-- Pack 2: Business (Recommended) -->
+                <div class="pricing-card pricing-featured" data-animate="fade-up" data-delay="100">
+                    <div class="pricing-badge">⭐ Le plus populaire</div>
+                    <div class="pricing-img">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=600&q=80" alt="Pack Business">
                     </div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check-circle"></i> Site web 3 pages</li>
-                        <li><i class="fas fa-check-circle"></i> Design professionnel</li>
-                        <li><i class="fas fa-check-circle"></i> Version mobile optimisée</li>
-                        <li><i class="fas fa-check-circle"></i> WhatsApp intégré</li>
-                        <li><i class="fas fa-check-circle"></i> Nom de domaine offert</li>
-                        <li><i class="fas fa-check-circle"></i> Hébergement inclus</li>
-                        <li><i class="fas fa-check-circle"></i> Livraison rapide</li>
-                    </ul>
-                    <a href="https://wa.me/212661971520?text=Bonjour%20!%20Je%20suis%20intéressé(e)%20par%20le%20Pack%20Starter%20à%201490%20DH." class="btn btn-outline btn-block" target="_blank">
-                        <i class="fab fa-whatsapp"></i> Commander
-                    </a>
-                </div>
-
-                <!-- Pack 3: Business (Recommended) -->
-                <div class="pricing-card pricing-featured" data-animate="fade-up" data-delay="200">
-                    <div class="pricing-badge">Recommandé</div>
                     <div class="pricing-header">
                         <h3 class="pricing-name">Pack Business</h3>
-                        <p class="pricing-desc">Le choix des pros</p>
+                        <p class="pricing-desc">Le choix des commerçants sérieux</p>
                         <div class="pricing-amount">
                             <span class="price">2 990</span>
                             <span class="currency">DH</span>
                         </div>
                     </div>
                     <ul class="pricing-features">
-                        <li><i class="fas fa-check-circle"></i> Site web 5 pages</li>
-                        <li><i class="fas fa-check-circle"></i> Design premium</li>
-                        <li><i class="fas fa-check-circle"></i> SEO Google de base</li>
-                        <li><i class="fas fa-check-circle"></i> Google Maps intégré</li>
-                        <li><i class="fas fa-check-circle"></i> WhatsApp + Appel</li>
-                        <li><i class="fas fa-check-circle"></i> Hébergement 1 an offert</li>
-                        <li><i class="fas fa-check-circle"></i> Domaine offert</li>
-                        <li><i class="fas fa-check-circle"></i> Livraison rapide</li>
+                        <li><i class="fas fa-check-circle"></i> Site web 5 pages complet</li>
+                        <li><i class="fas fa-check-circle"></i> Design premium sur-mesure</li>
+                        <li><i class="fas fa-check-circle"></i> SEO Google optimisé</li>
+                        <li><i class="fas fa-check-circle"></i> Google Maps + WhatsApp + Appel</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Hébergement 1 an + domaine offerts</strong></li>
+                        <li><i class="fas fa-check-circle"></i> Support WhatsApp 7j/7</li>
                     </ul>
                     <a href="https://wa.me/212661971520?text=Bonjour%20!%20Je%20suis%20intéressé(e)%20par%20le%20Pack%20Business%20à%202990%20DH." class="btn btn-primary btn-glow btn-block" target="_blank">
-                        <i class="fab fa-whatsapp"></i> Commander
+                        <i class="fab fa-whatsapp"></i> Commander maintenant
                     </a>
                 </div>
 
-                <!-- Pack 4: Site + Réseaux Sociaux -->
-                <div class="pricing-card" data-animate="fade-up" data-delay="300">
-                    <div class="pricing-header">
-                        <h3 class="pricing-name">Pack Site + Réseaux</h3>
-                        <p class="pricing-desc">Présence complète</p>
-                        <div class="pricing-amount">
-                            <span class="price">3 490</span>
-                            <span class="currency">DH</span>
-                        </div>
+                <!-- Pack 3: Premium Agence -->
+                <div class="pricing-card pricing-premium" data-animate="fade-up" data-delay="200">
+                    <div class="pricing-img">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80" alt="Pack Premium">
+                        <div class="pricing-img-overlay"><span class="premium-label">Premium</span></div>
                     </div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check-circle"></i> Site web professionnel</li>
-                        <li><i class="fas fa-check-circle"></i> Design premium</li>
-                        <li><i class="fas fa-check-circle"></i> SEO Google de base</li>
-                        <li><i class="fas fa-check-circle"></i> Google Maps intégré</li>
-                        <li><i class="fas fa-check-circle"></i> WhatsApp + Appel</li>
-                        <li><i class="fas fa-check-circle"></i> Hébergement 1 an</li>
-                        <li><i class="fas fa-check-circle"></i> Création Facebook & Instagram</li>
-                        <li><i class="fas fa-check-circle"></i> 10 publications designées</li>
-                    </ul>
-                    <a href="https://wa.me/212661971520?text=Bonjour%20!%20Je%20suis%20intéressé(e)%20par%20le%20Pack%20Site%20%2B%20Réseaux%20à%203490%20DH." class="btn btn-outline btn-block" target="_blank">
-                        <i class="fab fa-whatsapp"></i> Commander
-                    </a>
-                </div>
-
-                <!-- Pack 5: Premium Agence -->
-                <div class="pricing-card pricing-premium" data-animate="fade-up" data-delay="400">
                     <div class="pricing-header">
                         <h3 class="pricing-name">Pack Premium Agence</h3>
                         <p class="pricing-desc">Sur mesure, sans limites</p>
@@ -308,19 +318,18 @@
                         </div>
                     </div>
                     <ul class="pricing-features">
-                        <li><i class="fas fa-check-circle"></i> Site web sur mesure</li>
-                        <li><i class="fas fa-check-circle"></i> Design UI/UX premium</li>
-                        <li><i class="fas fa-check-circle"></i> SEO avancé</li>
-                        <li><i class="fas fa-check-circle"></i> Optimisation vitesse</li>
-                        <li><i class="fas fa-check-circle"></i> Emails professionnels</li>
-                        <li><i class="fas fa-check-circle"></i> Google Analytics</li>
-                        <li><i class="fas fa-check-circle"></i> Hébergement premium</li>
-                        <li><i class="fas fa-check-circle"></i> Support prioritaire</li>
+                        <li><i class="fas fa-check-circle"></i> Site web sur mesure complet</li>
+                        <li><i class="fas fa-check-circle"></i> Design UI/UX haut de gamme</li>
+                        <li><i class="fas fa-check-circle"></i> SEO avancé + Google Analytics</li>
+                        <li><i class="fas fa-check-circle"></i> Emails professionnels inclus</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Hébergement premium + domaine</strong></li>
+                        <li><i class="fas fa-check-circle"></i> Support prioritaire dédié</li>
                     </ul>
                     <a href="https://wa.me/212661971520?text=Bonjour%20!%20Je%20suis%20intéressé(e)%20par%20le%20Pack%20Premium%20Agence%20à%207990%20DH." class="btn btn-outline btn-block" target="_blank">
                         <i class="fab fa-whatsapp"></i> Commander
                     </a>
                 </div>
+
             </div>
         </div>
     </section>
