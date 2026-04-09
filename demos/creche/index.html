@@ -733,20 +733,13 @@
 <a href="https://wa.me/212600000005" class="wa-float"><i class="fab fa-whatsapp"></i></a>
 <a href="../../index.html#portfolio" class="credit">⬅ Site démo VistraDev</a>
 
-<!-- Libraries: Anime.js + Lenis + Splide -->
+<!-- Libraries: Anime.js + Splide -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
 
 <script>
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   1. LENIS — smooth organic scroll (MEplace-style)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-const lenis = new Lenis({ lerp: 0.1, wheelMultiplier: 0.4, smoothTouch: false });
-(function raf(time) { lenis.raf(time); requestAnimationFrame(raf); })(0);
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   2. NAV scroll state
+   1. NAV scroll state
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 window.addEventListener('scroll', () => {
     document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
