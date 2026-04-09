@@ -16,6 +16,19 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <!-- Promo Banner -->
+    <div class="promo-banner" id="promoBanner">
+        <span class="promo-pulse"></span>
+        <span>🔥 Offre de lancement — <strong>1 000 DH</strong> seulement pour votre premier site web</span>
+        <div class="promo-countdown">
+            <div class="promo-count-item"><span id="pHours">00</span><small>h</small></div>
+            <div class="promo-count-item"><span id="pMins">00</span><small>m</small></div>
+            <div class="promo-count-item"><span id="pSecs">00</span><small>s</small></div>
+        </div>
+        <a href="https://wa.me/212661971520?text=Bonjour%20!%20Je%20veux%20profiter%20de%20l'offre%201000%20DH." target="_blank" class="promo-cta">Profiter maintenant →</a>
+        <button class="promo-close" id="promoClose" aria-label="Fermer">✕</button>
+    </div>
+
     <!-- Cursor glow effect -->
     <div class="cursor-glow" id="cursorGlow"></div>
 
@@ -53,73 +66,91 @@
             <div class="hero-orb hero-orb-3"></div>
             <div class="hero-grid"></div>
         </div>
-        <div class="container hero-content">
-            <div class="hero-badge" data-animate="fade-up">
-                <span class="badge-pulse"></span>
-                <span>Offre de lancement — Places limitées</span>
-            </div>
-            <h1 class="hero-title" data-animate="fade-up" data-delay="100">
-                Votre site web<br>
-                <span class="gradient-text">professionnel</span><br>
-                à partir de <span class="gradient-text">1 000 DH</span>
-            </h1>
-            <p class="hero-subtitle" data-animate="fade-up" data-delay="200">
-                Des sites qui convertissent vos visiteurs en clients.<br>
-                Design premium. Livraison rapide. Résultats garantis.
-            </p>
-            <div class="hero-ctas" data-animate="fade-up" data-delay="300">
-                <a href="https://wa.me/212661971520?text=Bonjour%20VistraDev%20!%20Je%20souhaite%20un%20devis%20gratuit%20pour%20la%20création%20de%20mon%20site%20web." class="btn btn-primary btn-glow" target="_blank">
-                    <i class="fab fa-whatsapp"></i> Devis Gratuit en 24h
-                </a>
-                <a href="#tarifs" class="btn btn-outline">
-                    Voir nos packs <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-            <div class="hero-stats" data-animate="fade-up" data-delay="400">
-                <div class="stat-item">
-                    <span class="stat-number" data-count="150">0</span><span class="stat-suffix">+</span>
-                    <span class="stat-label">Sites livrés</span>
+
+        <div class="container hero-split">
+            <!-- LEFT -->
+            <div class="hero-left" data-animate="fade-up">
+                <div class="hero-badge">
+                    <span class="badge-pulse"></span>
+                    <span>🇲🇦 Agence Web #1 pour les commerçants au Maroc</span>
                 </div>
-                <div class="stat-divider"></div>
-                <div class="stat-item">
-                    <span class="stat-number" data-count="48">0</span><span class="stat-suffix">h</span>
-                    <span class="stat-label">Livraison express</span>
+                <h1 class="hero-title">
+                    Chaque jour sans site web,<br>
+                    c'est un client chez<br>
+                    <span class="gradient-text typed-wrap"><span id="typedText"></span><span class="typed-cursor">|</span></span>
+                </h1>
+                <p class="hero-subtitle">
+                    70% des Marocains cherchent sur Google avant d'acheter.<br>
+                    VistraDev crée des sites qui <strong>capturent ces clients</strong> — livrés en 48h, à partir de 1 000 DH.
+                </p>
+                <div class="hero-ctas">
+                    <a href="https://wa.me/212661971520?text=Bonjour%20VistraDev%20!%20Je%20souhaite%20un%20devis%20gratuit%20pour%20la%20création%20de%20mon%20site%20web." class="btn btn-primary btn-glow magnetic" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Devis Gratuit en 24h
+                    </a>
+                    <a href="#portfolio" class="btn btn-outline magnetic">
+                        Voir nos réalisations <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
-                <div class="stat-divider"></div>
-                <div class="stat-item">
-                    <span class="stat-number" data-count="100">0</span><span class="stat-suffix">%</span>
-                    <span class="stat-label">Satisfaction</span>
-                </div>
-            </div>
-        </div>
-        <!-- Hero visual mockup -->
-        <div class="hero-visual" data-animate="fade-up" data-delay="500">
-            <div class="hero-mockup-wrap">
-                <div class="hero-mockup-laptop">
-                    <div class="laptop-screen">
-                        <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=700&q=80" alt="Site web créé par VistraDev">
+                <div class="hero-social-proof">
+                    <div class="proof-avatars">
+                        <img src="https://i.pravatar.cc/36?img=11" alt="">
+                        <img src="https://i.pravatar.cc/36?img=32" alt="">
+                        <img src="https://i.pravatar.cc/36?img=47" alt="">
+                        <img src="https://i.pravatar.cc/36?img=58" alt="">
+                        <img src="https://i.pravatar.cc/36?img=23" alt="">
+                    </div>
+                    <div class="proof-text">
+                        <div class="proof-stars">★★★★★</div>
+                        <span>+127 commerçants nous font confiance au Maroc</span>
                     </div>
                 </div>
-                <div class="hero-mockup-phone">
-                    <div class="phone-screen">
-                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=300&q=80" alt="Version mobile">
+            </div>
+
+            <!-- RIGHT — Stacked screens -->
+            <div class="hero-right">
+                <div class="hero-screens-stack">
+                    <!-- Screen 1 — Restaurant (back, tilted) -->
+                    <div class="hero-screen screen-back tilt-card">
+                        <div class="screen-bar">
+                            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+                            <span class="screen-url">leriad-saveurs.ma</span>
+                        </div>
+                        <div class="screen-content" style="background:linear-gradient(160deg,#1a0f05,#c8702a);overflow:hidden;">
+                            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=500&q=70" alt="Restaurant" style="width:100%;height:100%;object-fit:cover;opacity:0.75;">
+                        </div>
                     </div>
-                </div>
-                <div class="hero-mockup-badge badge-top">
-                    <i class="fas fa-bolt" style="color:#fbbf24"></i>
-                    <span>Livraison 48h</span>
-                </div>
-                <div class="hero-mockup-badge badge-bottom">
-                    <i class="fas fa-star" style="color:#fbbf24"></i>
-                    <span>5.0 · 127 avis</span>
+                    <!-- Screen 2 — Boutique (middle) -->
+                    <div class="hero-screen screen-mid tilt-card">
+                        <div class="screen-bar">
+                            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+                            <span class="screen-url">atlasmode.ma</span>
+                        </div>
+                        <div class="screen-content" style="background:#0a0a0a;overflow:hidden;">
+                            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=70" alt="Mode" style="width:100%;height:100%;object-fit:cover;opacity:0.65;">
+                        </div>
+                        <div class="screen-metric"><i class="fas fa-arrow-up"></i> +300% ventes</div>
+                    </div>
+                    <!-- Screen 3 — Clinique (front) -->
+                    <div class="hero-screen screen-front tilt-card">
+                        <div class="screen-bar">
+                            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+                            <span class="screen-url">dentacare.ma</span>
+                        </div>
+                        <div class="screen-content" style="background:linear-gradient(135deg,#0d1b2e,#0066cc);overflow:hidden;">
+                            <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=500&q=70" alt="Clinique" style="width:100%;height:100%;object-fit:cover;opacity:0.55;">
+                        </div>
+                        <div class="screen-metric"><i class="fas fa-arrow-up"></i> +180% patients</div>
+                    </div>
+                    <!-- Floating badges -->
+                    <div class="screen-badge sb-1"><i class="fas fa-bolt" style="color:#fbbf24"></i> Livraison 48h</div>
+                    <div class="screen-badge sb-2"><i class="fas fa-star" style="color:#fbbf24"></i> 5.0 / 127 avis</div>
+                    <div class="screen-badge sb-3"><i class="fas fa-check" style="color:#22c55e"></i> SSL + Hébergement</div>
                 </div>
             </div>
         </div>
 
         <div class="hero-scroll-indicator">
-            <div class="scroll-mouse">
-                <div class="scroll-wheel"></div>
-            </div>
+            <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
         </div>
     </section>
 
@@ -177,6 +208,42 @@
                 <div class="trust-item">
                     <i class="fas fa-server"></i>
                     <span>Hébergement inclus</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="impact-section">
+        <div class="impact-bg">
+            <img src="https://images.unsplash.com/photo-1539635278303-d4002c07eae3?w=1400&q=60" alt="Maroc">
+        </div>
+        <div class="impact-overlay"></div>
+        <div class="container impact-content">
+            <div class="impact-tag" data-animate="fade-up">En chiffres</div>
+            <h2 class="impact-title" data-animate="fade-up" data-delay="100">
+                Des résultats réels,<br>pour de <span class="gradient-text">vrais commerçants</span>
+            </h2>
+            <div class="impact-grid">
+                <div class="impact-stat" data-animate="fade-up" data-delay="0">
+                    <span class="impact-num" data-count="150">0</span><span class="impact-suf">+</span>
+                    <span class="impact-label">Sites livrés au Maroc</span>
+                    <span class="impact-sub">Restaurants, cliniques, boutiques…</span>
+                </div>
+                <div class="impact-stat" data-animate="fade-up" data-delay="100">
+                    <span class="impact-num" data-count="3">0</span><span class="impact-suf">x</span>
+                    <span class="impact-label">Clients en plus en moyenne</span>
+                    <span class="impact-sub">Après mise en ligne du site</span>
+                </div>
+                <div class="impact-stat" data-animate="fade-up" data-delay="200">
+                    <span class="impact-num" data-count="48">0</span><span class="impact-suf">h</span>
+                    <span class="impact-label">Délai de livraison express</span>
+                    <span class="impact-sub">Pour les sites One Page</span>
+                </div>
+                <div class="impact-stat" data-animate="fade-up" data-delay="300">
+                    <span class="impact-num" data-count="100">0</span><span class="impact-suf">%</span>
+                    <span class="impact-label">Satisfaction client</span>
+                    <span class="impact-sub">Satisfait ou remboursé 30j</span>
                 </div>
             </div>
         </div>
@@ -551,52 +618,125 @@
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="section testimonials">
+    <!-- Testimonials Carousel -->
+    <section class="section testimonials" id="avis">
         <div class="container">
             <div class="section-header" data-animate="fade-up">
                 <span class="section-tag">Témoignages</span>
                 <h2 class="section-title">Ils nous font<br><span class="gradient-text">confiance</span></h2>
+                <p class="section-desc">Plus de 127 commerçants marocains ont déjà transformé leur business avec VistraDev.</p>
             </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card" data-animate="fade-up" data-delay="0">
-                    <div class="testimonial-stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <div class="carousel-wrap" data-animate="fade-up">
+                <div class="carousel-track" id="carouselTrack">
+                    <!-- Card 1 -->
+                    <div class="carousel-slide">
+                        <div class="testi-card-new">
+                            <div class="testi-top">
+                                <div class="testi-stars-row">★★★★★</div>
+                                <img src="https://i.pravatar.cc/56?img=11" alt="Ahmed B." class="testi-avatar-img">
+                            </div>
+                            <p class="testi-quote">"VistraDev a transformé mon restaurant. Livré en 3 jours, et mes clients me trouvent maintenant directement sur Google. <strong>Les réservations ont doublé en un mois.</strong>"</p>
+                            <div class="testi-author-row">
+                                <div>
+                                    <strong>Ahmed Benali</strong>
+                                    <span>Restaurant, Casablanca</span>
+                                </div>
+                                <div class="testi-result">+200%<span>réservations</span></div>
+                            </div>
+                        </div>
                     </div>
-                    <p class="testimonial-text">"VistraDev a transformé mon commerce. Mon site a été livré en 3 jours et mes clients me trouvent maintenant sur Google. Les ventes ont doublé en un mois !"</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">A</div>
-                        <div>
-                            <strong>Ahmed B.</strong>
-                            <span>Restaurant, Casablanca</span>
+                    <!-- Card 2 -->
+                    <div class="carousel-slide">
+                        <div class="testi-card-new">
+                            <div class="testi-top">
+                                <div class="testi-stars-row">★★★★★</div>
+                                <img src="https://i.pravatar.cc/56?img=32" alt="Sara M." class="testi-avatar-img">
+                            </div>
+                            <p class="testi-quote">"Rapport qualité/prix imbattable. Le design est magnifique et l'équipe répond sur WhatsApp en moins de 10 minutes. <strong>Je recommande les yeux fermés.</strong>"</p>
+                            <div class="testi-author-row">
+                                <div>
+                                    <strong>Sara Moussaoui</strong>
+                                    <span>Salon de beauté, Rabat</span>
+                                </div>
+                                <div class="testi-result">+150%<span>clientes</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="carousel-slide">
+                        <div class="testi-card-new">
+                            <div class="testi-top">
+                                <div class="testi-stars-row">★★★★★</div>
+                                <img src="https://i.pravatar.cc/56?img=58" alt="Khalid R." class="testi-avatar-img">
+                            </div>
+                            <p class="testi-quote">"J'avais peur de dépenser pour un site. Aujourd'hui je regrette de ne pas l'avoir fait plus tôt. <strong>Ma boutique vend maintenant dans tout le Maroc</strong> grâce au site."</p>
+                            <div class="testi-author-row">
+                                <div>
+                                    <strong>Khalid Raji</strong>
+                                    <span>Boutique mode, Marrakech</span>
+                                </div>
+                                <div class="testi-result">+300%<span>ventes</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="carousel-slide">
+                        <div class="testi-card-new">
+                            <div class="testi-top">
+                                <div class="testi-stars-row">★★★★★</div>
+                                <img src="https://i.pravatar.cc/56?img=47" alt="Dr Alami" class="testi-avatar-img">
+                            </div>
+                            <p class="testi-quote">"En tant que médecin, j'avais besoin d'un site sérieux et rassurant. VistraDev a exactement compris ça. <strong>Aujourd'hui 40% de mes nouveaux patients viennent de Google.</strong>"</p>
+                            <div class="testi-author-row">
+                                <div>
+                                    <strong>Dr. Nadia Alami</strong>
+                                    <span>Clinique dentaire, Rabat</span>
+                                </div>
+                                <div class="testi-result">+180%<span>patients</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 5 -->
+                    <div class="carousel-slide">
+                        <div class="testi-card-new">
+                            <div class="testi-top">
+                                <div class="testi-stars-row">★★★★★</div>
+                                <img src="https://i.pravatar.cc/56?img=23" alt="Youssef E." class="testi-avatar-img">
+                            </div>
+                            <p class="testi-quote">"Livraison en 2 jours chrono, exactement comme promis. Le site est beau, rapide et responsive. <strong>Mes concurrents me demandent qui a fait mon site</strong> — je leur dis VistraDev !"</p>
+                            <div class="testi-author-row">
+                                <div>
+                                    <strong>Youssef El Fassi</strong>
+                                    <span>Salle de sport, Fès</span>
+                                </div>
+                                <div class="testi-result">+120%<span>abonnés</span></div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="testimonial-card" data-animate="fade-up" data-delay="100">
-                    <div class="testimonial-stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">"Rapport qualité/prix imbattable. Le design est magnifique et l'équipe est super réactive sur WhatsApp. Je recommande à 100% !"</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">S</div>
-                        <div>
-                            <strong>Sara M.</strong>
-                            <span>Salon de beauté, Rabat</span>
-                        </div>
-                    </div>
+                <!-- Controls -->
+                <div class="carousel-controls">
+                    <button class="carousel-btn prev" id="carouselPrev" aria-label="Précédent"><i class="fas fa-chevron-left"></i></button>
+                    <div class="carousel-dots" id="carouselDots"></div>
+                    <button class="carousel-btn next" id="carouselNext" aria-label="Suivant"><i class="fas fa-chevron-right"></i></button>
                 </div>
-                <div class="testimonial-card" data-animate="fade-up" data-delay="200">
-                    <div class="testimonial-stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">"J'ai comparé plusieurs agences et VistraDev est de loin le meilleur choix. Professionnel, rapide et le résultat dépasse mes attentes. Merci l'équipe !"</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">K</div>
-                        <div>
-                            <strong>Khalid R.</strong>
-                            <span>Boutique mode, Marrakech</span>
-                        </div>
-                    </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guarantee Section -->
+    <section class="guarantee-section">
+        <div class="container">
+            <div class="guarantee-card" data-animate="fade-up">
+                <div class="guarantee-icon"><i class="fas fa-shield-alt"></i></div>
+                <div class="guarantee-text">
+                    <h3>Satisfait ou remboursé — <span class="gradient-text">30 jours</span></h3>
+                    <p>Pas satisfait du résultat dans les 30 jours suivant la livraison ? On vous rembourse intégralement. Sans discussion. C'est notre promesse.</p>
+                </div>
+                <div class="guarantee-badges">
+                    <div class="g-badge"><i class="fas fa-check"></i> Livraison dans les délais ou offert</div>
+                    <div class="g-badge"><i class="fas fa-check"></i> Modifications gratuites incluses</div>
+                    <div class="g-badge"><i class="fas fa-check"></i> Support 7j/7 à vie</div>
                 </div>
             </div>
         </div>
