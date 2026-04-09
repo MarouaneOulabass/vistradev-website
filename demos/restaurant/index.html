@@ -77,6 +77,31 @@
         .stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--primary); }
         .stat-lbl { font-size: 0.8rem; color: var(--text-light); }
 
+        /* Chef Spotlight */
+        .chef-section { background: #fdf0e0; }
+        .chef-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+        .chef-img-wrap { position: relative; }
+        .chef-img-wrap img { width: 100%; border-radius: 16px; object-fit: cover; height: 520px; display: block; box-shadow: 0 24px 64px rgba(200,112,42,0.2); }
+        .chef-img-ornament { position: absolute; bottom: -18px; right: -18px; width: 120px; height: 120px; border: 3px solid var(--gold); border-radius: 12px; z-index: -1; }
+        .chef-label { font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--primary); font-weight: 600; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+        .chef-label::before { content: ''; width: 28px; height: 2px; background: var(--primary); }
+        .chef-info h2 { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 700; line-height: 1.15; color: var(--dark); margin-bottom: 6px; }
+        .chef-subtitle { font-family: 'Playfair Display', serif; font-style: italic; color: var(--text-light); font-size: 1.05rem; margin-bottom: 20px; }
+        .chef-bio { color: var(--text-light); font-size: 0.93rem; line-height: 1.85; margin-bottom: 28px; }
+        .chef-badges { display: flex; flex-direction: column; gap: 12px; }
+        .chef-badge-item { display: flex; align-items: center; gap: 14px; padding: 14px 18px; background: white; border-radius: 10px; border-left: 3px solid var(--gold); box-shadow: 0 2px 12px rgba(200,112,42,0.08); }
+        .chef-badge-item i { color: var(--gold); font-size: 1rem; flex-shrink: 0; }
+        .chef-badge-item span { font-size: 0.87rem; font-weight: 600; color: var(--text); }
+
+        /* Engagements */
+        .engagements-section { background: #fef9f1; }
+        .engagements-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 48px; }
+        .engagement-card { text-align: center; padding: 36px 20px; background: white; border-radius: 16px; border: 1px solid rgba(212,168,67,0.15); transition: all 0.35s; }
+        .engagement-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(200,112,42,0.12); border-color: var(--gold); }
+        .engagement-icon { width: 70px; height: 70px; margin: 0 auto 18px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(200,112,42,0.12), rgba(212,168,67,0.08)); border-radius: 50%; font-size: 1.5rem; color: var(--primary); }
+        .engagement-card h4 { font-family: 'Playfair Display', serif; font-size: 1.05rem; margin-bottom: 10px; color: var(--dark); }
+        .engagement-card p { font-size: 0.82rem; color: var(--text-light); line-height: 1.6; }
+
         /* Menu */
         .menu-section { background: var(--dark); color: white; }
         .menu-section .tag { background: rgba(212,168,67,0.1); color: var(--gold); }
@@ -95,12 +120,24 @@
         .menu-price { font-weight: 700; color: var(--gold); font-size: 0.95rem; margin-top: 6px; display: block; }
 
         /* Gallery */
-        .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: 200px 200px; gap: 12px; }
-        .gallery-item { overflow: hidden; border-radius: 12px; }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-        .gallery-item:hover img { transform: scale(1.07); }
-        .gallery-item:nth-child(1) { grid-column: span 2; }
-        .gallery-item:nth-child(4) { grid-row: span 2; }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            grid-template-rows: 240px 240px;
+            gap: 14px;
+        }
+        .gallery-item { overflow: hidden; border-radius: 14px; position: relative; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.55s ease; }
+        .gallery-item:hover img { transform: scale(1.08); }
+        .gallery-item::after { content: ''; position: absolute; inset: 0; background: rgba(26,15,5,0); transition: background 0.35s; border-radius: 14px; }
+        .gallery-item:hover::after { background: rgba(26,15,5,0.18); }
+        /* Item 1: tall left column spanning both rows */
+        .gallery-item:nth-child(1) { grid-column: 1; grid-row: 1 / 3; }
+        /* Items 2–5: 2x2 grid on right two columns */
+        .gallery-item:nth-child(2) { grid-column: 2; grid-row: 1; }
+        .gallery-item:nth-child(3) { grid-column: 3; grid-row: 1; }
+        .gallery-item:nth-child(4) { grid-column: 2; grid-row: 2; }
+        .gallery-item:nth-child(5) { grid-column: 3; grid-row: 2; }
 
         /* Reservation */
         .reservation-section { background: var(--dark2); color: white; }
@@ -138,10 +175,19 @@
         .credit { position: fixed; bottom: 90px; right: 16px; padding: 6px 12px; background: rgba(10,10,26,0.8); border: 1px solid rgba(124,58,237,0.3); border-radius: 20px; font-size: 0.72rem; color: #a78bfa; z-index: 998; text-decoration: none; backdrop-filter: blur(8px); }
 
         @media(max-width: 768px) {
-            .about-grid, .menu-grid, .reservation-grid { grid-template-columns: 1fr; }
-            .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: auto; }
-            .gallery-item:nth-child(1) { grid-column: span 1; }
-            .gallery-item:nth-child(4) { grid-row: span 1; }
+            .about-grid, .menu-grid, .reservation-grid, .chef-grid { grid-template-columns: 1fr; }
+            .chef-img-wrap img { height: 320px; }
+            .chef-img-ornament { display: none; }
+            .engagements-grid { grid-template-columns: repeat(2, 1fr); }
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 180px 180px 180px;
+            }
+            .gallery-item:nth-child(1) { grid-column: 1 / 3; grid-row: 1; }
+            .gallery-item:nth-child(2) { grid-column: 1; grid-row: 2; }
+            .gallery-item:nth-child(3) { grid-column: 2; grid-row: 2; }
+            .gallery-item:nth-child(4) { grid-column: 1; grid-row: 3; }
+            .gallery-item:nth-child(5) { grid-column: 2; grid-row: 3; }
             .nav-menu { display: none; }
             .form-row { grid-template-columns: 1fr; }
         }
@@ -194,6 +240,38 @@
                     <div class="stat"><div class="stat-num">14</div><div class="stat-lbl">Ans d'expérience</div></div>
                     <div class="stat"><div class="stat-num">5k+</div><div class="stat-lbl">Clients satisfaits</div></div>
                     <div class="stat"><div class="stat-num">35+</div><div class="stat-lbl">Plats au menu</div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Chef Spotlight -->
+<section class="section chef-section" id="chef">
+    <div class="container">
+        <div class="chef-grid">
+            <div class="chef-img-wrap">
+                <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=600&q=80" alt="Chef Karim Mansouri">
+                <div class="chef-img-ornament"></div>
+            </div>
+            <div class="chef-info">
+                <div class="chef-label">Notre Chef</div>
+                <h2>Chef Karim<br>Mansouri</h2>
+                <p class="chef-subtitle">30 ans de passion culinaire</p>
+                <p class="chef-bio">Formé dans les plus grandes cuisines du Maroc et d'Europe, Chef Karim a consacré sa vie à sublimer la gastronomie marocaine. Avec une maîtrise parfaite des épices et une créativité sans limites, il réinvente les recettes ancestrales tout en respectant leur authenticité. Chaque plat qu'il crée est une œuvre d'art culinaire, un voyage entre tradition et modernité.</p>
+                <div class="chef-badges">
+                    <div class="chef-badge-item">
+                        <i class="fas fa-trophy"></i>
+                        <span>Meilleur Restaurant Marrakech 2024</span>
+                    </div>
+                    <div class="chef-badge-item">
+                        <i class="fas fa-star"></i>
+                        <span>Étoile Gastronomique</span>
+                    </div>
+                    <div class="chef-badge-item">
+                        <i class="fas fa-leaf"></i>
+                        <span>Produits 100% locaux</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -257,11 +335,44 @@
             <h2 style="font-family:'Playfair Display',serif;font-size:2.2rem;margin-top:8px;">Notre ambiance</h2>
         </div>
         <div class="gallery-grid">
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80" alt="Restaurant"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1547592180-85f173990554?w=500&q=80" alt="Cuisine"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=500&q=80" alt="Plat"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=500&q=80" alt="Dîner"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=500&q=80" alt="Nourriture"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=80" alt="Ambiance du restaurant"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&q=80" alt="Plat marocain"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=500&q=80" alt="Tajine traditionnel"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1541014741259-de529411b96a?w=500&q=80" alt="Soupe harira"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=500&q=80" alt="Couscous royal"></div>
+        </div>
+    </div>
+</section>
+
+<!-- Nos Engagements -->
+<section class="section engagements-section" id="engagements">
+    <div class="container">
+        <div style="text-align:center;">
+            <span class="tag">Nos valeurs</span>
+            <h2 style="font-family:'Playfair Display',serif;font-size:2.2rem;margin-top:8px;margin-bottom:10px;">Nos engagements</h2>
+            <p style="color:var(--text-light);font-style:italic;font-size:0.95rem;">Ce qui nous distingue, chaque jour</p>
+        </div>
+        <div class="engagements-grid">
+            <div class="engagement-card">
+                <div class="engagement-icon"><i class="fas fa-seedling"></i></div>
+                <h4>Ingrédients frais du souk</h4>
+                <p>Nous nous approvisionnons chaque matin au marché local pour garantir des produits de saison, frais et savoureux.</p>
+            </div>
+            <div class="engagement-card">
+                <div class="engagement-icon"><i class="fas fa-fire"></i></div>
+                <h4>Cuisine 100% maison</h4>
+                <p>Tout est préparé sur place, de nos sauces aux pains, selon des recettes traditionnelles transmises de génération en génération.</p>
+            </div>
+            <div class="engagement-card">
+                <div class="engagement-icon"><i class="fas fa-award"></i></div>
+                <h4>Service en salle authentique</h4>
+                <p>Notre équipe accueille chaque convive avec chaleur et hospitalité, dans la plus pure tradition marocaine.</p>
+            </div>
+            <div class="engagement-card">
+                <div class="engagement-icon"><i class="fas fa-star"></i></div>
+                <h4>Cadre classé</h4>
+                <p>Notre riad classé, avec ses zelliges et ses moucharabiehs, offre un décor exceptionnel au cœur de la médina historique.</p>
+            </div>
         </div>
     </div>
 </section>

@@ -146,6 +146,46 @@
         .footer-bottom { padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center; }
         .footer-bottom p { font-size: 0.8rem; color: rgba(255,255,255,0.35); }
 
+        /* Notre Processus */
+        .process-section { background: #f7faff; }
+        .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; }
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: calc(12.5%);
+            right: calc(12.5%);
+            height: 2px;
+            border-top: 2px dashed var(--primary);
+            opacity: 0.35;
+            z-index: 0;
+        }
+        .process-step { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 20px; position: relative; z-index: 1; }
+        .process-num-wrap { position: relative; margin-bottom: 20px; }
+        .process-circle { width: 80px; height: 80px; background: white; border: 2px solid var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-direction: column; box-shadow: 0 4px 20px rgba(0,102,204,0.15); }
+        .process-circle i { font-size: 1.3rem; color: var(--primary); margin-bottom: 2px; }
+        .process-circle-num { font-size: 0.7rem; font-weight: 800; color: var(--primary); letter-spacing: 0.02em; }
+        .process-step h4 { font-size: 0.95rem; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+        .process-step p { font-size: 0.82rem; color: var(--text-light); line-height: 1.65; }
+
+        /* Urgences Banner */
+        .urgences-banner { background: #05264a; padding: 72px 0; text-align: center; }
+        .urgences-eyebrow { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: #4db8ff; margin-bottom: 14px; font-weight: 600; }
+        .urgences-banner h2 { font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 800; color: white; line-height: 1.15; margin-bottom: 16px; }
+        .urgences-banner h2 span { color: #4db8ff; }
+        .urgences-sub { font-size: 0.96rem; color: rgba(255,255,255,0.65); max-width: 500px; margin: 0 auto 32px; line-height: 1.75; }
+        .btn-wa-large { display: inline-flex; align-items: center; gap: 12px; padding: 16px 36px; background: #25D366; color: white; border-radius: 12px; font-size: 1rem; font-weight: 700; text-decoration: none; transition: all 0.3s; box-shadow: 0 8px 28px rgba(37,211,102,0.35); }
+        .btn-wa-large:hover { background: #1eb858; transform: translateY(-2px); box-shadow: 0 12px 36px rgba(37,211,102,0.45); }
+        .btn-wa-large i { font-size: 1.3rem; }
+
+        @media(max-width: 768px) {
+            .process-steps { grid-template-columns: 1fr 1fr; gap: 32px; }
+            .process-steps::before { display: none; }
+        }
+        @media(max-width: 480px) {
+            .process-steps { grid-template-columns: 1fr; }
+        }
+
         /* WhatsApp */
         .wa-float { position: fixed; bottom: 24px; right: 24px; width: 54px; height: 54px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; z-index: 999; box-shadow: 0 4px 16px rgba(37,211,102,0.4); text-decoration: none; transition: transform 0.3s; }
         .wa-float:hover { transform: scale(1.1); }
@@ -289,6 +329,59 @@
     </div>
 </section>
 
+<!-- Notre Processus -->
+<section class="section process-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="chip"><i class="fas fa-route"></i> Votre parcours patient</span>
+            <h2 class="section-title">Notre processus en 4 étapes</h2>
+            <p class="section-sub">Un accompagnement clair et transparent, de la prise de contact jusqu'au suivi post-soins</p>
+        </div>
+        <div class="process-steps">
+            <div class="process-step">
+                <div class="process-num-wrap">
+                    <div class="process-circle">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span class="process-circle-num">01</span>
+                    </div>
+                </div>
+                <h4>Prise de RDV</h4>
+                <p>Contactez-nous via WhatsApp ou notre formulaire. Confirmation en moins de 2h.</p>
+            </div>
+            <div class="process-step">
+                <div class="process-num-wrap">
+                    <div class="process-circle">
+                        <i class="fas fa-tooth"></i>
+                        <span class="process-circle-num">02</span>
+                    </div>
+                </div>
+                <h4>Consultation initiale</h4>
+                <p>Bilan complet de votre état bucco-dentaire avec panoramique numérique.</p>
+            </div>
+            <div class="process-step">
+                <div class="process-num-wrap">
+                    <div class="process-circle">
+                        <i class="fas fa-clipboard-list"></i>
+                        <span class="process-circle-num">03</span>
+                    </div>
+                </div>
+                <h4>Plan de traitement</h4>
+                <p>Devis détaillé et transparent. Paiement en plusieurs fois disponible.</p>
+            </div>
+            <div class="process-step">
+                <div class="process-num-wrap">
+                    <div class="process-circle">
+                        <i class="fas fa-heart"></i>
+                        <span class="process-circle-num">04</span>
+                    </div>
+                </div>
+                <h4>Soins &amp; Suivi</h4>
+                <p>Traitement selon le planning établi, avec suivi post-soins personnalisé.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- Why Us -->
 <section class="section why-section" id="why">
     <div class="container">
@@ -324,6 +417,19 @@
                 </div>
             </div>
         </div>
+    </div>
+</section>
+
+<!-- Urgences Dentaires Banner -->
+<section class="urgences-banner">
+    <div class="container">
+        <div class="urgences-eyebrow">Disponible 7 jours sur 7</div>
+        <h2>Urgences dentaires <span>7j/7</span></h2>
+        <p class="urgences-sub">Douleur intense ? Dent cassée ? Prise en charge immédiate de 8h à 20h. Notre équipe est mobilisée pour vous soulager rapidement.</p>
+        <a href="https://wa.me/212600000004" class="btn-wa-large">
+            <i class="fab fa-whatsapp"></i>
+            Contacter l'équipe d'urgence
+        </a>
     </div>
 </section>
 
