@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zina Beauty — Cosmétiques Naturels du Maroc</title>
+    <meta name="description" content="Zina Beauty : cosmétiques naturels marocains. Huile d'argan, savon noir, ghassoul. Livraison partout au Maroc.">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --rose: #be185d;
+            --rose-light: #f9a8d4;
+            --rose-pale: #fdf2f8;
+            --gold: #b8860b;
+            --gold-pale: #fefce8;
+            --cream: #faf8f5;
+            --sand: #f5f0eb;
+            --dark: #1a1210;
+            --text: #2d2522;
+            --text-light: #8c7e76;
+            --border: #e8e0d8;
+            --white: #ffffff;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--text); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+        h1, h2, h3, .serif { font-family: 'Cormorant Garamond', serif; }
+
+        /* ── Nav ── */
+        nav { position: fixed; top: 0; width: 100%; z-index: 200; height: 68px; background: rgba(255,255,255,0.96); backdrop-filter: blur(16px); border-bottom: 1px solid transparent; transition: border-color 0.4s, box-shadow 0.4s; }
+        nav.scrolled { border-color: var(--border); box-shadow: 0 1px 12px rgba(0,0,0,0.04); }
+        .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: center; justify-content: space-between; }
+        .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+        .logo-text { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 700; color: var(--dark); letter-spacing: -0.01em; }
+        .logo-text span { color: var(--rose); }
+        .nav-menu { display: flex; gap: 28px; list-style: none; }
+        .nav-menu a { font-size: 0.82rem; color: var(--text-light); text-decoration: none; font-weight: 500; transition: color 0.3s; letter-spacing: 0.02em; }
+        .nav-menu a:hover { color: var(--rose); }
+        .nav-right { display: flex; align-items: center; gap: 14px; }
+        .nav-cart { position: relative; font-size: 1.1rem; color: var(--text); text-decoration: none; }
+        .nav-cart-count { position: absolute; top: -6px; right: -8px; width: 16px; height: 16px; background: var(--rose); color: white; font-size: 0.6rem; font-weight: 700; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .nav-cta { padding: 8px 18px; background: var(--rose); color: white; border-radius: 30px; font-size: 0.8rem; font-weight: 600; text-decoration: none; transition: all 0.3s; }
+        .nav-cta:hover { background: #9d174d; }
+        .nav-burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+        .nav-burger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; }
+
+        /* ── Hero ── */
+        .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 68px; }
+        .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 60px 60px 60px 80px; background: var(--cream); }
+        .hero-kicker { display: inline-flex; align-items: center; gap: 8px; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rose); margin-bottom: 24px; }
+        .hero-kicker::before { content: ''; width: 24px; height: 2px; background: var(--rose); border-radius: 2px; }
+        .hero h1 { font-size: clamp(2.6rem, 5vw, 4.2rem); font-weight: 700; line-height: 1.08; color: var(--dark); margin-bottom: 20px; font-style: italic; }
+        .hero h1 em { font-style: normal; color: var(--rose); }
+        .hero-desc { font-size: 0.95rem; color: var(--text-light); line-height: 1.75; max-width: 400px; margin-bottom: 32px; }
+        .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 36px; }
+        .btn-rose { padding: 14px 30px; background: var(--rose); color: white; border-radius: 30px; font-size: 0.88rem; font-weight: 600; text-decoration: none; transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px; }
+        .btn-rose:hover { background: #9d174d; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(190,24,93,0.2); }
+        .btn-ghost-dark { padding: 14px 30px; border: 1.5px solid var(--border); color: var(--text); border-radius: 30px; font-size: 0.88rem; font-weight: 500; text-decoration: none; transition: all 0.3s; }
+        .btn-ghost-dark:hover { border-color: var(--rose); color: var(--rose); }
+        .hero-trust { display: flex; gap: 24px; }
+        .trust-item { display: flex; align-items: center; gap: 6px; font-size: 0.78rem; color: var(--text-light); }
+        .trust-item i { color: var(--gold); font-size: 0.7rem; }
+        .hero-right { position: relative; overflow: hidden; }
+        .hero-right img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .hero-badge { position: absolute; bottom: 32px; left: -16px; background: white; border-radius: 14px; padding: 14px 18px; box-shadow: 0 12px 40px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 12px; }
+        .hero-badge-icon { font-size: 1.4rem; }
+        .hero-badge strong { display: block; font-size: 0.82rem; font-weight: 700; color: var(--dark); }
+        .hero-badge span { font-size: 0.7rem; color: var(--text-light); }
+
+        /* ── Sections ── */
+        .section { padding: 88px 0; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        .section-tag { display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px; background: var(--rose-pale); color: var(--rose); border-radius: 30px; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 14px; font-family: 'DM Sans', sans-serif; }
+        .section-title { font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 700; line-height: 1.1; color: var(--dark); margin-bottom: 10px; font-style: italic; }
+        .section-sub { font-size: 0.9rem; color: var(--text-light); line-height: 1.65; max-width: 480px; }
+        .section-header { margin-bottom: 48px; }
+        .section-header.center { text-align: center; }
+        .section-header.center .section-sub { margin: 0 auto; }
+
+        /* ── Marquee ── */
+        .marquee-bar { overflow: hidden; padding: 14px 0; background: var(--dark); white-space: nowrap; }
+        .marquee-track { display: inline-flex; gap: 0; animation: marquee 30s linear infinite; }
+        .marquee-item { padding: 0 32px; font-size: 0.78rem; font-weight: 600; color: rgba(255,255,255,0.5); letter-spacing: 0.08em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 10px; }
+        .marquee-item span { color: var(--rose-light); }
+        @keyframes marquee { to { transform: translateX(-50%); } }
+
+        /* ── Bestsellers ── */
+        .bestsellers { background: var(--white); }
+        .products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+        .product-card { border: 1px solid var(--border); border-radius: 16px; overflow: hidden; transition: all 0.4s; background: white; }
+        .product-card:hover { box-shadow: 0 16px 48px rgba(0,0,0,0.06); transform: translateY(-4px); }
+        .product-img-wrap { position: relative; overflow: hidden; }
+        .product-img { width: 100%; height: 280px; object-fit: cover; display: block; transition: transform 0.5s; }
+        .product-card:hover .product-img { transform: scale(1.05); }
+        .product-badge { position: absolute; top: 12px; left: 12px; padding: 4px 10px; border-radius: 20px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
+        .badge-best { background: var(--gold-pale); color: var(--gold); }
+        .badge-new { background: var(--rose-pale); color: var(--rose); }
+        .badge-promo { background: #fef2f2; color: #dc2626; }
+        .product-quick { position: absolute; bottom: 12px; right: 12px; width: 40px; height: 40px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--rose); font-size: 0.85rem; box-shadow: 0 4px 16px rgba(0,0,0,0.1); opacity: 0; transform: translateY(8px); transition: all 0.3s; text-decoration: none; }
+        .product-card:hover .product-quick { opacity: 1; transform: translateY(0); }
+        .product-body { padding: 18px; }
+        .product-cat { font-size: 0.68rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+        .product-name { font-family: 'Cormorant Garamond', serif; font-size: 1.08rem; font-weight: 600; margin-bottom: 8px; color: var(--dark); }
+        .product-price { font-size: 0.95rem; font-weight: 700; color: var(--rose); }
+        .product-price .old { text-decoration: line-through; color: var(--text-light); font-weight: 400; margin-right: 6px; font-size: 0.82rem; }
+        .product-stars { font-size: 0.7rem; color: var(--gold); margin-top: 6px; letter-spacing: 1px; }
+
+        /* ── Categories ── */
+        .categories { background: var(--cream); }
+        .cat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+        .cat-card { position: relative; border-radius: 18px; overflow: hidden; height: 320px; cursor: pointer; }
+        .cat-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        .cat-card:hover img { transform: scale(1.08); }
+        .cat-overlay { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,0.6) 0%, transparent 60%); display: flex; flex-direction: column; justify-content: flex-end; padding: 28px; }
+        .cat-overlay h3 { font-size: 1.4rem; font-weight: 700; color: white; margin-bottom: 4px; }
+        .cat-overlay p { font-size: 0.8rem; color: rgba(255,255,255,0.7); }
+        .cat-overlay .cat-arrow { display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; font-size: 0.8rem; font-weight: 600; color: white; text-decoration: none; }
+
+        /* ── Story / About ── */
+        .story { background: var(--white); }
+        .story-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .story-img { width: 100%; border-radius: 20px; height: 480px; object-fit: cover; }
+        .story-text h2 { font-size: 2.2rem; font-weight: 700; line-height: 1.12; margin-bottom: 16px; font-style: italic; }
+        .story-text p { font-size: 0.9rem; color: var(--text-light); line-height: 1.75; margin-bottom: 20px; }
+        .story-values { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        .value-item { display: flex; align-items: center; gap: 10px; font-size: 0.84rem; font-weight: 500; }
+        .value-item .v-emoji { font-size: 1.2rem; }
+
+        /* ── Testimonials ── */
+        .testimonials { background: var(--cream); }
+        .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+        .testi-card { background: white; border: 1px solid var(--border); border-radius: 16px; padding: 28px; }
+        .testi-stars { color: var(--gold); font-size: 0.78rem; margin-bottom: 14px; letter-spacing: 2px; display: block; }
+        .testi-quote { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--text); line-height: 1.65; margin-bottom: 18px; font-style: italic; }
+        .testi-author { display: flex; align-items: center; gap: 10px; }
+        .testi-avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+        .testi-name { font-size: 0.82rem; font-weight: 600; }
+        .testi-loc { font-size: 0.72rem; color: var(--text-light); }
+
+        /* ── Promo Banner ── */
+        .promo-banner { background: linear-gradient(135deg, var(--dark), #2d1f1a); padding: 64px 0; text-align: center; position: relative; overflow: hidden; }
+        .promo-banner h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 700; color: white; margin-bottom: 10px; font-style: italic; }
+        .promo-banner p { font-size: 0.9rem; color: rgba(255,255,255,0.5); margin-bottom: 24px; }
+        .promo-code { display: inline-block; padding: 10px 28px; border: 2px dashed var(--rose-light); border-radius: 10px; font-size: 1.1rem; font-weight: 700; color: var(--rose-light); letter-spacing: 0.1em; margin-bottom: 24px; font-family: monospace; }
+
+        /* ── Shipping / Trust ── */
+        .trust-bar { background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+        .trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding: 40px 0; }
+        .trust-cell { text-align: center; }
+        .trust-cell .t-emoji { font-size: 2rem; margin-bottom: 10px; display: block; }
+        .trust-cell h4 { font-size: 0.88rem; font-weight: 700; margin-bottom: 4px; }
+        .trust-cell p { font-size: 0.78rem; color: var(--text-light); }
+
+        /* ── Newsletter ── */
+        .newsletter { background: var(--rose-pale); padding: 64px 0; text-align: center; }
+        .newsletter h2 { font-size: 2rem; font-weight: 700; margin-bottom: 8px; font-style: italic; }
+        .newsletter p { font-size: 0.88rem; color: var(--text-light); margin-bottom: 24px; }
+        .nl-form { display: flex; gap: 10px; max-width: 440px; margin: 0 auto; }
+        .nl-form input { flex: 1; padding: 14px 18px; border: 1px solid var(--border); border-radius: 30px; font-family: inherit; font-size: 0.85rem; background: white; }
+        .nl-form input:focus { outline: none; border-color: var(--rose); }
+        .nl-form button { padding: 14px 24px; background: var(--rose); color: white; border: none; border-radius: 30px; font-family: inherit; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: background 0.3s; white-space: nowrap; }
+        .nl-form button:hover { background: #9d174d; }
+
+        /* ── Footer ── */
+        footer { background: var(--dark); padding: 48px 0 24px; }
+        .footer-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 36px; }
+        .footer-brand .logo-text { color: white; font-size: 1.3rem; }
+        .footer-brand p { font-size: 0.8rem; color: rgba(255,255,255,0.35); line-height: 1.6; margin-top: 10px; max-width: 240px; }
+        .footer-social { display: flex; gap: 10px; margin-top: 16px; }
+        .footer-social a { width: 34px; height: 34px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.4); font-size: 0.8rem; text-decoration: none; transition: all 0.3s; }
+        .footer-social a:hover { border-color: var(--rose); color: var(--rose-light); }
+        .footer-col h4 { font-size: 0.72rem; font-weight: 700; color: white; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 14px; }
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 8px; }
+        .footer-col a { font-size: 0.8rem; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.3s; }
+        .footer-col a:hover { color: rgba(255,255,255,0.75); }
+        .footer-bottom { padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+        .footer-bottom p { font-size: 0.72rem; color: rgba(255,255,255,0.2); }
+        .footer-bottom a { color: var(--rose-light); text-decoration: none; }
+        .footer-pay { display: flex; gap: 8px; align-items: center; }
+        .footer-pay span { padding: 4px 10px; background: rgba(255,255,255,0.06); border-radius: 4px; font-size: 0.7rem; color: rgba(255,255,255,0.4); font-weight: 600; }
+
+        /* ── WA Float ── */
+        .wa-float { position: fixed; bottom: 24px; right: 24px; z-index: 300; width: 56px; height: 56px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; text-decoration: none; box-shadow: 0 6px 24px rgba(37,211,102,0.4); transition: transform 0.3s; }
+        .wa-float:hover { transform: scale(1.1); }
+
+        /* ── Reveal ── */
+        .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* ── Responsive ── */
+        @media (max-width: 900px) {
+            .nav-menu { display: none; }
+            .nav-burger { display: flex; }
+            nav.menu-open .nav-menu { display: flex; flex-direction: column; position: absolute; top: 68px; left: 0; right: 0; background: white; padding: 16px 24px; gap: 14px; border-bottom: 1px solid var(--border); box-shadow: 0 12px 32px rgba(0,0,0,0.06); }
+            .hero { grid-template-columns: 1fr; }
+            .hero-left { padding: 40px 24px; }
+            .hero-right { height: 320px; }
+            .hero-badge { display: none; }
+            .products-grid { grid-template-columns: 1fr 1fr; }
+            .cat-grid { grid-template-columns: 1fr; }
+            .cat-card { height: 240px; }
+            .story-layout { grid-template-columns: 1fr; }
+            .story-img { height: 300px; }
+            .testi-grid { grid-template-columns: 1fr; }
+            .trust-grid { grid-template-columns: 1fr 1fr; }
+            .footer-top { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 600px) {
+            .products-grid { grid-template-columns: 1fr; }
+            .trust-grid { grid-template-columns: 1fr; }
+            .nl-form { flex-direction: column; }
+            .footer-top { grid-template-columns: 1fr; }
+            .hero-btns { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav id="nav">
+    <div class="nav-inner">
+        <a href="#" class="logo">
+            <span class="logo-text">Zina <span>Beauty</span></span>
+        </a>
+        <ul class="nav-menu" id="navMenu">
+            <a href="#bestsellers">Bestsellers</a>
+            <a href="#categories">Catégories</a>
+            <a href="#story">Notre histoire</a>
+            <a href="#avis">Avis</a>
+            <a href="#contact">Contact</a>
+        </ul>
+        <div class="nav-right">
+            <a href="#" class="nav-cart"><i class="fas fa-shopping-bag"></i><span class="nav-cart-count">2</span></a>
+            <a href="https://wa.me/212600000000" target="_blank" class="nav-cta">Commander</a>
+        </div>
+        <button class="nav-burger" id="navBurger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="hero">
+    <div class="hero-left">
+        <div class="hero-kicker reveal">Cosmétiques naturels du Maroc</div>
+        <h1 class="reveal">La beauté au naturel, <em>sublimée.</em></h1>
+        <p class="hero-desc reveal">Argan, ghassoul, rose de Dadès — nos soins puisent dans les trésors du Maroc pour révéler votre beauté naturelle. 100% naturel, zéro compromis.</p>
+        <div class="hero-btns reveal">
+            <a href="#bestsellers" class="btn-rose">🛍️ Découvrir la boutique</a>
+            <a href="#story" class="btn-ghost-dark">Notre histoire</a>
+        </div>
+        <div class="hero-trust reveal">
+            <div class="trust-item"><i class="fas fa-star"></i> 4.9/5 (500+ avis)</div>
+            <div class="trust-item"><i class="fas fa-leaf"></i> 100% naturel</div>
+            <div class="trust-item"><i class="fas fa-truck"></i> Livraison 24-48h</div>
+        </div>
+    </div>
+    <div class="hero-right">
+        <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=700&q=80" alt="Cosmétiques naturels">
+        <div class="hero-badge">
+            <span class="hero-badge-icon">🌿</span>
+            <div>
+                <strong>100% Naturel</strong>
+                <span>Certifié bio</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Marquee -->
+<div class="marquee-bar">
+    <div class="marquee-track">
+        <span class="marquee-item"><span>✦</span> Livraison gratuite dès 200 MAD</span>
+        <span class="marquee-item"><span>✦</span> Paiement à la livraison</span>
+        <span class="marquee-item"><span>✦</span> 100% naturel & certifié</span>
+        <span class="marquee-item"><span>✦</span> Satisfait ou remboursé 30j</span>
+        <span class="marquee-item"><span>✦</span> +10 000 clientes satisfaites</span>
+        <span class="marquee-item"><span>✦</span> Livraison gratuite dès 200 MAD</span>
+        <span class="marquee-item"><span>✦</span> Paiement à la livraison</span>
+        <span class="marquee-item"><span>✦</span> 100% naturel & certifié</span>
+        <span class="marquee-item"><span>✦</span> Satisfait ou remboursé 30j</span>
+        <span class="marquee-item"><span>✦</span> +10 000 clientes satisfaites</span>
+    </div>
+</div>
+
+<!-- Bestsellers -->
+<section class="section bestsellers" id="bestsellers">
+    <div class="container">
+        <div class="section-header center">
+            <div class="section-tag">⭐ Bestsellers</div>
+            <h2 class="section-title">Les favoris de nos clientes</h2>
+            <p class="section-sub">Les produits les plus vendus et les mieux notés de notre boutique.</p>
+        </div>
+        <div class="products-grid">
+            <div class="product-card reveal">
+                <div class="product-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=400&q=75" alt="Huile d'argan" class="product-img">
+                    <span class="product-badge badge-best">⭐ Bestseller</span>
+                    <a href="#" class="product-quick"><i class="fas fa-shopping-bag"></i></a>
+                </div>
+                <div class="product-body">
+                    <div class="product-cat">Soins visage</div>
+                    <div class="product-name">Huile d'Argan Pure Bio</div>
+                    <div class="product-price">149 MAD</div>
+                    <div class="product-stars">★★★★★ (234)</div>
+                </div>
+            </div>
+            <div class="product-card reveal">
+                <div class="product-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=400&q=75" alt="Eau de rose" class="product-img">
+                    <span class="product-badge badge-new">🌸 Nouveau</span>
+                    <a href="#" class="product-quick"><i class="fas fa-shopping-bag"></i></a>
+                </div>
+                <div class="product-body">
+                    <div class="product-cat">Soins visage</div>
+                    <div class="product-name">Eau de Rose de Dadès</div>
+                    <div class="product-price">89 MAD</div>
+                    <div class="product-stars">★★★★★ (189)</div>
+                </div>
+            </div>
+            <div class="product-card reveal">
+                <div class="product-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1643185539104-3622c607985f?w=400&q=75" alt="Savon noir" class="product-img">
+                    <span class="product-badge badge-best">⭐ Bestseller</span>
+                    <a href="#" class="product-quick"><i class="fas fa-shopping-bag"></i></a>
+                </div>
+                <div class="product-body">
+                    <div class="product-cat">Soins corps</div>
+                    <div class="product-name">Savon Noir à l'Eucalyptus</div>
+                    <div class="product-price">69 MAD</div>
+                    <div class="product-stars">★★★★★ (312)</div>
+                </div>
+            </div>
+            <div class="product-card reveal">
+                <div class="product-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=400&q=75" alt="Coffret hammam" class="product-img">
+                    <span class="product-badge badge-promo">-20%</span>
+                    <a href="#" class="product-quick"><i class="fas fa-shopping-bag"></i></a>
+                </div>
+                <div class="product-body">
+                    <div class="product-cat">Coffrets</div>
+                    <div class="product-name">Coffret Hammam Royal</div>
+                    <div class="product-price"><span class="old">399 MAD</span> 319 MAD</div>
+                    <div class="product-stars">★★★★★ (156)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Categories -->
+<section class="section categories" id="categories">
+    <div class="container">
+        <div class="section-header center">
+            <div class="section-tag">🌿 Catégories</div>
+            <h2 class="section-title">Explorez nos collections</h2>
+        </div>
+        <div class="cat-grid">
+            <div class="cat-card reveal">
+                <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=75" alt="Soins visage">
+                <div class="cat-overlay">
+                    <h3>Soins Visage</h3>
+                    <p>Argan, rose, figue de barbarie</p>
+                    <span class="cat-arrow">Découvrir →</span>
+                </div>
+            </div>
+            <div class="cat-card reveal">
+                <img src="https://images.unsplash.com/photo-1540555700478-4be289fbec6d?w=600&q=75" alt="Soins corps">
+                <div class="cat-overlay">
+                    <h3>Soins Corps</h3>
+                    <p>Savon noir, ghassoul, gommages</p>
+                    <span class="cat-arrow">Découvrir →</span>
+                </div>
+            </div>
+            <div class="cat-card reveal">
+                <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=600&q=75" alt="Coffrets cadeaux">
+                <div class="cat-overlay">
+                    <h3>Coffrets Cadeaux</h3>
+                    <p>Les plus belles idées cadeaux</p>
+                    <span class="cat-arrow">Découvrir →</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Story -->
+<section class="section story" id="story">
+    <div class="container">
+        <div class="story-layout">
+            <img src="https://images.unsplash.com/photo-1487412912498-0447578fcca8?w=600&q=80" alt="Notre histoire" class="story-img reveal">
+            <div class="story-text reveal">
+                <div class="section-tag">🌹 Notre histoire</div>
+                <h2>Du cœur du Maroc à votre salle de bain</h2>
+                <p>Zina Beauty est née d'une passion : offrir aux femmes marocaines (et du monde) des soins authentiques, formulés avec les ingrédients les plus nobles du Maroc — argan de Souss, rose de Dadès, ghassoul de l'Atlas.</p>
+                <p>Chaque produit est fabriqué artisanalement, en petites séries, dans le respect des traditions et de la nature.</p>
+                <div class="story-values">
+                    <div class="value-item"><span class="v-emoji">🌿</span> 100% naturel</div>
+                    <div class="value-item"><span class="v-emoji">🐰</span> Non testé sur les animaux</div>
+                    <div class="value-item"><span class="v-emoji">🇲🇦</span> Fabriqué au Maroc</div>
+                    <div class="value-item"><span class="v-emoji">♻️</span> Emballage recyclable</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="section testimonials" id="avis">
+    <div class="container">
+        <div class="section-header center">
+            <div class="section-tag">💬 Avis clients</div>
+            <h2 class="section-title">Elles adorent Zina Beauty</h2>
+        </div>
+        <div class="testi-grid">
+            <div class="testi-card reveal">
+                <span class="testi-stars">★★★★★</span>
+                <p class="testi-quote">"L'huile d'argan est incroyable. Ma peau n'a jamais été aussi douce. Je commande chaque mois depuis 6 mois maintenant !"</p>
+                <div class="testi-author">
+                    <img src="https://i.pravatar.cc/48?img=32" alt="" class="testi-avatar">
+                    <div><div class="testi-name">Fatima Z.</div><div class="testi-loc">Casablanca</div></div>
+                </div>
+            </div>
+            <div class="testi-card reveal">
+                <span class="testi-stars">★★★★★</span>
+                <p class="testi-quote">"Le coffret hammam est parfait pour offrir. Packaging magnifique, produits de qualité. Ma mère a adoré son cadeau !"</p>
+                <div class="testi-author">
+                    <img src="https://i.pravatar.cc/48?img=44" alt="" class="testi-avatar">
+                    <div><div class="testi-name">Sara M.</div><div class="testi-loc">Rabat</div></div>
+                </div>
+            </div>
+            <div class="testi-card reveal">
+                <span class="testi-stars">★★★★★</span>
+                <p class="testi-quote">"Livraison rapide et produits au top. Le savon noir sent divinement bon. Je ne peux plus m'en passer pour mon gommage du dimanche."</p>
+                <div class="testi-author">
+                    <img src="https://i.pravatar.cc/48?img=25" alt="" class="testi-avatar">
+                    <div><div class="testi-name">Nadia K.</div><div class="testi-loc">Marrakech</div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Promo Banner -->
+<div class="promo-banner">
+    <div class="container">
+        <h2 class="reveal">-15% sur votre première commande</h2>
+        <p class="reveal">Utilisez le code ci-dessous lors de votre achat</p>
+        <div class="promo-code reveal">BIENVENUE15</div>
+        <br>
+        <a href="https://wa.me/212600000000?text=Bonjour%20Zina%20Beauty%20!%20Je%20voudrais%20passer%20commande." target="_blank" class="btn-rose reveal" style="font-size: 1rem; padding: 16px 32px;">
+            <i class="fab fa-whatsapp"></i> Commander sur WhatsApp
+        </a>
+    </div>
+</div>
+
+<!-- Trust Bar -->
+<div class="trust-bar">
+    <div class="container">
+        <div class="trust-grid">
+            <div class="trust-cell reveal">
+                <span class="t-emoji">🚚</span>
+                <h4>Livraison rapide</h4>
+                <p>24-48h partout au Maroc</p>
+            </div>
+            <div class="trust-cell reveal">
+                <span class="t-emoji">💳</span>
+                <h4>Paiement à la livraison</h4>
+                <p>Payez en cash ou par carte</p>
+            </div>
+            <div class="trust-cell reveal">
+                <span class="t-emoji">↩️</span>
+                <h4>Retours gratuits</h4>
+                <p>Satisfait ou remboursé 30 jours</p>
+            </div>
+            <div class="trust-cell reveal">
+                <span class="t-emoji">💬</span>
+                <h4>Support WhatsApp</h4>
+                <p>Réponse en moins de 5 min</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Newsletter -->
+<section class="newsletter" id="contact">
+    <div class="container">
+        <h2 class="reveal">Rejoignez la communauté Zina</h2>
+        <p class="reveal">Recevez nos offres exclusives et conseils beauté naturelle</p>
+        <div class="nl-form reveal">
+            <input type="email" placeholder="Votre adresse email">
+            <button type="button">S'inscrire</button>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <div class="logo-text serif">Zina <span style="color:var(--rose-light);">Beauty</span></div>
+                <p>Cosmétiques naturels du Maroc. Argan, rose, ghassoul — la beauté au naturel.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Boutique</h4>
+                <ul>
+                    <li><a href="#bestsellers">Bestsellers</a></li>
+                    <li><a href="#categories">Soins visage</a></li>
+                    <li><a href="#categories">Soins corps</a></li>
+                    <li><a href="#categories">Coffrets cadeaux</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Infos</h4>
+                <ul>
+                    <li><a href="#story">Notre histoire</a></li>
+                    <li><a href="#">Livraison & retours</a></li>
+                    <li><a href="#">CGV</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="https://wa.me/212600000000" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
+                    <li><a href="mailto:contact@zinabeauty.ma"><i class="fas fa-envelope"></i> contact@zinabeauty.ma</a></li>
+                    <li><a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i> @zinabeauty.ma</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Zina Beauty — Casablanca, Maroc · Site par <a href="../../index.html">VistraDev</a></p>
+            <div class="footer-pay">
+                <span>💳 CMI</span>
+                <span>💵 Cash</span>
+                <span>📲 Wafapay</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- WA Float -->
+<a href="https://wa.me/212600000000?text=Bonjour%20Zina%20Beauty%20!" target="_blank" class="wa-float" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+// Nav scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+
+// Mobile menu
+const burger = document.getElementById('navBurger');
+const menu = document.getElementById('navMenu');
+burger.addEventListener('click', () => { nav.classList.toggle('menu-open'); });
+menu.querySelectorAll('a').forEach(a => { a.addEventListener('click', () => nav.classList.remove('menu-open')); });
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
