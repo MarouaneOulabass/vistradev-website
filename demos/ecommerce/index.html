@@ -5,15 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zina Beauty — Cosmétiques Naturels du Maroc</title>
     <meta name="description" content="Zina Beauty : cosmétiques naturels marocains. Huile d'argan, savon noir, ghassoul. Livraison partout au Maroc.">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
             --rose: #be185d;
+            --rose-dark: #9d174d;
             --rose-light: #f9a8d4;
             --rose-pale: #fdf2f8;
             --gold: #b8860b;
             --gold-pale: #fefce8;
+            --green: #16a34a;
+            --green-pale: #f0fdf4;
             --cream: #faf8f5;
             --sand: #f5f0eb;
             --dark: #1a1210;
@@ -21,200 +24,310 @@
             --text-light: #8c7e76;
             --border: #e8e0d8;
             --white: #ffffff;
+            --red: #dc2626;
         }
-
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--text); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
         h1, h2, h3, .serif { font-family: 'Cormorant Garamond', serif; }
 
         /* ── Nav ── */
-        nav { position: fixed; top: 0; width: 100%; z-index: 200; height: 68px; background: rgba(255,255,255,0.96); backdrop-filter: blur(16px); border-bottom: 1px solid transparent; transition: border-color 0.4s, box-shadow 0.4s; }
-        nav.scrolled { border-color: var(--border); box-shadow: 0 1px 12px rgba(0,0,0,0.04); }
-        .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: center; justify-content: space-between; }
-        .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
-        .logo-text { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 700; color: var(--dark); letter-spacing: -0.01em; }
-        .logo-text span { color: var(--rose); }
-        .nav-menu { display: flex; gap: 28px; list-style: none; }
-        .nav-menu a { font-size: 0.82rem; color: var(--text-light); text-decoration: none; font-weight: 500; transition: color 0.3s; letter-spacing: 0.02em; }
+        nav { position: fixed; top: 0; width: 100%; z-index: 200; height: 64px; background: rgba(255,255,255,0.97); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); transition: box-shadow 0.3s; }
+        nav.scrolled { box-shadow: 0 2px 16px rgba(0,0,0,0.05); }
+        .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: center; justify-content: space-between; }
+        .logo { text-decoration: none; font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 700; color: var(--dark); }
+        .logo span { color: var(--rose); }
+        .nav-menu { display: flex; gap: 32px; list-style: none; }
+        .nav-menu a { font-size: 0.82rem; color: var(--text-light); text-decoration: none; font-weight: 500; transition: color 0.3s; }
         .nav-menu a:hover { color: var(--rose); }
-        .nav-right { display: flex; align-items: center; gap: 14px; }
-        .nav-cart { position: relative; font-size: 1.1rem; color: var(--text); text-decoration: none; }
-        .nav-cart-count { position: absolute; top: -6px; right: -8px; width: 16px; height: 16px; background: var(--rose); color: white; font-size: 0.6rem; font-weight: 700; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-        .nav-cta { padding: 8px 18px; background: var(--rose); color: white; border-radius: 30px; font-size: 0.8rem; font-weight: 600; text-decoration: none; transition: all 0.3s; }
-        .nav-cta:hover { background: #9d174d; }
+        .nav-icons { display: flex; align-items: center; gap: 16px; }
+        .nav-icon { position: relative; font-size: 1.1rem; color: var(--text); cursor: pointer; background: none; border: none; font-family: inherit; }
+        .nav-icon:hover { color: var(--rose); }
+        .cart-count { position: absolute; top: -7px; right: -9px; min-width: 18px; height: 18px; background: var(--rose); color: white; font-size: 0.6rem; font-weight: 700; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: transform 0.3s; }
+        .cart-count.bump { animation: bump 0.3s; }
+        @keyframes bump { 50% { transform: scale(1.4); } }
         .nav-burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
         .nav-burger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; }
 
         /* ── Hero ── */
-        .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 68px; }
-        .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 60px 60px 60px 80px; background: var(--cream); }
-        .hero-kicker { display: inline-flex; align-items: center; gap: 8px; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rose); margin-bottom: 24px; }
-        .hero-kicker::before { content: ''; width: 24px; height: 2px; background: var(--rose); border-radius: 2px; }
-        .hero h1 { font-size: clamp(2.6rem, 5vw, 4.2rem); font-weight: 700; line-height: 1.08; color: var(--dark); margin-bottom: 20px; font-style: italic; }
+        .hero { min-height: 92vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 64px; }
+        .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 60px 56px 60px 72px; background: var(--cream); }
+        .hero-kicker { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rose); margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
+        .hero-kicker::before { content: ''; width: 24px; height: 2px; background: var(--rose); }
+        .hero h1 { font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 600; line-height: 1.08; color: var(--dark); margin-bottom: 18px; font-style: italic; }
         .hero h1 em { font-style: normal; color: var(--rose); }
-        .hero-desc { font-size: 0.95rem; color: var(--text-light); line-height: 1.75; max-width: 400px; margin-bottom: 32px; }
-        .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 36px; }
-        .btn-rose { padding: 14px 30px; background: var(--rose); color: white; border-radius: 30px; font-size: 0.88rem; font-weight: 600; text-decoration: none; transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px; }
-        .btn-rose:hover { background: #9d174d; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(190,24,93,0.2); }
-        .btn-ghost-dark { padding: 14px 30px; border: 1.5px solid var(--border); color: var(--text); border-radius: 30px; font-size: 0.88rem; font-weight: 500; text-decoration: none; transition: all 0.3s; }
-        .btn-ghost-dark:hover { border-color: var(--rose); color: var(--rose); }
-        .hero-trust { display: flex; gap: 24px; }
-        .trust-item { display: flex; align-items: center; gap: 6px; font-size: 0.78rem; color: var(--text-light); }
-        .trust-item i { color: var(--gold); font-size: 0.7rem; }
+        .hero-desc { font-size: 0.92rem; color: var(--text-light); line-height: 1.75; max-width: 400px; margin-bottom: 28px; }
+        .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px; }
+        .btn-rose { padding: 14px 30px; background: var(--rose); color: white; border-radius: 30px; font-size: 0.86rem; font-weight: 600; text-decoration: none; transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px; border: none; cursor: pointer; font-family: inherit; }
+        .btn-rose:hover { background: var(--rose-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(190,24,93,0.2); }
+        .btn-outline { padding: 14px 30px; border: 1.5px solid var(--border); color: var(--text); border-radius: 30px; font-size: 0.86rem; font-weight: 500; text-decoration: none; transition: all 0.3s; background: transparent; cursor: pointer; font-family: inherit; }
+        .btn-outline:hover { border-color: var(--rose); color: var(--rose); }
+        .hero-trust { display: flex; gap: 20px; flex-wrap: wrap; }
+        .trust-pill { display: flex; align-items: center; gap: 6px; font-size: 0.76rem; color: var(--text-light); }
+        .trust-pill i { color: var(--gold); font-size: 0.65rem; }
         .hero-right { position: relative; overflow: hidden; }
-        .hero-right img { width: 100%; height: 100%; object-fit: cover; display: block; }
-        .hero-badge { position: absolute; bottom: 32px; left: -16px; background: white; border-radius: 14px; padding: 14px 18px; box-shadow: 0 12px 40px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 12px; }
-        .hero-badge-icon { font-size: 1.4rem; }
-        .hero-badge strong { display: block; font-size: 0.82rem; font-weight: 700; color: var(--dark); }
-        .hero-badge span { font-size: 0.7rem; color: var(--text-light); }
-
-        /* ── Sections ── */
-        .section { padding: 88px 0; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-        .section-tag { display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px; background: var(--rose-pale); color: var(--rose); border-radius: 30px; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 14px; font-family: 'DM Sans', sans-serif; }
-        .section-title { font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 700; line-height: 1.1; color: var(--dark); margin-bottom: 10px; font-style: italic; }
-        .section-sub { font-size: 0.9rem; color: var(--text-light); line-height: 1.65; max-width: 480px; }
-        .section-header { margin-bottom: 48px; }
-        .section-header.center { text-align: center; }
-        .section-header.center .section-sub { margin: 0 auto; }
+        .hero-right img { width: 100%; height: 100%; object-fit: cover; }
+        .hero-float { position: absolute; background: white; border-radius: 14px; padding: 12px 16px; box-shadow: 0 12px 40px rgba(0,0,0,0.12); display: flex; align-items: center; gap: 10px; }
+        .hero-float.f1 { bottom: 32px; left: -12px; }
+        .hero-float.f2 { top: 32px; right: 16px; }
+        .hf-emoji { font-size: 1.3rem; }
+        .hf-text strong { display: block; font-size: 0.8rem; font-weight: 700; }
+        .hf-text span { font-size: 0.68rem; color: var(--text-light); }
 
         /* ── Marquee ── */
-        .marquee-bar { overflow: hidden; padding: 14px 0; background: var(--dark); white-space: nowrap; }
-        .marquee-track { display: inline-flex; gap: 0; animation: marquee 30s linear infinite; }
-        .marquee-item { padding: 0 32px; font-size: 0.78rem; font-weight: 600; color: rgba(255,255,255,0.5); letter-spacing: 0.08em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 10px; }
-        .marquee-item span { color: var(--rose-light); }
-        @keyframes marquee { to { transform: translateX(-50%); } }
+        .marquee { overflow: hidden; padding: 12px 0; background: var(--dark); white-space: nowrap; }
+        .marquee-track { display: inline-flex; animation: mqScroll 30s linear infinite; }
+        .marquee-track span { padding: 0 28px; font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.45); letter-spacing: 0.06em; text-transform: uppercase; }
+        .marquee-track .dot { color: var(--rose-light); }
+        @keyframes mqScroll { to { transform: translateX(-50%); } }
 
-        /* ── Bestsellers ── */
-        .bestsellers { background: var(--white); }
-        .products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
-        .product-card { border: 1px solid var(--border); border-radius: 16px; overflow: hidden; transition: all 0.4s; background: white; }
-        .product-card:hover { box-shadow: 0 16px 48px rgba(0,0,0,0.06); transform: translateY(-4px); }
-        .product-img-wrap { position: relative; overflow: hidden; }
-        .product-img { width: 100%; height: 280px; object-fit: cover; display: block; transition: transform 0.5s; }
-        .product-card:hover .product-img { transform: scale(1.05); }
-        .product-badge { position: absolute; top: 12px; left: 12px; padding: 4px 10px; border-radius: 20px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
-        .badge-best { background: var(--gold-pale); color: var(--gold); }
-        .badge-new { background: var(--rose-pale); color: var(--rose); }
-        .badge-promo { background: #fef2f2; color: #dc2626; }
-        .product-quick { position: absolute; bottom: 12px; right: 12px; width: 40px; height: 40px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--rose); font-size: 0.85rem; box-shadow: 0 4px 16px rgba(0,0,0,0.1); opacity: 0; transform: translateY(8px); transition: all 0.3s; text-decoration: none; }
-        .product-card:hover .product-quick { opacity: 1; transform: translateY(0); }
-        .product-body { padding: 18px; }
-        .product-cat { font-size: 0.68rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
-        .product-name { font-family: 'Cormorant Garamond', serif; font-size: 1.08rem; font-weight: 600; margin-bottom: 8px; color: var(--dark); }
-        .product-price { font-size: 0.95rem; font-weight: 700; color: var(--rose); }
-        .product-price .old { text-decoration: line-through; color: var(--text-light); font-weight: 400; margin-right: 6px; font-size: 0.82rem; }
-        .product-stars { font-size: 0.7rem; color: var(--gold); margin-top: 6px; letter-spacing: 1px; }
+        /* ── Sections ── */
+        .section { padding: 80px 0; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .s-tag { display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px; background: var(--rose-pale); color: var(--rose); border-radius: 30px; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 12px; }
+        .s-title { font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 600; line-height: 1.12; color: var(--dark); margin-bottom: 8px; font-style: italic; }
+        .s-sub { font-size: 0.88rem; color: var(--text-light); line-height: 1.6; max-width: 460px; }
+        .s-header { margin-bottom: 40px; }
+        .s-header.center { text-align: center; }
+        .s-header.center .s-sub { margin: 0 auto; }
+
+        /* ── Filter Tabs ── */
+        .filter-bar { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-bottom: 32px; }
+        .filter-btn { padding: 8px 20px; border: 1px solid var(--border); border-radius: 30px; font-size: 0.78rem; font-weight: 500; background: white; cursor: pointer; transition: all 0.3s; font-family: inherit; color: var(--text-light); }
+        .filter-btn:hover { border-color: var(--rose); color: var(--rose); }
+        .filter-btn.active { background: var(--rose); color: white; border-color: var(--rose); }
+
+        /* ── Products Grid ── */
+        .products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        .product-card { border: 1px solid var(--border); border-radius: 14px; overflow: hidden; background: white; transition: all 0.35s; }
+        .product-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.07); transform: translateY(-4px); }
+        .product-card.hidden { display: none; }
+        .p-img-wrap { position: relative; overflow: hidden; background: var(--cream); }
+        .p-img { width: 100%; height: 300px; object-fit: cover; display: block; transition: transform 0.5s; }
+        .product-card:hover .p-img { transform: scale(1.05); }
+        .p-badge { position: absolute; top: 10px; left: 10px; padding: 4px 10px; border-radius: 20px; font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
+        .p-badge.best { background: var(--gold-pale); color: var(--gold); }
+        .p-badge.new { background: var(--rose-pale); color: var(--rose); }
+        .p-badge.promo { background: #fef2f2; color: var(--red); }
+        .p-actions { position: absolute; bottom: 0; left: 0; right: 0; padding: 12px; display: flex; gap: 8px; opacity: 0; transform: translateY(10px); transition: all 0.3s; }
+        .product-card:hover .p-actions { opacity: 1; transform: translateY(0); }
+        .p-add-btn { flex: 1; padding: 10px; background: var(--rose); color: white; border: none; border-radius: 8px; font-size: 0.78rem; font-weight: 600; cursor: pointer; font-family: inherit; display: flex; align-items: center; justify-content: center; gap: 6px; transition: background 0.2s; }
+        .p-add-btn:hover { background: var(--rose-dark); }
+        .p-quick-btn { width: 40px; height: 40px; background: white; border: none; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--text); font-size: 0.85rem; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: color 0.2s; }
+        .p-quick-btn:hover { color: var(--rose); }
+        .p-body { padding: 16px; }
+        .p-cat { font-size: 0.66rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+        .p-name { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 600; color: var(--dark); margin-bottom: 6px; line-height: 1.3; }
+        .p-price { font-size: 0.92rem; font-weight: 700; color: var(--rose); }
+        .p-price .old { text-decoration: line-through; color: var(--text-light); font-weight: 400; margin-right: 6px; font-size: 0.8rem; }
+        .p-stars { font-size: 0.68rem; color: var(--gold); margin-top: 6px; letter-spacing: 1px; }
+        .p-stars span { color: var(--text-light); font-size: 0.65rem; margin-left: 4px; }
+
+        /* ── Quick View Modal ── */
+        .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 500; display: none; align-items: center; justify-content: center; padding: 24px; backdrop-filter: blur(4px); }
+        .modal-overlay.open { display: flex; }
+        .modal { background: white; border-radius: 20px; max-width: 820px; width: 100%; max-height: 90vh; overflow-y: auto; display: grid; grid-template-columns: 1fr 1fr; }
+        .modal-img { width: 100%; height: 100%; min-height: 400px; object-fit: cover; border-radius: 20px 0 0 20px; }
+        .modal-body { padding: 36px; display: flex; flex-direction: column; }
+        .modal-close { align-self: flex-end; width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--border); background: white; cursor: pointer; font-size: 0.85rem; color: var(--text-light); display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
+        .modal-close:hover { color: var(--rose); border-color: var(--rose); }
+        .modal-cat { font-size: 0.68rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; }
+        .modal-name { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 600; color: var(--dark); margin-bottom: 8px; line-height: 1.2; }
+        .modal-stars { font-size: 0.78rem; color: var(--gold); margin-bottom: 16px; }
+        .modal-stars span { color: var(--text-light); margin-left: 6px; font-size: 0.72rem; }
+        .modal-price { font-size: 1.6rem; font-weight: 700; color: var(--rose); margin-bottom: 16px; }
+        .modal-price .old { text-decoration: line-through; color: var(--text-light); font-weight: 400; font-size: 1rem; margin-right: 8px; }
+        .modal-desc { font-size: 0.85rem; color: var(--text-light); line-height: 1.7; margin-bottom: 24px; flex: 1; }
+        .modal-qty { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+        .modal-qty label { font-size: 0.82rem; font-weight: 600; }
+        .qty-ctrl { display: flex; align-items: center; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+        .qty-ctrl button { width: 36px; height: 36px; border: none; background: var(--cream); cursor: pointer; font-size: 0.9rem; font-family: inherit; }
+        .qty-ctrl button:hover { background: var(--border); }
+        .qty-ctrl input { width: 44px; height: 36px; text-align: center; border: none; border-left: 1px solid var(--border); border-right: 1px solid var(--border); font-family: inherit; font-size: 0.88rem; font-weight: 600; }
+        .qty-ctrl input:focus { outline: none; }
+        .modal-add { width: 100%; padding: 14px; background: var(--rose); color: white; border: none; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; font-family: inherit; display: flex; align-items: center; justify-content: center; gap: 8px; transition: background 0.2s; }
+        .modal-add:hover { background: var(--rose-dark); }
+        .modal-features { display: flex; gap: 16px; margin-top: 16px; flex-wrap: wrap; }
+        .modal-feat { display: flex; align-items: center; gap: 5px; font-size: 0.72rem; color: var(--text-light); }
+        .modal-feat i { color: var(--green); font-size: 0.65rem; }
+
+        /* ── Cart Sidebar ── */
+        .cart-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 600; display: none; backdrop-filter: blur(3px); }
+        .cart-overlay.open { display: block; }
+        .cart-sidebar { position: fixed; top: 0; right: -460px; width: 420px; max-width: 92vw; height: 100vh; background: white; z-index: 601; display: flex; flex-direction: column; transition: right 0.35s cubic-bezier(0.4,0,0.2,1); box-shadow: -8px 0 40px rgba(0,0,0,0.1); }
+        .cart-sidebar.open { right: 0; }
+        .cart-header { padding: 20px 24px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+        .cart-header h3 { font-size: 1.2rem; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+        .cart-header h3 .c-count { font-size: 0.75rem; background: var(--rose-pale); color: var(--rose); padding: 2px 8px; border-radius: 20px; font-weight: 600; }
+        .cart-close { width: 32px; height: 32px; border: 1px solid var(--border); border-radius: 50%; background: none; cursor: pointer; font-size: 0.8rem; color: var(--text-light); display: flex; align-items: center; justify-content: center; }
+        .cart-close:hover { color: var(--rose); border-color: var(--rose); }
+        .cart-items { flex: 1; overflow-y: auto; padding: 16px 24px; }
+        .cart-empty { text-align: center; padding: 48px 20px; }
+        .cart-empty .ce-emoji { font-size: 3rem; margin-bottom: 12px; display: block; }
+        .cart-empty p { font-size: 0.88rem; color: var(--text-light); margin-bottom: 20px; }
+        .cart-item { display: flex; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--border); }
+        .cart-item:last-child { border-bottom: none; }
+        .ci-img { width: 80px; height: 80px; border-radius: 10px; object-fit: cover; flex-shrink: 0; }
+        .ci-info { flex: 1; }
+        .ci-name { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 600; margin-bottom: 2px; }
+        .ci-cat { font-size: 0.68rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; }
+        .ci-bottom { display: flex; align-items: center; justify-content: space-between; }
+        .ci-qty { display: flex; align-items: center; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+        .ci-qty button { width: 28px; height: 28px; border: none; background: var(--cream); cursor: pointer; font-size: 0.8rem; font-family: inherit; }
+        .ci-qty button:hover { background: var(--border); }
+        .ci-qty span { width: 32px; height: 28px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 600; border-left: 1px solid var(--border); border-right: 1px solid var(--border); }
+        .ci-price { font-size: 0.9rem; font-weight: 700; color: var(--rose); }
+        .ci-remove { margin-top: 6px; font-size: 0.7rem; color: var(--text-light); border: none; background: none; cursor: pointer; font-family: inherit; text-decoration: underline; }
+        .ci-remove:hover { color: var(--red); }
+        .cart-footer { padding: 20px 24px; border-top: 1px solid var(--border); background: var(--cream); }
+        .cf-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.85rem; }
+        .cf-row.total { font-weight: 700; font-size: 1.05rem; color: var(--dark); margin-bottom: 16px; padding-top: 10px; border-top: 1px solid var(--border); }
+        .cf-row .label { color: var(--text-light); }
+        .cf-free { color: var(--green); font-weight: 600; }
+        .cart-checkout { width: 100%; padding: 14px; background: var(--rose); color: white; border: none; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; font-family: inherit; display: flex; align-items: center; justify-content: center; gap: 8px; transition: background 0.2s; margin-bottom: 8px; }
+        .cart-checkout:hover { background: var(--rose-dark); }
+        .cart-wa { width: 100%; padding: 12px; background: #25d366; color: white; border: none; border-radius: 10px; font-size: 0.85rem; font-weight: 600; cursor: pointer; font-family: inherit; display: flex; align-items: center; justify-content: center; gap: 8px; transition: background 0.2s; text-decoration: none; }
+        .cart-wa:hover { background: #1fb855; }
+
+        /* ── Checkout Modal ── */
+        .checkout-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 700; display: none; align-items: center; justify-content: center; padding: 24px; backdrop-filter: blur(4px); }
+        .checkout-overlay.open { display: flex; }
+        .checkout-box { background: white; border-radius: 20px; max-width: 540px; width: 100%; max-height: 90vh; overflow-y: auto; padding: 36px; }
+        .checkout-box h2 { font-size: 1.6rem; font-weight: 700; margin-bottom: 4px; }
+        .checkout-sub { font-size: 0.82rem; color: var(--text-light); margin-bottom: 24px; }
+        .form-group { margin-bottom: 16px; }
+        .form-group label { display: block; font-size: 0.78rem; font-weight: 600; margin-bottom: 5px; color: var(--text); }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 11px 14px; border: 1px solid var(--border); border-radius: 10px; font-family: inherit; font-size: 0.85rem; transition: border-color 0.3s; }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--rose); }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .checkout-summary { background: var(--cream); border-radius: 12px; padding: 18px; margin-bottom: 20px; }
+        .checkout-summary h4 { font-size: 0.82rem; font-weight: 700; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.04em; }
+        .cs-item { display: flex; justify-content: space-between; font-size: 0.82rem; padding: 4px 0; }
+        .cs-item.total { font-weight: 700; font-size: 0.95rem; padding-top: 8px; margin-top: 6px; border-top: 1px solid var(--border); }
+        .checkout-submit { width: 100%; padding: 15px; background: var(--rose); color: white; border: none; border-radius: 10px; font-size: 0.92rem; font-weight: 700; cursor: pointer; font-family: inherit; transition: background 0.2s; }
+        .checkout-submit:hover { background: var(--rose-dark); }
+        .checkout-back { display: block; text-align: center; margin-top: 12px; font-size: 0.8rem; color: var(--text-light); cursor: pointer; border: none; background: none; font-family: inherit; }
+        .checkout-back:hover { color: var(--rose); }
+        .payment-opts { display: flex; gap: 10px; margin-bottom: 16px; }
+        .pay-opt { flex: 1; padding: 12px; border: 1.5px solid var(--border); border-radius: 10px; text-align: center; cursor: pointer; transition: all 0.3s; font-size: 0.78rem; font-weight: 600; background: white; }
+        .pay-opt.selected { border-color: var(--rose); background: var(--rose-pale); color: var(--rose); }
 
         /* ── Categories ── */
         .categories { background: var(--cream); }
         .cat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-        .cat-card { position: relative; border-radius: 18px; overflow: hidden; height: 320px; cursor: pointer; }
+        .cat-card { position: relative; border-radius: 16px; overflow: hidden; height: 320px; cursor: pointer; }
         .cat-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
-        .cat-card:hover img { transform: scale(1.08); }
-        .cat-overlay { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,0.6) 0%, transparent 60%); display: flex; flex-direction: column; justify-content: flex-end; padding: 28px; }
-        .cat-overlay h3 { font-size: 1.4rem; font-weight: 700; color: white; margin-bottom: 4px; }
-        .cat-overlay p { font-size: 0.8rem; color: rgba(255,255,255,0.7); }
-        .cat-overlay .cat-arrow { display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; font-size: 0.8rem; font-weight: 600; color: white; text-decoration: none; }
+        .cat-card:hover img { transform: scale(1.06); }
+        .cat-over { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,0.6), transparent 60%); display: flex; flex-direction: column; justify-content: flex-end; padding: 24px; }
+        .cat-over h3 { font-size: 1.4rem; font-weight: 700; color: white; margin-bottom: 4px; }
+        .cat-over p { font-size: 0.78rem; color: rgba(255,255,255,0.7); }
+        .cat-over .cat-link { margin-top: 10px; font-size: 0.78rem; font-weight: 600; color: white; text-decoration: none; }
 
-        /* ── Story / About ── */
+        /* ── Story ── */
         .story { background: var(--white); }
-        .story-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-        .story-img { width: 100%; border-radius: 20px; height: 480px; object-fit: cover; }
-        .story-text h2 { font-size: 2.2rem; font-weight: 700; line-height: 1.12; margin-bottom: 16px; font-style: italic; }
-        .story-text p { font-size: 0.9rem; color: var(--text-light); line-height: 1.75; margin-bottom: 20px; }
-        .story-values { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-        .value-item { display: flex; align-items: center; gap: 10px; font-size: 0.84rem; font-weight: 500; }
-        .value-item .v-emoji { font-size: 1.2rem; }
+        .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+        .story-img { width: 100%; border-radius: 20px; height: 460px; object-fit: cover; }
+        .story-text h2 { font-size: 2.2rem; font-weight: 600; line-height: 1.12; margin-bottom: 16px; font-style: italic; }
+        .story-text p { font-size: 0.88rem; color: var(--text-light); line-height: 1.75; margin-bottom: 16px; }
+        .story-vals { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 8px; }
+        .sv-item { display: flex; align-items: center; gap: 8px; font-size: 0.82rem; font-weight: 500; }
+        .sv-item .sv-emoji { font-size: 1.15rem; }
 
         /* ── Testimonials ── */
         .testimonials { background: var(--cream); }
         .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-        .testi-card { background: white; border: 1px solid var(--border); border-radius: 16px; padding: 28px; }
-        .testi-stars { color: var(--gold); font-size: 0.78rem; margin-bottom: 14px; letter-spacing: 2px; display: block; }
-        .testi-quote { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--text); line-height: 1.65; margin-bottom: 18px; font-style: italic; }
+        .testi-card { background: white; border: 1px solid var(--border); border-radius: 14px; padding: 24px; }
+        .testi-stars { color: var(--gold); font-size: 0.75rem; margin-bottom: 12px; letter-spacing: 2px; }
+        .testi-quote { font-family: 'Cormorant Garamond', serif; font-size: 1.02rem; color: var(--text); line-height: 1.6; margin-bottom: 16px; font-style: italic; }
         .testi-author { display: flex; align-items: center; gap: 10px; }
-        .testi-avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
-        .testi-name { font-size: 0.82rem; font-weight: 600; }
-        .testi-loc { font-size: 0.72rem; color: var(--text-light); }
+        .testi-av { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
+        .testi-name { font-size: 0.8rem; font-weight: 600; }
+        .testi-loc { font-size: 0.68rem; color: var(--text-light); }
 
         /* ── Promo Banner ── */
-        .promo-banner { background: linear-gradient(135deg, var(--dark), #2d1f1a); padding: 64px 0; text-align: center; position: relative; overflow: hidden; }
-        .promo-banner h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 700; color: white; margin-bottom: 10px; font-style: italic; }
-        .promo-banner p { font-size: 0.9rem; color: rgba(255,255,255,0.5); margin-bottom: 24px; }
-        .promo-code { display: inline-block; padding: 10px 28px; border: 2px dashed var(--rose-light); border-radius: 10px; font-size: 1.1rem; font-weight: 700; color: var(--rose-light); letter-spacing: 0.1em; margin-bottom: 24px; font-family: monospace; }
+        .promo-banner { background: linear-gradient(135deg, var(--dark), #2d1f1a); padding: 56px 0; text-align: center; }
+        .promo-banner h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 600; color: white; margin-bottom: 8px; font-style: italic; }
+        .promo-banner p { font-size: 0.88rem; color: rgba(255,255,255,0.5); margin-bottom: 20px; }
+        .promo-code { display: inline-block; padding: 10px 28px; border: 2px dashed var(--rose-light); border-radius: 10px; font-size: 1.1rem; font-weight: 700; color: var(--rose-light); letter-spacing: 0.1em; margin-bottom: 20px; font-family: monospace; }
 
-        /* ── Shipping / Trust ── */
+        /* ── Trust ── */
         .trust-bar { background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-        .trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding: 40px 0; }
+        .trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding: 36px 0; }
         .trust-cell { text-align: center; }
-        .trust-cell .t-emoji { font-size: 2rem; margin-bottom: 10px; display: block; }
-        .trust-cell h4 { font-size: 0.88rem; font-weight: 700; margin-bottom: 4px; }
-        .trust-cell p { font-size: 0.78rem; color: var(--text-light); }
+        .trust-cell .tc-emoji { font-size: 1.8rem; margin-bottom: 8px; display: block; }
+        .trust-cell h4 { font-size: 0.85rem; font-weight: 700; margin-bottom: 3px; }
+        .trust-cell p { font-size: 0.75rem; color: var(--text-light); }
 
         /* ── Newsletter ── */
-        .newsletter { background: var(--rose-pale); padding: 64px 0; text-align: center; }
-        .newsletter h2 { font-size: 2rem; font-weight: 700; margin-bottom: 8px; font-style: italic; }
-        .newsletter p { font-size: 0.88rem; color: var(--text-light); margin-bottom: 24px; }
-        .nl-form { display: flex; gap: 10px; max-width: 440px; margin: 0 auto; }
-        .nl-form input { flex: 1; padding: 14px 18px; border: 1px solid var(--border); border-radius: 30px; font-family: inherit; font-size: 0.85rem; background: white; }
+        .newsletter { background: var(--rose-pale); padding: 56px 0; text-align: center; }
+        .newsletter h2 { font-size: 1.8rem; font-weight: 600; margin-bottom: 6px; font-style: italic; }
+        .newsletter p { font-size: 0.85rem; color: var(--text-light); margin-bottom: 20px; }
+        .nl-form { display: flex; gap: 8px; max-width: 420px; margin: 0 auto; }
+        .nl-form input { flex: 1; padding: 12px 16px; border: 1px solid var(--border); border-radius: 30px; font-family: inherit; font-size: 0.85rem; background: white; }
         .nl-form input:focus { outline: none; border-color: var(--rose); }
-        .nl-form button { padding: 14px 24px; background: var(--rose); color: white; border: none; border-radius: 30px; font-family: inherit; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: background 0.3s; white-space: nowrap; }
-        .nl-form button:hover { background: #9d174d; }
+        .nl-form button { padding: 12px 22px; background: var(--rose); color: white; border: none; border-radius: 30px; font-family: inherit; font-size: 0.82rem; font-weight: 600; cursor: pointer; }
+        .nl-form button:hover { background: var(--rose-dark); }
 
         /* ── Footer ── */
-        footer { background: var(--dark); padding: 48px 0 24px; }
-        .footer-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-        .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 36px; }
-        .footer-brand .logo-text { color: white; font-size: 1.3rem; }
-        .footer-brand p { font-size: 0.8rem; color: rgba(255,255,255,0.35); line-height: 1.6; margin-top: 10px; max-width: 240px; }
-        .footer-social { display: flex; gap: 10px; margin-top: 16px; }
-        .footer-social a { width: 34px; height: 34px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.4); font-size: 0.8rem; text-decoration: none; transition: all 0.3s; }
-        .footer-social a:hover { border-color: var(--rose); color: var(--rose-light); }
-        .footer-col h4 { font-size: 0.72rem; font-weight: 700; color: white; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 14px; }
-        .footer-col ul { list-style: none; }
-        .footer-col li { margin-bottom: 8px; }
-        .footer-col a { font-size: 0.8rem; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.3s; }
-        .footer-col a:hover { color: rgba(255,255,255,0.75); }
-        .footer-bottom { padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
-        .footer-bottom p { font-size: 0.72rem; color: rgba(255,255,255,0.2); }
-        .footer-bottom a { color: var(--rose-light); text-decoration: none; }
-        .footer-pay { display: flex; gap: 8px; align-items: center; }
-        .footer-pay span { padding: 4px 10px; background: rgba(255,255,255,0.06); border-radius: 4px; font-size: 0.7rem; color: rgba(255,255,255,0.4); font-weight: 600; }
+        footer { background: var(--dark); padding: 48px 0 20px; }
+        .ft-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .ft-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 32px; }
+        .ft-brand .logo { color: white; font-size: 1.3rem; }
+        .ft-brand p { font-size: 0.78rem; color: rgba(255,255,255,0.3); line-height: 1.6; margin-top: 10px; max-width: 240px; }
+        .ft-social { display: flex; gap: 8px; margin-top: 14px; }
+        .ft-social a { width: 32px; height: 32px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.35); font-size: 0.75rem; text-decoration: none; transition: all 0.3s; }
+        .ft-social a:hover { border-color: var(--rose); color: var(--rose-light); }
+        .ft-col h4 { font-size: 0.7rem; font-weight: 700; color: white; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 12px; }
+        .ft-col ul { list-style: none; }
+        .ft-col li { margin-bottom: 7px; }
+        .ft-col a { font-size: 0.78rem; color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.3s; }
+        .ft-col a:hover { color: rgba(255,255,255,0.7); }
+        .ft-bottom { padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+        .ft-bottom p { font-size: 0.7rem; color: rgba(255,255,255,0.18); }
+        .ft-bottom a { color: var(--rose-light); text-decoration: none; }
+        .ft-pay { display: flex; gap: 6px; }
+        .ft-pay span { padding: 3px 8px; background: rgba(255,255,255,0.05); border-radius: 4px; font-size: 0.65rem; color: rgba(255,255,255,0.35); font-weight: 600; }
 
         /* ── WA Float ── */
-        .wa-float { position: fixed; bottom: 24px; right: 24px; z-index: 300; width: 56px; height: 56px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; text-decoration: none; box-shadow: 0 6px 24px rgba(37,211,102,0.4); transition: transform 0.3s; }
+        .wa-float { position: fixed; bottom: 24px; right: 24px; z-index: 300; width: 54px; height: 54px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.4rem; text-decoration: none; box-shadow: 0 6px 24px rgba(37,211,102,0.4); transition: transform 0.3s; }
         .wa-float:hover { transform: scale(1.1); }
 
+        /* ── Toast ── */
+        .toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--dark); color: white; padding: 12px 24px; border-radius: 10px; font-size: 0.82rem; font-weight: 500; z-index: 800; display: flex; align-items: center; gap: 8px; box-shadow: 0 8px 32px rgba(0,0,0,0.2); transition: transform 0.3s; }
+        .toast.show { transform: translateX(-50%) translateY(0); }
+        .toast i { color: var(--green); }
+
         /* ── Reveal ── */
-        .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
         .reveal.visible { opacity: 1; transform: translateY(0); }
 
         /* ── Responsive ── */
         @media (max-width: 900px) {
             .nav-menu { display: none; }
             .nav-burger { display: flex; }
-            nav.menu-open .nav-menu { display: flex; flex-direction: column; position: absolute; top: 68px; left: 0; right: 0; background: white; padding: 16px 24px; gap: 14px; border-bottom: 1px solid var(--border); box-shadow: 0 12px 32px rgba(0,0,0,0.06); }
+            nav.menu-open .nav-menu { display: flex; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: white; padding: 16px 24px; gap: 14px; border-bottom: 1px solid var(--border); }
             .hero { grid-template-columns: 1fr; }
             .hero-left { padding: 40px 24px; }
-            .hero-right { height: 320px; }
-            .hero-badge { display: none; }
+            .hero-right { height: 300px; }
+            .hero-float { display: none; }
             .products-grid { grid-template-columns: 1fr 1fr; }
-            .cat-grid { grid-template-columns: 1fr; }
-            .cat-card { height: 240px; }
-            .story-layout { grid-template-columns: 1fr; }
-            .story-img { height: 300px; }
-            .testi-grid { grid-template-columns: 1fr; }
+            .cat-grid, .testi-grid { grid-template-columns: 1fr; }
+            .cat-card { height: 220px; }
+            .story-grid { grid-template-columns: 1fr; }
+            .story-img { height: 280px; }
             .trust-grid { grid-template-columns: 1fr 1fr; }
-            .footer-top { grid-template-columns: 1fr 1fr; }
+            .ft-top { grid-template-columns: 1fr 1fr; }
+            .modal { grid-template-columns: 1fr; }
+            .modal-img { height: 260px; border-radius: 20px 20px 0 0; }
         }
         @media (max-width: 600px) {
             .products-grid { grid-template-columns: 1fr; }
             .trust-grid { grid-template-columns: 1fr; }
             .nl-form { flex-direction: column; }
-            .footer-top { grid-template-columns: 1fr; }
+            .ft-top { grid-template-columns: 1fr; }
             .hero-btns { flex-direction: column; }
+            .filter-bar { gap: 6px; }
+            .filter-btn { padding: 6px 14px; font-size: 0.72rem; }
         }
     </style>
 </head>
@@ -223,23 +336,20 @@
 <!-- Nav -->
 <nav id="nav">
     <div class="nav-inner">
-        <a href="#" class="logo">
-            <span class="logo-text">Zina <span>Beauty</span></span>
-        </a>
+        <a href="#" class="logo">Zina <span>Beauty</span></a>
         <ul class="nav-menu" id="navMenu">
-            <a href="#bestsellers">Bestsellers</a>
+            <a href="#boutique">Boutique</a>
             <a href="#categories">Catégories</a>
             <a href="#story">Notre histoire</a>
             <a href="#avis">Avis</a>
-            <a href="#contact">Contact</a>
         </ul>
-        <div class="nav-right">
-            <a href="#" class="nav-cart"><i class="fas fa-shopping-bag"></i><span class="nav-cart-count">2</span></a>
-            <a href="https://wa.me/212600000000" target="_blank" class="nav-cta">Commander</a>
+        <div class="nav-icons">
+            <button class="nav-icon" id="cartToggle" aria-label="Panier">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-count" id="cartCount">0</span>
+            </button>
         </div>
-        <button class="nav-burger" id="navBurger" aria-label="Menu">
-            <span></span><span></span><span></span>
-        </button>
+        <button class="nav-burger" id="navBurger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
 </nav>
 
@@ -248,142 +358,60 @@
     <div class="hero-left">
         <div class="hero-kicker reveal">Cosmétiques naturels du Maroc</div>
         <h1 class="reveal">La beauté au naturel, <em>sublimée.</em></h1>
-        <p class="hero-desc reveal">Argan, ghassoul, rose de Dadès — nos soins puisent dans les trésors du Maroc pour révéler votre beauté naturelle. 100% naturel, zéro compromis.</p>
+        <p class="hero-desc reveal">Argan, ghassoul, rose de Dadès — nos soins puisent dans les trésors du Maroc pour révéler votre beauté naturelle.</p>
         <div class="hero-btns reveal">
-            <a href="#bestsellers" class="btn-rose">🛍️ Découvrir la boutique</a>
-            <a href="#story" class="btn-ghost-dark">Notre histoire</a>
+            <a href="#boutique" class="btn-rose">🛍️ Voir la boutique</a>
+            <a href="#story" class="btn-outline">Notre histoire</a>
         </div>
         <div class="hero-trust reveal">
-            <div class="trust-item"><i class="fas fa-star"></i> 4.9/5 (500+ avis)</div>
-            <div class="trust-item"><i class="fas fa-leaf"></i> 100% naturel</div>
-            <div class="trust-item"><i class="fas fa-truck"></i> Livraison 24-48h</div>
+            <div class="trust-pill"><i class="fas fa-star"></i> 4.9/5 (500+ avis)</div>
+            <div class="trust-pill"><i class="fas fa-leaf"></i> 100% naturel</div>
+            <div class="trust-pill"><i class="fas fa-truck"></i> Livraison 24-48h</div>
         </div>
     </div>
     <div class="hero-right">
         <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=700&q=80" alt="Cosmétiques naturels">
-        <div class="hero-badge">
-            <span class="hero-badge-icon">🌿</span>
-            <div>
-                <strong>100% Naturel</strong>
-                <span>Certifié bio</span>
-            </div>
-        </div>
+        <div class="hero-float f1"><span class="hf-emoji">🌿</span><div class="hf-text"><strong>100% Naturel</strong><span>Certifié bio</span></div></div>
+        <div class="hero-float f2"><span class="hf-emoji">🚚</span><div class="hf-text"><strong>Livraison gratuite</strong><span>Dès 200 MAD</span></div></div>
     </div>
 </section>
 
 <!-- Marquee -->
-<div class="marquee-bar">
-    <div class="marquee-track">
-        <span class="marquee-item"><span>✦</span> Livraison gratuite dès 200 MAD</span>
-        <span class="marquee-item"><span>✦</span> Paiement à la livraison</span>
-        <span class="marquee-item"><span>✦</span> 100% naturel & certifié</span>
-        <span class="marquee-item"><span>✦</span> Satisfait ou remboursé 30j</span>
-        <span class="marquee-item"><span>✦</span> +10 000 clientes satisfaites</span>
-        <span class="marquee-item"><span>✦</span> Livraison gratuite dès 200 MAD</span>
-        <span class="marquee-item"><span>✦</span> Paiement à la livraison</span>
-        <span class="marquee-item"><span>✦</span> 100% naturel & certifié</span>
-        <span class="marquee-item"><span>✦</span> Satisfait ou remboursé 30j</span>
-        <span class="marquee-item"><span>✦</span> +10 000 clientes satisfaites</span>
-    </div>
+<div class="marquee">
+    <div class="marquee-track"><span><span class="dot">✦</span> Livraison gratuite dès 200 MAD</span><span><span class="dot">✦</span> Paiement à la livraison</span><span><span class="dot">✦</span> 100% naturel & certifié</span><span><span class="dot">✦</span> Satisfait ou remboursé 30j</span><span><span class="dot">✦</span> +10 000 clientes</span><span><span class="dot">✦</span> Livraison gratuite dès 200 MAD</span><span><span class="dot">✦</span> Paiement à la livraison</span><span><span class="dot">✦</span> 100% naturel & certifié</span><span><span class="dot">✦</span> Satisfait ou remboursé 30j</span><span><span class="dot">✦</span> +10 000 clientes</span></div>
 </div>
 
-<!-- Bestsellers -->
-<section class="section bestsellers" id="bestsellers">
+<!-- Boutique -->
+<section class="section" id="boutique">
     <div class="container">
-        <div class="section-header center">
-            <div class="section-tag">⭐ Bestsellers</div>
-            <h2 class="section-title">Les favoris de nos clientes</h2>
-            <p class="section-sub">Les produits les plus vendus et les mieux notés de notre boutique.</p>
+        <div class="s-header center">
+            <div class="s-tag">🛍️ Boutique</div>
+            <h2 class="s-title">Notre collection</h2>
+            <p class="s-sub">Des soins authentiques, fabriqués artisanalement au Maroc.</p>
         </div>
-        <div class="products-grid">
-            <div class="product-card reveal">
-                <div class="product-img-wrap">
-                    <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=400&q=75" alt="Huile d'argan" class="product-img">
-                    <span class="product-badge badge-best">⭐ Bestseller</span>
-                    <a href="#" class="product-quick"><i class="fas fa-shopping-bag"></i></a>
-                </div>
-                <div class="product-body">
-                    <div class="product-cat">Soins visage</div>
-                    <div class="product-name">Huile d'Argan Pure Bio</div>
-                    <div class="product-price">149 MAD</div>
-                    <div class="product-stars">★★★★★ (234)</div>
-                </div>
-            </div>
-            <div class="product-card reveal">
-                <div class="product-img-wrap">
-                    <img src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=400&q=75" alt="Eau de rose" class="product-img">
-                    <span class="product-badge badge-new">🌸 Nouveau</span>
-                    <a href="#" class="product-quick"><i class="fas fa-shopping-bag"></i></a>
-                </div>
-                <div class="product-body">
-                    <div class="product-cat">Soins visage</div>
-                    <div class="product-name">Eau de Rose de Dadès</div>
-                    <div class="product-price">89 MAD</div>
-                    <div class="product-stars">★★★★★ (189)</div>
-                </div>
-            </div>
-            <div class="product-card reveal">
-                <div class="product-img-wrap">
-                    <img src="https://images.unsplash.com/photo-1643185539104-3622c607985f?w=400&q=75" alt="Savon noir" class="product-img">
-                    <span class="product-badge badge-best">⭐ Bestseller</span>
-                    <a href="#" class="product-quick"><i class="fas fa-shopping-bag"></i></a>
-                </div>
-                <div class="product-body">
-                    <div class="product-cat">Soins corps</div>
-                    <div class="product-name">Savon Noir à l'Eucalyptus</div>
-                    <div class="product-price">69 MAD</div>
-                    <div class="product-stars">★★★★★ (312)</div>
-                </div>
-            </div>
-            <div class="product-card reveal">
-                <div class="product-img-wrap">
-                    <img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=400&q=75" alt="Coffret hammam" class="product-img">
-                    <span class="product-badge badge-promo">-20%</span>
-                    <a href="#" class="product-quick"><i class="fas fa-shopping-bag"></i></a>
-                </div>
-                <div class="product-body">
-                    <div class="product-cat">Coffrets</div>
-                    <div class="product-name">Coffret Hammam Royal</div>
-                    <div class="product-price"><span class="old">399 MAD</span> 319 MAD</div>
-                    <div class="product-stars">★★★★★ (156)</div>
-                </div>
-            </div>
+        <div class="filter-bar" id="filterBar">
+            <button class="filter-btn active" data-filter="all">Tous</button>
+            <button class="filter-btn" data-filter="visage">Soins Visage</button>
+            <button class="filter-btn" data-filter="corps">Soins Corps</button>
+            <button class="filter-btn" data-filter="cheveux">Cheveux</button>
+            <button class="filter-btn" data-filter="coffrets">Coffrets</button>
+            <button class="filter-btn" data-filter="accessoires">Accessoires</button>
         </div>
+        <div class="products-grid" id="productsGrid"></div>
     </div>
 </section>
 
 <!-- Categories -->
 <section class="section categories" id="categories">
     <div class="container">
-        <div class="section-header center">
-            <div class="section-tag">🌿 Catégories</div>
-            <h2 class="section-title">Explorez nos collections</h2>
+        <div class="s-header center">
+            <div class="s-tag">🌿 Catégories</div>
+            <h2 class="s-title">Explorez nos collections</h2>
         </div>
         <div class="cat-grid">
-            <div class="cat-card reveal">
-                <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=75" alt="Soins visage">
-                <div class="cat-overlay">
-                    <h3>Soins Visage</h3>
-                    <p>Argan, rose, figue de barbarie</p>
-                    <span class="cat-arrow">Découvrir →</span>
-                </div>
-            </div>
-            <div class="cat-card reveal">
-                <img src="https://images.unsplash.com/photo-1540555700478-4be289fbec6d?w=600&q=75" alt="Soins corps">
-                <div class="cat-overlay">
-                    <h3>Soins Corps</h3>
-                    <p>Savon noir, ghassoul, gommages</p>
-                    <span class="cat-arrow">Découvrir →</span>
-                </div>
-            </div>
-            <div class="cat-card reveal">
-                <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=600&q=75" alt="Coffrets cadeaux">
-                <div class="cat-overlay">
-                    <h3>Coffrets Cadeaux</h3>
-                    <p>Les plus belles idées cadeaux</p>
-                    <span class="cat-arrow">Découvrir →</span>
-                </div>
-            </div>
+            <div class="cat-card reveal"><img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=75" alt="Soins visage"><div class="cat-over"><h3>Soins Visage</h3><p>Argan, rose, figue de barbarie</p><span class="cat-link">Découvrir →</span></div></div>
+            <div class="cat-card reveal"><img src="https://images.unsplash.com/photo-1540555700478-4be289fbec6d?w=600&q=75" alt="Soins corps"><div class="cat-over"><h3>Soins Corps</h3><p>Savon noir, ghassoul, gommages</p><span class="cat-link">Découvrir →</span></div></div>
+            <div class="cat-card reveal"><img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=600&q=75" alt="Coffrets cadeaux"><div class="cat-over"><h3>Coffrets Cadeaux</h3><p>Les plus belles idées cadeaux</p><span class="cat-link">Découvrir →</span></div></div>
         </div>
     </div>
 </section>
@@ -391,18 +419,18 @@
 <!-- Story -->
 <section class="section story" id="story">
     <div class="container">
-        <div class="story-layout">
+        <div class="story-grid">
             <img src="https://images.unsplash.com/photo-1487412912498-0447578fcca8?w=600&q=80" alt="Notre histoire" class="story-img reveal">
             <div class="story-text reveal">
-                <div class="section-tag">🌹 Notre histoire</div>
+                <div class="s-tag">🌹 Notre histoire</div>
                 <h2>Du cœur du Maroc à votre salle de bain</h2>
-                <p>Zina Beauty est née d'une passion : offrir aux femmes marocaines (et du monde) des soins authentiques, formulés avec les ingrédients les plus nobles du Maroc — argan de Souss, rose de Dadès, ghassoul de l'Atlas.</p>
+                <p>Zina Beauty est née d'une passion : offrir des soins authentiques formulés avec les ingrédients les plus nobles du Maroc — argan de Souss, rose de Dadès, ghassoul de l'Atlas.</p>
                 <p>Chaque produit est fabriqué artisanalement, en petites séries, dans le respect des traditions et de la nature.</p>
-                <div class="story-values">
-                    <div class="value-item"><span class="v-emoji">🌿</span> 100% naturel</div>
-                    <div class="value-item"><span class="v-emoji">🐰</span> Non testé sur les animaux</div>
-                    <div class="value-item"><span class="v-emoji">🇲🇦</span> Fabriqué au Maroc</div>
-                    <div class="value-item"><span class="v-emoji">♻️</span> Emballage recyclable</div>
+                <div class="story-vals">
+                    <div class="sv-item"><span class="sv-emoji">🌿</span> 100% naturel</div>
+                    <div class="sv-item"><span class="sv-emoji">🐰</span> Non testé sur les animaux</div>
+                    <div class="sv-item"><span class="sv-emoji">🇲🇦</span> Fabriqué au Maroc</div>
+                    <div class="sv-item"><span class="sv-emoji">♻️</span> Emballage recyclable</div>
                 </div>
             </div>
         </div>
@@ -412,35 +440,14 @@
 <!-- Testimonials -->
 <section class="section testimonials" id="avis">
     <div class="container">
-        <div class="section-header center">
-            <div class="section-tag">💬 Avis clients</div>
-            <h2 class="section-title">Elles adorent Zina Beauty</h2>
+        <div class="s-header center">
+            <div class="s-tag">💬 Avis clients</div>
+            <h2 class="s-title">Elles adorent Zina Beauty</h2>
         </div>
         <div class="testi-grid">
-            <div class="testi-card reveal">
-                <span class="testi-stars">★★★★★</span>
-                <p class="testi-quote">"L'huile d'argan est incroyable. Ma peau n'a jamais été aussi douce. Je commande chaque mois depuis 6 mois maintenant !"</p>
-                <div class="testi-author">
-                    <img src="https://i.pravatar.cc/48?img=32" alt="" class="testi-avatar">
-                    <div><div class="testi-name">Fatima Z.</div><div class="testi-loc">Casablanca</div></div>
-                </div>
-            </div>
-            <div class="testi-card reveal">
-                <span class="testi-stars">★★★★★</span>
-                <p class="testi-quote">"Le coffret hammam est parfait pour offrir. Packaging magnifique, produits de qualité. Ma mère a adoré son cadeau !"</p>
-                <div class="testi-author">
-                    <img src="https://i.pravatar.cc/48?img=44" alt="" class="testi-avatar">
-                    <div><div class="testi-name">Sara M.</div><div class="testi-loc">Rabat</div></div>
-                </div>
-            </div>
-            <div class="testi-card reveal">
-                <span class="testi-stars">★★★★★</span>
-                <p class="testi-quote">"Livraison rapide et produits au top. Le savon noir sent divinement bon. Je ne peux plus m'en passer pour mon gommage du dimanche."</p>
-                <div class="testi-author">
-                    <img src="https://i.pravatar.cc/48?img=25" alt="" class="testi-avatar">
-                    <div><div class="testi-name">Nadia K.</div><div class="testi-loc">Marrakech</div></div>
-                </div>
-            </div>
+            <div class="testi-card reveal"><div class="testi-stars">★★★★★</div><p class="testi-quote">"L'huile d'argan est incroyable. Ma peau n'a jamais été aussi douce. Je commande chaque mois depuis 6 mois !"</p><div class="testi-author"><img src="https://i.pravatar.cc/48?img=32" class="testi-av"><div><div class="testi-name">Fatima Z.</div><div class="testi-loc">Casablanca</div></div></div></div>
+            <div class="testi-card reveal"><div class="testi-stars">★★★★★</div><p class="testi-quote">"Le coffret hammam est parfait pour offrir. Packaging magnifique, produits de qualité. Ma mère a adoré !"</p><div class="testi-author"><img src="https://i.pravatar.cc/48?img=44" class="testi-av"><div><div class="testi-name">Sara M.</div><div class="testi-loc">Rabat</div></div></div></div>
+            <div class="testi-card reveal"><div class="testi-stars">★★★★★</div><p class="testi-quote">"Livraison rapide et produits au top. Le savon noir sent divinement bon. Mon rituel du dimanche !"</p><div class="testi-author"><img src="https://i.pravatar.cc/48?img=25" class="testi-av"><div><div class="testi-name">Nadia K.</div><div class="testi-loc">Marrakech</div></div></div></div>
         </div>
     </div>
 </section>
@@ -450,133 +457,381 @@
     <div class="container">
         <h2 class="reveal">-15% sur votre première commande</h2>
         <p class="reveal">Utilisez le code ci-dessous lors de votre achat</p>
-        <div class="promo-code reveal">BIENVENUE15</div>
-        <br>
-        <a href="https://wa.me/212600000000?text=Bonjour%20Zina%20Beauty%20!%20Je%20voudrais%20passer%20commande." target="_blank" class="btn-rose reveal" style="font-size: 1rem; padding: 16px 32px;">
-            <i class="fab fa-whatsapp"></i> Commander sur WhatsApp
-        </a>
+        <div class="promo-code reveal">BIENVENUE15</div><br>
+        <a href="#boutique" class="btn-rose reveal">🛍️ Voir la boutique</a>
     </div>
 </div>
 
-<!-- Trust Bar -->
+<!-- Trust -->
 <div class="trust-bar">
     <div class="container">
         <div class="trust-grid">
-            <div class="trust-cell reveal">
-                <span class="t-emoji">🚚</span>
-                <h4>Livraison rapide</h4>
-                <p>24-48h partout au Maroc</p>
-            </div>
-            <div class="trust-cell reveal">
-                <span class="t-emoji">💳</span>
-                <h4>Paiement à la livraison</h4>
-                <p>Payez en cash ou par carte</p>
-            </div>
-            <div class="trust-cell reveal">
-                <span class="t-emoji">↩️</span>
-                <h4>Retours gratuits</h4>
-                <p>Satisfait ou remboursé 30 jours</p>
-            </div>
-            <div class="trust-cell reveal">
-                <span class="t-emoji">💬</span>
-                <h4>Support WhatsApp</h4>
-                <p>Réponse en moins de 5 min</p>
-            </div>
+            <div class="trust-cell reveal"><span class="tc-emoji">🚚</span><h4>Livraison rapide</h4><p>24-48h partout au Maroc</p></div>
+            <div class="trust-cell reveal"><span class="tc-emoji">💳</span><h4>Paiement à la livraison</h4><p>Cash ou carte bancaire</p></div>
+            <div class="trust-cell reveal"><span class="tc-emoji">↩️</span><h4>Retours gratuits</h4><p>Satisfait ou remboursé 30j</p></div>
+            <div class="trust-cell reveal"><span class="tc-emoji">💬</span><h4>Support WhatsApp</h4><p>Réponse en moins de 5 min</p></div>
         </div>
     </div>
 </div>
 
 <!-- Newsletter -->
-<section class="newsletter" id="contact">
+<section class="newsletter">
     <div class="container">
         <h2 class="reveal">Rejoignez la communauté Zina</h2>
-        <p class="reveal">Recevez nos offres exclusives et conseils beauté naturelle</p>
-        <div class="nl-form reveal">
-            <input type="email" placeholder="Votre adresse email">
-            <button type="button">S'inscrire</button>
-        </div>
+        <p class="reveal">Recevez nos offres exclusives et conseils beauté</p>
+        <div class="nl-form reveal"><input type="email" placeholder="Votre email"><button>S'inscrire</button></div>
     </div>
 </section>
 
 <!-- Footer -->
 <footer>
-    <div class="footer-inner">
-        <div class="footer-top">
-            <div class="footer-brand">
-                <div class="logo-text serif">Zina <span style="color:var(--rose-light);">Beauty</span></div>
-                <p>Cosmétiques naturels du Maroc. Argan, rose, ghassoul — la beauté au naturel.</p>
-                <div class="footer-social">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-tiktok"></i></a>
-                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
-                </div>
-            </div>
-            <div class="footer-col">
-                <h4>Boutique</h4>
-                <ul>
-                    <li><a href="#bestsellers">Bestsellers</a></li>
-                    <li><a href="#categories">Soins visage</a></li>
-                    <li><a href="#categories">Soins corps</a></li>
-                    <li><a href="#categories">Coffrets cadeaux</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Infos</h4>
-                <ul>
-                    <li><a href="#story">Notre histoire</a></li>
-                    <li><a href="#">Livraison & retours</a></li>
-                    <li><a href="#">CGV</a></li>
-                    <li><a href="#">FAQ</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Contact</h4>
-                <ul>
-                    <li><a href="https://wa.me/212600000000" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
-                    <li><a href="mailto:contact@zinabeauty.ma"><i class="fas fa-envelope"></i> contact@zinabeauty.ma</a></li>
-                    <li><a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i> @zinabeauty.ma</a></li>
-                </ul>
-            </div>
+    <div class="ft-inner">
+        <div class="ft-top">
+            <div class="ft-brand"><span class="logo serif">Zina <span style="color:var(--rose-light)">Beauty</span></span><p>Cosmétiques naturels du Maroc. Argan, rose, ghassoul — la beauté au naturel.</p><div class="ft-social"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-tiktok"></i></a><a href="#"><i class="fab fa-pinterest-p"></i></a></div></div>
+            <div class="ft-col"><h4>Boutique</h4><ul><li><a href="#">Soins visage</a></li><li><a href="#">Soins corps</a></li><li><a href="#">Cheveux</a></li><li><a href="#">Coffrets</a></li></ul></div>
+            <div class="ft-col"><h4>Infos</h4><ul><li><a href="#">Livraison & retours</a></li><li><a href="#">CGV</a></li><li><a href="#">FAQ</a></li></ul></div>
+            <div class="ft-col"><h4>Contact</h4><ul><li><a href="https://wa.me/212600000000" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a></li><li><a href="mailto:contact@zinabeauty.ma"><i class="fas fa-envelope"></i> contact@zinabeauty.ma</a></li></ul></div>
         </div>
-        <div class="footer-bottom">
-            <p>© 2024 Zina Beauty — Casablanca, Maroc · Site par <a href="../../index.html">VistraDev</a></p>
-            <div class="footer-pay">
-                <span>💳 CMI</span>
-                <span>💵 Cash</span>
-                <span>📲 Wafapay</span>
-            </div>
-        </div>
+        <div class="ft-bottom"><p>© 2024 Zina Beauty · Site par <a href="../../index.html">VistraDev</a></p><div class="ft-pay"><span>💳 CMI</span><span>💵 Cash</span><span>📲 Wafapay</span></div></div>
     </div>
 </footer>
 
 <!-- WA Float -->
-<a href="https://wa.me/212600000000?text=Bonjour%20Zina%20Beauty%20!" target="_blank" class="wa-float" aria-label="WhatsApp">
-    <i class="fab fa-whatsapp"></i>
-</a>
+<a href="https://wa.me/212600000000?text=Bonjour%20Zina%20Beauty%20!" target="_blank" class="wa-float"><i class="fab fa-whatsapp"></i></a>
+
+<!-- Cart Sidebar -->
+<div class="cart-overlay" id="cartOverlay"></div>
+<div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+        <h3>🛒 Panier <span class="c-count" id="cartHeaderCount">0</span></h3>
+        <button class="cart-close" id="cartClose"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-footer" id="cartFooter" style="display:none;">
+        <div class="cf-row"><span class="label">Sous-total</span><span id="cfSubtotal">0 MAD</span></div>
+        <div class="cf-row"><span class="label">Livraison</span><span id="cfShipping">—</span></div>
+        <div class="cf-row total"><span>Total</span><span id="cfTotal">0 MAD</span></div>
+        <button class="cart-checkout" id="checkoutBtn"><i class="fas fa-lock"></i> Passer la commande</button>
+        <button class="cart-wa" id="cartWaBtn"><i class="fab fa-whatsapp"></i> Commander sur WhatsApp</button>
+    </div>
+</div>
+
+<!-- Quick View Modal -->
+<div class="modal-overlay" id="quickModal">
+    <div class="modal">
+        <img src="" alt="" class="modal-img" id="qmImg">
+        <div class="modal-body">
+            <button class="modal-close" id="qmClose"><i class="fas fa-times"></i></button>
+            <div class="modal-cat" id="qmCat"></div>
+            <div class="modal-name" id="qmName"></div>
+            <div class="modal-stars" id="qmStars"></div>
+            <div class="modal-price" id="qmPrice"></div>
+            <div class="modal-desc" id="qmDesc"></div>
+            <div class="modal-qty"><label>Quantité</label><div class="qty-ctrl"><button id="qmMinus">−</button><input type="number" value="1" min="1" id="qmQty"><button id="qmPlus">+</button></div></div>
+            <button class="modal-add" id="qmAdd"><i class="fas fa-shopping-bag"></i> Ajouter au panier</button>
+            <div class="modal-features"><div class="modal-feat"><i class="fas fa-check"></i> 100% naturel</div><div class="modal-feat"><i class="fas fa-check"></i> Livraison 24-48h</div><div class="modal-feat"><i class="fas fa-check"></i> Satisfait ou remboursé</div></div>
+        </div>
+    </div>
+</div>
+
+<!-- Checkout Modal -->
+<div class="checkout-overlay" id="checkoutOverlay">
+    <div class="checkout-box">
+        <h2 class="serif">Finaliser la commande</h2>
+        <p class="checkout-sub">Remplissez vos informations pour recevoir votre commande</p>
+        <div class="checkout-summary" id="coSummary"></div>
+        <div class="form-row">
+            <div class="form-group"><label>Prénom *</label><input type="text" id="coFirstname" placeholder="Fatima"></div>
+            <div class="form-group"><label>Nom *</label><input type="text" id="coLastname" placeholder="Benali"></div>
+        </div>
+        <div class="form-group"><label>Téléphone *</label><input type="tel" id="coPhone" placeholder="06 XX XX XX XX"></div>
+        <div class="form-group"><label>Adresse *</label><input type="text" id="coAddress" placeholder="123 Rue de la Paix"></div>
+        <div class="form-row">
+            <div class="form-group"><label>Ville *</label><select id="coCity"><option value="">Choisir</option><option>Casablanca</option><option>Rabat</option><option>Marrakech</option><option>Fès</option><option>Tanger</option><option>Agadir</option><option>Meknès</option><option>Oujda</option><option>Kénitra</option><option>Autre</option></select></div>
+            <div class="form-group"><label>Code postal</label><input type="text" id="coZip" placeholder="20000"></div>
+        </div>
+        <label style="font-size:0.78rem;font-weight:600;display:block;margin-bottom:8px;">Mode de paiement</label>
+        <div class="payment-opts">
+            <div class="pay-opt selected" data-pay="cash">💵 À la livraison</div>
+            <div class="pay-opt" data-pay="card">💳 Carte bancaire</div>
+            <div class="pay-opt" data-pay="wafapay">📲 Wafapay</div>
+        </div>
+        <div class="form-group"><label>Note (optionnel)</label><textarea id="coNote" rows="2" placeholder="Instructions de livraison..."></textarea></div>
+        <button class="checkout-submit" id="coSubmit">✅ Confirmer la commande</button>
+        <button class="checkout-back" id="coBack">← Retour au panier</button>
+    </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"><i class="fas fa-check-circle"></i> <span id="toastText"></span></div>
 
 <script>
-// Nav scroll
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 40);
-}, { passive: true });
+/* ── Product Data ── */
+const PRODUCTS = [
+    { id: 1, name: "Huile d'Argan Pure Bio", cat: "visage", catLabel: "Soins visage", price: 149, oldPrice: null, img: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=500&q=75", badge: "best", stars: 5, reviews: 234, desc: "Huile d'argan 100% pure et bio, pressée à froid. Nourrit, hydrate et protège la peau et les cheveux. Flacon compte-gouttes 30ml." },
+    { id: 2, name: "Eau de Rose de Dadès", cat: "visage", catLabel: "Soins visage", price: 89, oldPrice: null, img: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=500&q=75", badge: "new", stars: 5, reviews: 189, desc: "Eau de rose 100% naturelle, distillée à Kelaat M'gouna. Tonifie, rafraîchit et apaise la peau. Spray 100ml." },
+    { id: 3, name: "Savon Noir à l'Eucalyptus", cat: "corps", catLabel: "Soins corps", price: 69, oldPrice: null, img: "https://images.unsplash.com/photo-1643185539104-3622c607985f?w=500&q=75", badge: "best", stars: 5, reviews: 312, desc: "Savon noir beldi traditionnel à l'eucalyptus. Nettoie en profondeur et prépare la peau au gommage. Pot 250g." },
+    { id: 4, name: "Coffret Hammam Royal", cat: "coffrets", catLabel: "Coffrets", price: 319, oldPrice: 399, img: "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=500&q=75", badge: "promo", stars: 5, reviews: 156, desc: "Coffret complet : savon noir, ghassoul, gant de gommage, eau de rose, huile d'argan. Packaging cadeau luxe." },
+    { id: 5, name: "Ghassoul de l'Atlas", cat: "corps", catLabel: "Soins corps", price: 59, oldPrice: null, img: "https://images.unsplash.com/photo-1556228841-a3c527ebefe5?w=500&q=75", badge: null, stars: 4, reviews: 98, desc: "Argile naturelle du Moyen Atlas. Purifie, adoucit et embellit la peau et les cheveux. Sachet 200g." },
+    { id: 6, name: "Sérum Figue de Barbarie", cat: "visage", catLabel: "Soins visage", price: 249, oldPrice: 299, img: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=500&q=75", badge: "promo", stars: 5, reviews: 87, desc: "Sérum anti-âge à l'huile de figue de barbarie. L'actif le plus précieux du Maroc pour un teint éclatant. 15ml." },
+    { id: 7, name: "Huile de Nigelle Bio", cat: "cheveux", catLabel: "Cheveux", price: 119, oldPrice: null, img: "https://images.unsplash.com/photo-1597354984706-fac992d9306f?w=500&q=75", badge: null, stars: 5, reviews: 145, desc: "Huile de nigelle pressée à froid. Renforce les cheveux, apaise le cuir chevelu, stimule la pousse. 50ml." },
+    { id: 8, name: "Gant de Gommage Kessa", cat: "accessoires", catLabel: "Accessoires", price: 39, oldPrice: null, img: "https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=500&q=75", badge: null, stars: 5, reviews: 267, desc: "Gant Kessa traditionnel en tissu crêpé. Élimine les peaux mortes pour une peau douce et lisse." },
+    { id: 9, name: "Baume à Lèvres Argan & Rose", cat: "visage", catLabel: "Soins visage", price: 45, oldPrice: null, img: "https://images.unsplash.com/photo-1631729371254-42c2892f0e6e?w=500&q=75", badge: "new", stars: 4, reviews: 73, desc: "Baume nourrissant à l'argan et à la rose. Répare et protège les lèvres sèches. Stick 10g." },
+    { id: 10, name: "Coffret Routine Visage", cat: "coffrets", catLabel: "Coffrets", price: 449, oldPrice: 549, img: "https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?w=500&q=75", badge: "promo", stars: 5, reviews: 64, desc: "Routine complète : nettoyant, eau de rose, sérum figue de barbarie, huile d'argan. 4 produits dans un coffret premium." },
+    { id: 11, name: "Shampoing Rhassoul & Romarin", cat: "cheveux", catLabel: "Cheveux", price: 79, oldPrice: null, img: "https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?w=500&q=75", badge: null, stars: 4, reviews: 112, desc: "Shampoing naturel au rhassoul et romarin. Purifie le cuir chevelu et apporte volume. Sans sulfates. 250ml." },
+    { id: 12, name: "Brume Parfumée Fleur d'Oranger", cat: "corps", catLabel: "Soins corps", price: 99, oldPrice: null, img: "https://images.unsplash.com/photo-1594913503206-5088c3cf3944?w=500&q=75", badge: "new", stars: 5, reviews: 58, desc: "Brume corporelle à la fleur d'oranger du Maroc. Parfum délicat et naturel qui dure toute la journée. 100ml." },
+];
 
-// Mobile menu
-const burger = document.getElementById('navBurger');
-const menu = document.getElementById('navMenu');
-burger.addEventListener('click', () => { nav.classList.toggle('menu-open'); });
-menu.querySelectorAll('a').forEach(a => { a.addEventListener('click', () => nav.classList.remove('menu-open')); });
+/* ── Cart State ── */
+let cart = JSON.parse(localStorage.getItem('zina_cart') || '[]');
 
-// Scroll reveal
-const reveals = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+function saveCart() { localStorage.setItem('zina_cart', JSON.stringify(cart)); }
+function cartTotal() { return cart.reduce((s, i) => s + i.price * i.qty, 0); }
+function cartItemCount() { return cart.reduce((s, i) => s + i.qty, 0); }
+
+/* ── Render Products ── */
+const grid = document.getElementById('productsGrid');
+function renderProducts(filter) {
+    grid.innerHTML = '';
+    const items = filter === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.cat === filter);
+    items.forEach(p => {
+        const badgeHtml = p.badge ? `<span class="p-badge ${p.badge}">${p.badge === 'best' ? '⭐ Bestseller' : p.badge === 'new' ? '🌸 Nouveau' : '-' + Math.round((1 - p.price / p.oldPrice) * 100) + '%'}</span>` : '';
+        const priceHtml = p.oldPrice ? `<span class="old">${p.oldPrice} MAD</span> ${p.price} MAD` : `${p.price} MAD`;
+        const starsHtml = '★'.repeat(p.stars) + (p.stars < 5 ? '☆'.repeat(5 - p.stars) : '');
+        grid.innerHTML += `
+        <div class="product-card reveal visible" data-cat="${p.cat}">
+            <div class="p-img-wrap">
+                <img src="${p.img}" alt="${p.name}" class="p-img">
+                ${badgeHtml}
+                <div class="p-actions">
+                    <button class="p-add-btn" onclick="addToCart(${p.id})"><i class="fas fa-shopping-bag"></i> Ajouter</button>
+                    <button class="p-quick-btn" onclick="openQuick(${p.id})"><i class="fas fa-eye"></i></button>
+                </div>
+            </div>
+            <div class="p-body">
+                <div class="p-cat">${p.catLabel}</div>
+                <div class="p-name">${p.name}</div>
+                <div class="p-price">${priceHtml}</div>
+                <div class="p-stars">${starsHtml} <span>(${p.reviews})</span></div>
+            </div>
+        </div>`;
     });
-}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-reveals.forEach(el => observer.observe(el));
-</script>
+}
+renderProducts('all');
 
+/* ── Filter ── */
+document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderProducts(btn.dataset.filter);
+    });
+});
+
+/* ── Add to Cart ── */
+function addToCart(id, qty = 1) {
+    const p = PRODUCTS.find(x => x.id === id);
+    const existing = cart.find(x => x.id === id);
+    if (existing) existing.qty += qty;
+    else cart.push({ id: p.id, name: p.name, cat: p.catLabel, price: p.price, img: p.img, qty });
+    saveCart(); updateCartUI(); showToast(`${p.name} ajouté au panier`);
+}
+
+/* ── Cart UI ── */
+function updateCartUI() {
+    const count = cartItemCount();
+    document.getElementById('cartCount').textContent = count;
+    document.getElementById('cartHeaderCount').textContent = count;
+    // Bump animation
+    const cc = document.getElementById('cartCount');
+    cc.classList.remove('bump'); void cc.offsetWidth; cc.classList.add('bump');
+
+    const itemsEl = document.getElementById('cartItems');
+    const footerEl = document.getElementById('cartFooter');
+    if (cart.length === 0) {
+        itemsEl.innerHTML = `<div class="cart-empty"><span class="ce-emoji">🛒</span><p>Votre panier est vide</p><a href="#boutique" class="btn-rose" onclick="closeCart()" style="font-size:0.82rem;padding:10px 20px;">Voir la boutique</a></div>`;
+        footerEl.style.display = 'none';
+        return;
+    }
+    footerEl.style.display = 'block';
+    itemsEl.innerHTML = cart.map(item => `
+        <div class="cart-item">
+            <img src="${item.img}" alt="${item.name}" class="ci-img">
+            <div class="ci-info">
+                <div class="ci-name">${item.name}</div>
+                <div class="ci-cat">${item.cat}</div>
+                <div class="ci-bottom">
+                    <div class="ci-qty">
+                        <button onclick="changeQty(${item.id}, -1)">−</button>
+                        <span>${item.qty}</span>
+                        <button onclick="changeQty(${item.id}, 1)">+</button>
+                    </div>
+                    <div class="ci-price">${item.price * item.qty} MAD</div>
+                </div>
+                <button class="ci-remove" onclick="removeItem(${item.id})">Supprimer</button>
+            </div>
+        </div>
+    `).join('');
+
+    const sub = cartTotal();
+    const shipping = sub >= 200 ? 0 : 30;
+    document.getElementById('cfSubtotal').textContent = sub + ' MAD';
+    document.getElementById('cfShipping').textContent = shipping === 0 ? '<span class="cf-free">Gratuite ✓</span>' : shipping + ' MAD';
+    document.getElementById('cfShipping').innerHTML = shipping === 0 ? '<span style="color:var(--green);font-weight:600;">Gratuite ✓</span>' : shipping + ' MAD';
+    document.getElementById('cfTotal').textContent = (sub + shipping) + ' MAD';
+}
+
+function changeQty(id, delta) {
+    const item = cart.find(x => x.id === id);
+    if (!item) return;
+    item.qty += delta;
+    if (item.qty <= 0) cart = cart.filter(x => x.id !== id);
+    saveCart(); updateCartUI();
+}
+
+function removeItem(id) {
+    cart = cart.filter(x => x.id !== id);
+    saveCart(); updateCartUI();
+}
+
+/* ── Cart Open/Close ── */
+function openCart() {
+    document.getElementById('cartOverlay').classList.add('open');
+    document.getElementById('cartSidebar').classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+function closeCart() {
+    document.getElementById('cartOverlay').classList.remove('open');
+    document.getElementById('cartSidebar').classList.remove('open');
+    document.body.style.overflow = '';
+}
+document.getElementById('cartToggle').addEventListener('click', openCart);
+document.getElementById('cartClose').addEventListener('click', closeCart);
+document.getElementById('cartOverlay').addEventListener('click', closeCart);
+
+/* ── Quick View ── */
+let quickProduct = null;
+function openQuick(id) {
+    quickProduct = PRODUCTS.find(x => x.id === id);
+    document.getElementById('qmImg').src = quickProduct.img;
+    document.getElementById('qmCat').textContent = quickProduct.catLabel;
+    document.getElementById('qmName').textContent = quickProduct.name;
+    document.getElementById('qmStars').innerHTML = '★'.repeat(quickProduct.stars) + (quickProduct.stars < 5 ? '☆'.repeat(5 - quickProduct.stars) : '') + ` <span>(${quickProduct.reviews} avis)</span>`;
+    document.getElementById('qmPrice').innerHTML = quickProduct.oldPrice ? `<span class="old">${quickProduct.oldPrice} MAD</span> ${quickProduct.price} MAD` : `${quickProduct.price} MAD`;
+    document.getElementById('qmDesc').textContent = quickProduct.desc;
+    document.getElementById('qmQty').value = 1;
+    document.getElementById('quickModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+document.getElementById('qmClose').addEventListener('click', () => {
+    document.getElementById('quickModal').classList.remove('open');
+    document.body.style.overflow = '';
+});
+document.getElementById('quickModal').addEventListener('click', e => {
+    if (e.target === document.getElementById('quickModal')) {
+        document.getElementById('quickModal').classList.remove('open');
+        document.body.style.overflow = '';
+    }
+});
+document.getElementById('qmMinus').addEventListener('click', () => {
+    const input = document.getElementById('qmQty');
+    if (parseInt(input.value) > 1) input.value = parseInt(input.value) - 1;
+});
+document.getElementById('qmPlus').addEventListener('click', () => {
+    document.getElementById('qmQty').value = parseInt(document.getElementById('qmQty').value) + 1;
+});
+document.getElementById('qmAdd').addEventListener('click', () => {
+    addToCart(quickProduct.id, parseInt(document.getElementById('qmQty').value));
+    document.getElementById('quickModal').classList.remove('open');
+    document.body.style.overflow = '';
+    openCart();
+});
+
+/* ── Checkout ── */
+document.getElementById('checkoutBtn').addEventListener('click', () => {
+    closeCart();
+    const sub = cartTotal();
+    const shipping = sub >= 200 ? 0 : 30;
+    let html = '<h4>Récapitulatif</h4>';
+    cart.forEach(item => {
+        html += `<div class="cs-item"><span>${item.name} × ${item.qty}</span><span>${item.price * item.qty} MAD</span></div>`;
+    });
+    html += `<div class="cs-item"><span>Livraison</span><span>${shipping === 0 ? 'Gratuite' : shipping + ' MAD'}</span></div>`;
+    html += `<div class="cs-item total"><span>Total</span><span>${sub + shipping} MAD</span></div>`;
+    document.getElementById('coSummary').innerHTML = html;
+    document.getElementById('checkoutOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+});
+document.getElementById('coBack').addEventListener('click', () => {
+    document.getElementById('checkoutOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+    openCart();
+});
+document.getElementById('checkoutOverlay').addEventListener('click', e => {
+    if (e.target === document.getElementById('checkoutOverlay')) {
+        document.getElementById('checkoutOverlay').classList.remove('open');
+        document.body.style.overflow = '';
+    }
+});
+document.querySelectorAll('.pay-opt').forEach(opt => {
+    opt.addEventListener('click', () => {
+        document.querySelectorAll('.pay-opt').forEach(o => o.classList.remove('selected'));
+        opt.classList.add('selected');
+    });
+});
+document.getElementById('coSubmit').addEventListener('click', () => {
+    const fn = document.getElementById('coFirstname').value;
+    const ln = document.getElementById('coLastname').value;
+    const phone = document.getElementById('coPhone').value;
+    const addr = document.getElementById('coAddress').value;
+    const city = document.getElementById('coCity').value;
+    if (!fn || !ln || !phone || !addr || !city) { alert('Veuillez remplir tous les champs obligatoires.'); return; }
+    const sub = cartTotal();
+    const shipping = sub >= 200 ? 0 : 30;
+    let msg = `Bonjour Zina Beauty ! 🌿\n\nNouvelle commande :\n`;
+    cart.forEach(item => { msg += `• ${item.name} × ${item.qty} — ${item.price * item.qty} MAD\n`; });
+    msg += `\nTotal : ${sub + shipping} MAD\n\n👤 ${fn} ${ln}\n📞 ${phone}\n📍 ${addr}, ${city}`;
+    const note = document.getElementById('coNote').value;
+    if (note) msg += `\n📝 ${note}`;
+    window.open(`https://wa.me/212600000000?text=${encodeURIComponent(msg)}`, '_blank');
+    cart = []; saveCart(); updateCartUI();
+    document.getElementById('checkoutOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+    showToast('Commande envoyée ! 🎉');
+});
+
+/* ── WhatsApp Cart ── */
+document.getElementById('cartWaBtn').addEventListener('click', () => {
+    let msg = 'Bonjour Zina Beauty ! 🌿\n\nJe souhaite commander :\n';
+    cart.forEach(item => { msg += `• ${item.name} × ${item.qty} — ${item.price * item.qty} MAD\n`; });
+    const sub = cartTotal();
+    const shipping = sub >= 200 ? 0 : 30;
+    msg += `\nTotal : ${sub + shipping} MAD`;
+    window.open(`https://wa.me/212600000000?text=${encodeURIComponent(msg)}`, '_blank');
+});
+
+/* ── Toast ── */
+function showToast(text) {
+    const t = document.getElementById('toast');
+    document.getElementById('toastText').textContent = text;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+/* ── Nav ── */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+document.getElementById('navBurger').addEventListener('click', () => { nav.classList.toggle('menu-open'); });
+document.querySelectorAll('#navMenu a').forEach(a => a.addEventListener('click', () => nav.classList.remove('menu-open')));
+
+/* ── Reveal ── */
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* Init cart UI */
+updateCartUI();
+</script>
 </body>
 </html>
