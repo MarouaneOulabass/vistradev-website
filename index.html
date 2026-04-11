@@ -674,5 +674,63 @@
 </a>
 
 <script src="js/main.js"></script>
+
+<!-- Chat Demo Widget -->
+<style>
+.dw-fab{position:fixed;bottom:90px;right:24px;z-index:9000;width:52px;height:52px;border-radius:50%;background:#7c3aed;color:#fff;border:none;cursor:pointer;box-shadow:0 4px 16px rgba(124,58,237,0.35);font-size:1.3rem;display:flex;align-items:center;justify-content:center;transition:transform .2s}
+.dw-fab:hover{transform:scale(1.08)}
+.dw-panel{position:fixed;bottom:24px;right:24px;z-index:9001;width:340px;max-width:calc(100vw - 32px);height:480px;max-height:calc(100dvh - 48px);background:#1a1a2e;border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,0.3);display:none;flex-direction:column;overflow:hidden;border:1px solid #2d2d44}
+.dw-panel.open{display:flex}
+.dw-hd{padding:14px 16px;background:#7c3aed;color:#fff;display:flex;align-items:center;justify-content:space-between}
+.dw-hd h4{font-size:.9rem;margin:0;font-weight:700}
+.dw-hd span{font-size:.65rem;opacity:.8}
+.dw-x{background:rgba(255,255,255,.15);border:none;color:#fff;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:.8rem}
+.dw-msgs{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px;background:#12121f}
+.dw-msg{max-width:82%;padding:10px 14px;font-size:13px;line-height:1.5;border-radius:12px;animation:dwIn .3s ease}
+@keyframes dwIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.dw-msg.bot{background:#1e1e35;border:1px solid #2d2d44;align-self:flex-start;color:#d1d5db;border-radius:12px 12px 12px 4px}
+.dw-msg.user{background:#7c3aed;color:#fff;align-self:flex-end;border-radius:12px 12px 4px 12px}
+.dw-chips{display:flex;flex-wrap:wrap;gap:6px;padding:8px 12px;background:#1a1a2e}
+.dw-chip{padding:6px 12px;border:1px solid #2d2d44;border-radius:20px;font-size:11px;cursor:pointer;background:#1e1e35;color:#a5b4fc;transition:all .2s}
+.dw-chip:hover{border-color:#7c3aed;color:#c4b5fd}
+.dw-inp{display:flex;gap:6px;padding:10px 12px;border-top:1px solid #2d2d44;background:#1a1a2e}
+.dw-inp input{flex:1;padding:8px 12px;border:1px solid #2d2d44;border-radius:20px;font-size:13px;outline:none;font-family:inherit;background:#12121f;color:#e5e7eb}
+.dw-inp input:focus{border-color:#7c3aed}
+.dw-inp button{width:36px;height:36px;border-radius:50%;background:#7c3aed;color:#fff;border:none;cursor:pointer;font-size:.8rem}
+@media(max-width:500px){.dw-panel{width:100%;max-width:100%;height:100dvh;max-height:100dvh;bottom:0;right:0;border-radius:0}}
+</style>
+<button class="dw-fab" onclick="dwToggle()" id="dwFab">💬</button>
+<div class="dw-panel" id="dwPanel">
+  <div class="dw-hd">
+    <div><h4>VistraDev</h4><span>Assistant · En ligne</span></div>
+    <button class="dw-x" onclick="dwToggle()">✕</button>
+  </div>
+  <div class="dw-msgs" id="dwMsgs"></div>
+  <div class="dw-chips" id="dwChips"></div>
+  <div class="dw-inp">
+    <input id="dwInput" placeholder="Votre question..." onkeydown="if(event.key==='Enter')dwSend()">
+    <button onclick="dwSend()">➤</button>
+  </div>
+</div>
+<script>
+(function(){
+const FAQ = [
+  {q:["prix","tarif","cout","coût","combien","cher"],chips:"💰 Tarifs",a:"Nos sites web démarrent à partir de 1 000 DH pour un site vitrine one-page. Les sites multi-pages et e-commerce sont sur devis. Contactez-nous pour un devis gratuit !"},
+  {q:["delai","délai","temps","combien de temps","livraison","rapide"],chips:"⏱ Délais",a:"Nous livrons la plupart des sites en 48h à 5 jours selon la complexité. Un site one-page peut être prêt en 48h !"},
+  {q:["service","offre","propose","faire","créer"],chips:"🛠 Services",a:"Nous créons des sites vitrine, e-commerce, landing pages, et applications web. Chaque site est responsive, optimisé SEO et livré clé en main."},
+  {q:["contact","joindre","appeler","whatsapp","téléphone"],chips:"📞 Contact",a:"Contactez-nous sur WhatsApp au +212 661 971 520 ou visitez notre formulaire de contact. Nous répondons en moins d'une heure !"},
+  {q:["processus","étape","comment","fonctionne","déroulement"],chips:"📋 Processus",a:"1. Vous nous décrivez votre projet → 2. On vous envoie un devis gratuit → 3. Validation et paiement → 4. Livraison en 48h-5j → 5. Révisions gratuites incluses."},
+  {q:["technologie","techno","wordpress","react","stack"],chips:"💻 Technologies",a:"Nous utilisons HTML/CSS/JS modernes, React, Next.js selon le besoin. Pas de WordPress surchargé — des sites rapides et performants."}
+];
+const GREETING="Bonjour ! 👋 Je suis l'assistant VistraDev. Comment puis-je vous aider ? Posez une question ou choisissez un sujet ci-dessous.";
+const FALLBACK="Je n'ai pas la réponse exacte, mais notre équipe peut vous aider ! Écrivez-nous sur WhatsApp : wa.me/212661971520";
+let dwOpen=false,dwInit=false;
+window.dwToggle=function(){dwOpen=!dwOpen;document.getElementById('dwPanel').classList.toggle('open',dwOpen);document.getElementById('dwFab').style.display=dwOpen?'none':'';if(!dwInit){dwInit=true;dwAddMsg('bot',GREETING);showChips()}};
+function dwAddMsg(r,t){const c=document.getElementById('dwMsgs');const m=document.createElement('div');m.className='dw-msg '+r;m.textContent=t;c.appendChild(m);c.scrollTop=c.scrollHeight}
+function showChips(){const el=document.getElementById('dwChips');el.innerHTML='';FAQ.forEach(f=>{if(f.chips){const b=document.createElement('button');b.className='dw-chip';b.textContent=f.chips;b.onclick=()=>{dwAddMsg('user',f.chips);setTimeout(()=>dwAddMsg('bot',f.a),300);el.innerHTML=''};el.appendChild(b)}})}
+window.dwSend=function(){const inp=document.getElementById('dwInput');const msg=inp.value.trim();if(!msg)return;inp.value='';dwAddMsg('user',msg);const low=msg.toLowerCase();let answer=null;for(const f of FAQ){if(f.q.some(k=>low.includes(k))){answer=f.a;break}}setTimeout(()=>dwAddMsg('bot',answer||FALLBACK),300);document.getElementById('dwChips').innerHTML=''};
+})();
+</script>
+
 </body>
 </html>

@@ -511,5 +511,62 @@ function updateCountdown() {
 updateCountdown();
 setInterval(updateCountdown, 1000);
 </script>
+
+<!-- Chat Demo Widget -->
+<style>
+.dw-fab{position:fixed;bottom:90px;right:24px;z-index:9000;width:52px;height:52px;border-radius:50%;background:#c9a96e;color:#fff;border:none;cursor:pointer;box-shadow:0 4px 16px rgba(201,169,110,0.35);font-size:1.3rem;display:flex;align-items:center;justify-content:center;transition:transform .2s}
+.dw-fab:hover{transform:scale(1.08)}
+.dw-panel{position:fixed;bottom:24px;right:24px;z-index:9001;width:340px;max-width:calc(100vw - 32px);height:480px;max-height:calc(100dvh - 48px);background:#1a1a1a;border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,0.3);display:none;flex-direction:column;overflow:hidden;border:1px solid #333}
+.dw-panel.open{display:flex}
+.dw-hd{padding:14px 16px;background:linear-gradient(135deg,#c9a96e,#b8944d);color:#fff;display:flex;align-items:center;justify-content:space-between}
+.dw-hd h4{font-size:.9rem;margin:0;font-weight:700}
+.dw-hd span{font-size:.65rem;opacity:.8}
+.dw-x{background:rgba(255,255,255,.15);border:none;color:#fff;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:.8rem}
+.dw-msgs{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px;background:#111}
+.dw-msg{max-width:82%;padding:10px 14px;font-size:13px;line-height:1.5;border-radius:12px;animation:dwIn .3s ease}
+@keyframes dwIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.dw-msg.bot{background:#1e1e1e;border:1px solid #333;align-self:flex-start;color:#d1d5db;border-radius:12px 12px 12px 4px}
+.dw-msg.user{background:#c9a96e;color:#1a1a1a;align-self:flex-end;border-radius:12px 12px 4px 12px;font-weight:500}
+.dw-chips{display:flex;flex-wrap:wrap;gap:6px;padding:8px 12px;background:#1a1a1a}
+.dw-chip{padding:6px 12px;border:1px solid #333;border-radius:20px;font-size:11px;cursor:pointer;background:#1e1e1e;color:#c9a96e;transition:all .2s}
+.dw-chip:hover{border-color:#c9a96e;color:#e8d5a8}
+.dw-inp{display:flex;gap:6px;padding:10px 12px;border-top:1px solid #333;background:#1a1a1a}
+.dw-inp input{flex:1;padding:8px 12px;border:1px solid #333;border-radius:20px;font-size:13px;outline:none;font-family:inherit;background:#111;color:#e5e7eb}
+.dw-inp input:focus{border-color:#c9a96e}
+.dw-inp button{width:36px;height:36px;border-radius:50%;background:#c9a96e;color:#1a1a1a;border:none;cursor:pointer;font-size:.8rem}
+@media(max-width:500px){.dw-panel{width:100%;max-width:100%;height:100dvh;max-height:100dvh;bottom:0;right:0;border-radius:0}}
+</style>
+<button class="dw-fab" onclick="dwToggle()" id="dwFab">💬</button>
+<div class="dw-panel" id="dwPanel">
+  <div class="dw-hd">
+    <div><h4>Atlas Mode</h4><span>Assistant · En ligne</span></div>
+    <button class="dw-x" onclick="dwToggle()">✕</button>
+  </div>
+  <div class="dw-msgs" id="dwMsgs"></div>
+  <div class="dw-chips" id="dwChips"></div>
+  <div class="dw-inp">
+    <input id="dwInput" placeholder="Votre question..." onkeydown="if(event.key==='Enter')dwSend()">
+    <button onclick="dwSend()">➤</button>
+  </div>
+</div>
+<script>
+(function(){
+const FAQ = [
+  {q:["collection","nouveau","nouveauté","tendance","saison"],chips:"👗 Collections",a:"Découvrez notre nouvelle collection Printemps-Été 2026 : caftans modernes, abayas élégantes et prêt-à-porter fusion. Nouvelles pièces chaque semaine !"},
+  {q:["taille","size","mesure","guide"],chips:"📏 Tailles",a:"Nous proposons du XS au XXL. Un guide des tailles détaillé est disponible sur chaque fiche produit. En cas de doute, contactez-nous avec vos mesures !"},
+  {q:["livraison","livrer","expédition","délai","shipping"],chips:"🚚 Livraison",a:"Livraison gratuite au Maroc à partir de 500 DH. Délai : 2-4 jours ouvrés. Livraison express disponible en 24h sur Casablanca."},
+  {q:["retour","échange","rembours","retourner"],chips:"↩️ Retours",a:"Retours et échanges gratuits sous 14 jours, article non porté avec étiquette. Contactez-nous sur WhatsApp pour initier un retour."},
+  {q:["prix","tarif","combien","budget","promo","solde"],chips:"💰 Prix",a:"Nos pièces vont de 199 à 1 500 DH. Profitez de -20% sur votre première commande avec le code BIENVENUE20 !"}
+];
+const GREETING="Bienvenue chez Atlas Mode ! ✨ Comment puis-je vous aider ? Collections, tailles, livraison...";
+const FALLBACK="Je n'ai pas cette information. Contactez-nous sur WhatsApp pour une assistance personnalisée !";
+let dwOpen=false,dwInit=false;
+window.dwToggle=function(){dwOpen=!dwOpen;document.getElementById('dwPanel').classList.toggle('open',dwOpen);document.getElementById('dwFab').style.display=dwOpen?'none':'';if(!dwInit){dwInit=true;dwAddMsg('bot',GREETING);showChips()}};
+function dwAddMsg(r,t){const c=document.getElementById('dwMsgs');const m=document.createElement('div');m.className='dw-msg '+r;m.textContent=t;c.appendChild(m);c.scrollTop=c.scrollHeight}
+function showChips(){const el=document.getElementById('dwChips');el.innerHTML='';FAQ.forEach(f=>{if(f.chips){const b=document.createElement('button');b.className='dw-chip';b.textContent=f.chips;b.onclick=()=>{dwAddMsg('user',f.chips);setTimeout(()=>dwAddMsg('bot',f.a),300);el.innerHTML=''};el.appendChild(b)}})}
+window.dwSend=function(){const inp=document.getElementById('dwInput');const msg=inp.value.trim();if(!msg)return;inp.value='';dwAddMsg('user',msg);const low=msg.toLowerCase();let answer=null;for(const f of FAQ){if(f.q.some(k=>low.includes(k))){answer=f.a;break}}setTimeout(()=>dwAddMsg('bot',answer||FALLBACK),300);document.getElementById('dwChips').innerHTML=''};
+})();
+</script>
+
 </body>
 </html>

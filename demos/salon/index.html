@@ -400,5 +400,62 @@ window.addEventListener('scroll', () => {
     document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
 });
 </script>
+
+<!-- Chat Demo Widget -->
+<style>
+.dw-fab{position:fixed;bottom:90px;right:24px;z-index:9000;width:52px;height:52px;border-radius:50%;background:#c9847a;color:#fff;border:none;cursor:pointer;box-shadow:0 4px 16px rgba(201,132,122,0.35);font-size:1.3rem;display:flex;align-items:center;justify-content:center;transition:transform .2s}
+.dw-fab:hover{transform:scale(1.08)}
+.dw-panel{position:fixed;bottom:24px;right:24px;z-index:9001;width:340px;max-width:calc(100vw - 32px);height:480px;max-height:calc(100dvh - 48px);background:#fff;border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,0.15);display:none;flex-direction:column;overflow:hidden;border:1px solid #e5e7eb}
+.dw-panel.open{display:flex}
+.dw-hd{padding:14px 16px;background:#c9847a;color:#fff;display:flex;align-items:center;justify-content:space-between}
+.dw-hd h4{font-size:.9rem;margin:0;font-weight:700}
+.dw-hd span{font-size:.65rem;opacity:.8}
+.dw-x{background:rgba(255,255,255,.15);border:none;color:#fff;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:.8rem}
+.dw-msgs{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px;background:#fdf8f7}
+.dw-msg{max-width:82%;padding:10px 14px;font-size:13px;line-height:1.5;border-radius:12px;animation:dwIn .3s ease}
+@keyframes dwIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.dw-msg.bot{background:#fff;border:1px solid #e5e7eb;align-self:flex-start;color:#374151;border-radius:12px 12px 12px 4px}
+.dw-msg.user{background:#c9847a;color:#fff;align-self:flex-end;border-radius:12px 12px 4px 12px}
+.dw-chips{display:flex;flex-wrap:wrap;gap:6px;padding:8px 12px}
+.dw-chip{padding:6px 12px;border:1px solid #e5e7eb;border-radius:20px;font-size:11px;cursor:pointer;background:#fff;color:#6b7280;transition:all .2s}
+.dw-chip:hover{border-color:#c9847a;color:#c9847a}
+.dw-inp{display:flex;gap:6px;padding:10px 12px;border-top:1px solid #e5e7eb;background:#fff}
+.dw-inp input{flex:1;padding:8px 12px;border:1px solid #e5e7eb;border-radius:20px;font-size:13px;outline:none;font-family:inherit}
+.dw-inp input:focus{border-color:#c9847a}
+.dw-inp button{width:36px;height:36px;border-radius:50%;background:#c9847a;color:#fff;border:none;cursor:pointer;font-size:.8rem}
+@media(max-width:500px){.dw-panel{width:100%;max-width:100%;height:100dvh;max-height:100dvh;bottom:0;right:0;border-radius:0}}
+</style>
+<button class="dw-fab" onclick="dwToggle()" id="dwFab">💬</button>
+<div class="dw-panel" id="dwPanel">
+  <div class="dw-hd">
+    <div><h4>Élégance Beauty</h4><span>Assistant · En ligne</span></div>
+    <button class="dw-x" onclick="dwToggle()">✕</button>
+  </div>
+  <div class="dw-msgs" id="dwMsgs"></div>
+  <div class="dw-chips" id="dwChips"></div>
+  <div class="dw-inp">
+    <input id="dwInput" placeholder="Votre question..." onkeydown="if(event.key==='Enter')dwSend()">
+    <button onclick="dwSend()">➤</button>
+  </div>
+</div>
+<script>
+(function(){
+const FAQ = [
+  {q:["service","soin","prestation","propose","offre"],chips:"💅 Services",a:"Nous proposons coiffure, manucure, pédicure, soins visage, maquillage, épilation et massages relaxants. Découvrez nos forfaits beauté complets !"},
+  {q:["prix","tarif","combien","cout","coût","cher"],chips:"💰 Tarifs",a:"Coiffure à partir de 80 DH, manucure dès 60 DH, soins visage dès 150 DH. Consultez notre carte des soins pour tous les détails."},
+  {q:["rdv","rendez-vous","réserver","disponible","booking"],chips:"📅 Rendez-vous",a:"Prenez rendez-vous par WhatsApp au +212 600 000 002 ou appelez-nous. Nous vous confirmons votre créneau en quelques minutes !"},
+  {q:["horaire","heure","ouvert","fermé","ouverture"],chips:"🕐 Horaires",a:"Ouvert du lundi au samedi de 9h à 20h. Fermé le dimanche. Sur rendez-vous uniquement pour les soins en soirée."},
+  {q:["produit","marque","cosmétique","utilise"],chips:"🧴 Produits",a:"Nous utilisons exclusivement des produits professionnels haut de gamme : Kérastase, OPI, Dermalogica et des soins naturels marocains à base d'argan."}
+];
+const GREETING="Bienvenue chez Élégance Beauty ! ✨ Comment puis-je vous aider ? Rendez-vous, tarifs, soins...";
+const FALLBACK="Je n'ai pas cette information. Contactez-nous sur WhatsApp au +212 600 000 002 pour plus de détails !";
+let dwOpen=false,dwInit=false;
+window.dwToggle=function(){dwOpen=!dwOpen;document.getElementById('dwPanel').classList.toggle('open',dwOpen);document.getElementById('dwFab').style.display=dwOpen?'none':'';if(!dwInit){dwInit=true;dwAddMsg('bot',GREETING);showChips()}};
+function dwAddMsg(r,t){const c=document.getElementById('dwMsgs');const m=document.createElement('div');m.className='dw-msg '+r;m.textContent=t;c.appendChild(m);c.scrollTop=c.scrollHeight}
+function showChips(){const el=document.getElementById('dwChips');el.innerHTML='';FAQ.forEach(f=>{if(f.chips){const b=document.createElement('button');b.className='dw-chip';b.textContent=f.chips;b.onclick=()=>{dwAddMsg('user',f.chips);setTimeout(()=>dwAddMsg('bot',f.a),300);el.innerHTML=''};el.appendChild(b)}})}
+window.dwSend=function(){const inp=document.getElementById('dwInput');const msg=inp.value.trim();if(!msg)return;inp.value='';dwAddMsg('user',msg);const low=msg.toLowerCase();let answer=null;for(const f of FAQ){if(f.q.some(k=>low.includes(k))){answer=f.a;break}}setTimeout(()=>dwAddMsg('bot',answer||FALLBACK),300);document.getElementById('dwChips').innerHTML=''};
+})();
+</script>
+
 </body>
 </html>
